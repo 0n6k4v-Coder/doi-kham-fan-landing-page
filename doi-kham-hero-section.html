@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>DOI KHAM</title>
+
+  <style>
+    /* =====================================================
+       01. BASE / RESET
+       ===================================================== */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      inline-size: 100%;
+      min-block-size: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-block-size: 100dvh;
+      overflow: clip;
+    }
+
+    h1,
+    p {
+      margin: 0;
+    }
+
+
+    /* =====================================================
+       02. THEME
+       ===================================================== */
+
+    :root {
+      --color-bg-center: #F8EDCF;
+      --color-bg-light: #F6E9C8;
+      --color-bg-mid: #F4E5C0;
+      --color-bg-dark: #F3E2BD;
+      --color-bg-edge: #EBD3A4;
+
+      --color-doi-kham: #FDC000;
+      --color-text-group: #025627;
+      --color-scroll-down: #D71D1A;
+
+      --bg-position-x: 50%;
+      --bg-position-y: 45%;
+
+      --header-inline-padding: clamp(16px, 4vw, 56px);
+      --header-block-padding: 16px;
+      --header-max-height: 100px;
+
+      --logo-size: 92px;
+
+      --hero-gap: 8px;
+      --hero-copy-gap: 8px;
+
+      --doi-kham-size: clamp(64px, 21cqw, 300px);
+
+      --eyebrow-size: clamp(8px, 0.56vw, 10px);
+      --headline-size: clamp(32px, 2.22vw, 40px);
+      --release-size: clamp(18px, 1.25vw, 22px);
+      --location-size: clamp(12px, 0.83vw, 15px);
+
+      --hero-inline-padding: clamp(16px, 4vw, 56px);
+      --hero-bottom-padding: clamp(40px, 6vh, 80px);
+
+      --hand-size: clamp(180px, 25vw, 420px);
+
+      --scroll-indicator-size: clamp(120px, 11vw, 170px);
+      --scroll-indicator-offset: clamp(18px, 4vw, 56px);
+      --scroll-indicator-bottom: clamp(18px, 4vh, 48px);
+      --scroll-indicator-text-size: clamp(8px, 0.7vw, 11px);
+      --scroll-indicator-arrow-size: clamp(18px, 1.4vw, 24px);
+    }
+
+
+    /* =====================================================
+       03. PAGE / VIEWPORT
+       ===================================================== */
+
+    .page {
+      position: relative;
+
+      inline-size: 100%;
+      min-block-size: 100dvh;
+
+      overflow: clip;
+      isolation: isolate;
+    }
+
+
+    /* =====================================================
+       04. BACKGROUND
+       ===================================================== */
+
+    .page {
+      background:
+        radial-gradient(
+          ellipse
+          clamp(280px, 34vw, 490px)
+          clamp(250px, 32vh, 300px)
+          at var(--bg-position-x) var(--bg-position-y),
+          var(--color-bg-center) 0%,
+          var(--color-bg-light) 18%,
+          var(--color-bg-mid) 36%,
+          var(--color-bg-dark) 62%,
+          var(--color-bg-edge) 100%
+        );
+    }
+
+
+    /* =====================================================
+       05. BACKGROUND EFFECT
+       ===================================================== */
+
+    .page::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      z-index: -1;
+
+      pointer-events: none;
+
+      background:
+        radial-gradient(
+          ellipse
+          clamp(220px, 28vw, 400px)
+          clamp(200px, 26vh, 250px)
+          at 50% 43%,
+          rgb(255 255 255 / 5.5%) 0%,
+          rgb(255 249 230 / 2.5%) 45%,
+          transparent 70%
+        );
+
+      filter: blur(clamp(12px, 1.4vw, 20px));
+    }
+
+
+    /* =====================================================
+       06. HEADER
+       ===================================================== */
+
+    .header {
+      position: relative;
+      z-index: 10;
+
+      display: flex;
+      align-items: center;
+
+      inline-size: 100%;
+      block-size: var(--header-max-height);
+      max-block-size: var(--header-max-height);
+
+      padding-block: var(--header-block-padding);
+      padding-inline: var(--header-inline-padding);
+    }
+
+
+    /* =====================================================
+       07. HEADER / LOGO
+       ===================================================== */
+
+    .header__logo {
+      display: block;
+
+      inline-size: var(--logo-size);
+      block-size: var(--logo-size);
+
+      max-inline-size: 100%;
+      max-block-size: 100%;
+
+      flex: 0 1 auto;
+
+      object-fit: contain;
+    }
+
+
+    /* =====================================================
+       08. MAIN
+       ===================================================== */
+
+    .main {
+      position: relative;
+
+      inline-size: 100%;
+      min-block-size: calc(100dvh - var(--header-max-height));
+    }
+
+
+    /* =====================================================
+       09. HERO
+       ===================================================== */
+
+    .hero {
+      position: relative;
+
+      inline-size: 100%;
+      min-block-size: inherit;
+    }
+
+
+    /* =====================================================
+       10. HERO / CONTENT
+       ===================================================== */
+
+    .hero__content {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      inline-size: 100%;
+      max-inline-size: 100%;
+      min-inline-size: 0;
+      min-block-size: inherit;
+
+      gap: var(--hero-gap);
+
+      container: hero / inline-size;
+    }
+
+
+    /* =====================================================
+       11. HERO / DOI KHAM
+       ===================================================== */
+
+    .hero__title {
+      inline-size: 100%;
+      max-inline-size: 100%;
+      min-inline-size: 0;
+
+      margin: 0;
+      padding: 0;
+
+      color: var(--color-doi-kham);
+
+      font-size: var(--doi-kham-size);
+      line-height: 1;
+      font-weight: 700;
+      text-align: center;
+
+      text-wrap: nowrap;
+
+      user-select: none;
+    }
+
+
+    /* =====================================================
+       12. HERO / TEXT GROUP
+       ===================================================== */
+
+    .hero__copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      inline-size: min(100%, 560px);
+      max-inline-size: 100%;
+      min-inline-size: 0;
+
+      margin: 0;
+      padding: 0;
+
+      gap: var(--hero-copy-gap);
+
+      color: var(--color-text-group);
+      text-align: start;
+    }
+
+
+    /* =====================================================
+       13. HERO / TEXT — EYEBROW
+       ===================================================== */
+
+    .hero__eyebrow {
+      inline-size: 100%;
+      max-inline-size: 100%;
+      min-inline-size: 0;
+
+      margin: 0;
+      padding: 0;
+
+      color: var(--color-text-group);
+
+      font-size: var(--eyebrow-size);
+      line-height: 1.2;
+      font-weight: 400;
+
+      overflow-wrap: anywhere;
+    }
+
+
+    /* =====================================================
+       14. HERO / TEXT — HEADLINE GROUP
+       ===================================================== */
+
+    .hero__headline-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      inline-size: fit-content;
+      max-inline-size: 100%;
+      min-inline-size: 0;
+
+      gap: var(--hero-copy-gap);
+    }
+
+
+    /* =====================================================
+       15. HERO / TEXT — HEADLINE
+       ===================================================== */
+
+    .hero__headline {
+      min-inline-size: 0;
+
+      margin: 0;
+      padding: 0;
+
+      color: var(--color-text-group);
+
+      font-size: var(--headline-size);
+      line-height: 0.95;
+      font-weight: 700;
+      letter-spacing: -0.035em;
+
+      overflow-wrap: anywhere;
+    }
+
+
+    /* =====================================================
+       16. HERO / TEXT — RELEASE
+       ===================================================== */
+
+    .hero__release {
+      inline-size: 100%;
+      max-inline-size: 100%;
+      min-inline-size: 0;
+
+      margin: 0;
+      padding: 0;
+
+      color: var(--color-text-group);
+
+      font-size: var(--release-size);
+      line-height: 1;
+      font-weight: 400;
+
+      overflow-wrap: anywhere;
+    }
+
+
+    /* =====================================================
+       17. HERO / TEXT — LOCATION
+       ===================================================== */
+
+    .hero__location {
+      inline-size: 100%;
+      max-inline-size: 100%;
+      min-inline-size: 0;
+
+      margin: 0;
+      padding: 0;
+
+      color: var(--color-text-group);
+
+      font-size: var(--location-size);
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+
+      overflow-wrap: anywhere;
+    }
+
+
+    /* =====================================================
+       18. HERO / HANDS
+       ===================================================== */
+
+    .hero__hand {
+      position: absolute;
+      z-index: 5;
+
+      display: block;
+
+      inline-size: var(--hand-size);
+      block-size: auto;
+      max-inline-size: 100%;
+
+      object-fit: contain;
+
+      inset-block-end: 0;
+
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero__hand--left {
+      inset-inline-start: 50%;
+      transform: translateX(-100%);
+    }
+
+    .hero__hand--right {
+      inset-inline-start: 50%;
+    }
+
+
+    /* =====================================================
+       19. HERO / SCROLL INDICATOR
+       ===================================================== */
+
+    .scroll-indicator {
+      position: absolute;
+      z-index: 6;
+
+      inset-inline-end: var(--scroll-indicator-offset);
+      inset-block-end: var(--scroll-indicator-bottom);
+
+      display: grid;
+      place-items: center;
+
+      inline-size: var(--scroll-indicator-size);
+      block-size: var(--scroll-indicator-size);
+
+      color: var(--color-scroll-down);
+
+      pointer-events: none;
+      user-select: none;
+    }
+
+
+    /* =====================================================
+       20. SCROLL INDICATOR / ROTATING TEXT
+       ===================================================== */
+
+    .scroll-indicator__ring {
+      position: absolute;
+      inset: 0;
+
+      display: block;
+
+      inline-size: 100%;
+      block-size: 100%;
+
+      overflow: visible;
+
+      animation:
+        scroll-indicator-rotate
+        12s
+        linear
+        infinite;
+    }
+
+    .scroll-indicator__text {
+      fill: currentColor;
+
+      font-size: var(--scroll-indicator-text-size);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+
+    /* =====================================================
+       21. SCROLL INDICATOR / STATIC ARROW
+       ===================================================== */
+
+    .scroll-indicator__arrow {
+      position: absolute;
+      z-index: 2;
+
+      display: block;
+
+      inline-size: calc(var(--scroll-indicator-arrow-size) * 1.5);
+      block-size: calc(var(--scroll-indicator-arrow-size) * 2);
+
+      overflow: visible;
+
+      color: currentColor;
+
+      transform: translateY(-1px);
+    }
+
+    .scroll-indicator__arrow-line {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+
+    /* =====================================================
+       22. SCROLL INDICATOR / ANIMATION
+       ===================================================== */
+
+    @keyframes scroll-indicator-rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+
+    /* =====================================================
+       23. DESKTOP
+       ===================================================== */
+
+    @media (min-width: 769px) {
+      .hero__content {
+        padding-inline: var(--hero-inline-padding);
+      }
+
+      .hero__title {
+        position: absolute;
+
+        inset-block-start: 0;
+        inset-inline: var(--hero-inline-padding);
+
+        inline-size: calc(100% - (var(--hero-inline-padding) * 2));
+
+        font-size: clamp(64px, 21cqw, 300px);
+        text-align: center;
+      }
+
+      .hero__copy {
+        position: absolute;
+
+        inset-inline-start: var(--hero-inline-padding);
+        inset-block-end: var(--hero-bottom-padding);
+
+        inline-size: min(
+          calc(100% - (var(--hero-inline-padding) * 2)),
+          560px
+        );
+      }
+
+      .hero__headline-group {
+        flex-direction: column;
+        align-items: flex-start;
+
+        inline-size: fit-content;
+      }
+
+      .hero__headline {
+        white-space: nowrap;
+      }
+
+      .hero__hand--left {
+        inset-inline-start: 50%;
+        inset-block-end: 0;
+
+        transform: translateX(-100%);
+      }
+
+      .hero__hand--right {
+        inset-inline-start: 50%;
+        inset-inline-end: auto;
+        inset-block-end: 0;
+      }
+    }
+
+
+    /* =====================================================
+       24. MOBILE
+       ===================================================== */
+
+    @media (max-width: 768px) {
+      :root {
+        --header-inline-padding: clamp(16px, 5vw, 28px);
+        --header-block-padding: 16px;
+
+        --logo-size: 92px;
+
+        --doi-kham-size: 64px;
+
+        --hero-copy-gap: 8px;
+
+        --eyebrow-size: 10px;
+        --headline-size: 24px;
+        --release-size: 20px;
+        --location-size: 14px;
+
+        --hand-size: clamp(160px, 48vw, 280px);
+
+        --scroll-indicator-size: 120px;
+        --scroll-indicator-offset: 18px;
+        --scroll-indicator-bottom: 18px;
+        --scroll-indicator-text-size: 11px;
+      }
+
+      .hero__content {
+        align-items: flex-start;
+
+        padding-inline: var(--header-inline-padding);
+      }
+
+      .hero__title {
+        inline-size: 100%;
+
+        font-size: 64px;
+        text-align: start;
+      }
+
+      .hero__copy {
+        inline-size: 100%;
+        max-inline-size: 100%;
+      }
+
+      .hero__headline-group {
+        flex-direction: row;
+        align-items: baseline;
+        flex-wrap: nowrap;
+
+        inline-size: 100%;
+        max-inline-size: 100%;
+
+        gap: var(--hero-copy-gap);
+      }
+
+      .hero__headline {
+        flex: 0 0 auto;
+
+        white-space: nowrap;
+      }
+
+      .hero__hand--left {
+        inset-inline-start: 50%;
+        inset-block-end: 0;
+
+        transform: translateX(-100%);
+      }
+
+      .hero__hand--right {
+        inset-inline-start: 50%;
+        inset-inline-end: auto;
+        inset-block-end: 0;
+      }
+    }
+
+
+    /* =====================================================
+       25. SMALL MOBILE
+       ===================================================== */
+
+    @media (max-width: 480px) {
+      :root {
+        --header-inline-padding: 18px;
+        --header-block-padding: 16px;
+
+        --logo-size: 92px;
+        --doi-kham-size: 64px;
+
+        --hand-size: 52vw;
+      }
+    }
+
+
+    /* =====================================================
+       26. VERY SMALL MOBILE
+       ===================================================== */
+
+    @media (max-width: 360px) {
+      :root {
+        --header-inline-padding: 14px;
+        --header-block-padding: 16px;
+
+        --logo-size: 92px;
+        --doi-kham-size: 64px;
+
+        --hand-size: 55vw;
+      }
+    }
+
+
+    /* =====================================================
+       27. WIDE VIEWPORT
+       ===================================================== */
+
+    @media (min-aspect-ratio: 2/1) {
+      .page {
+        background:
+          radial-gradient(
+            ellipse
+            min(34vw, 55vh)
+            min(32vh, 52vh)
+            at var(--bg-position-x) var(--bg-position-y),
+            var(--color-bg-center) 0%,
+            var(--color-bg-light) 18%,
+            var(--color-bg-mid) 36%,
+            var(--color-bg-dark) 62%,
+            var(--color-bg-edge) 100%
+          );
+      }
+    }
+
+
+    /* =====================================================
+       28. REDUCED MOTION
+       ===================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-indicator__ring {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="header">
+      <img
+        class="header__logo"
+        src="logo.png"
+        alt="DOI KHAM"
+      >
+    </header>
+
+    <main class="main">
+      <section class="hero">
+        <div class="hero__content">
+          <h1 class="hero__title">DOI KHAM</h1>
+
+          <div class="hero__copy">
+            <p class="hero__eyebrow">
+              100% natural tomato juice with a playful twist — doi kham
+            </p>
+
+            <div class="hero__headline-group">
+              <p class="hero__headline">PURE TOMATO</p>
+              <p class="hero__headline">PLAYFUL GLOW.</p>
+            </div>
+
+            <p class="hero__release">
+              2026.9.8 NEW DROP!!
+            </p>
+
+            <p class="hero__location">
+              BANGKOK THAILAND
+            </p>
+          </div>
+        </div>
+
+        <img
+          class="hero__hand hero__hand--left"
+          src="left-hand.png"
+          alt=""
+          aria-hidden="true"
+        >
+
+        <img
+          class="hero__hand hero__hand--right"
+          src="right-hand.png"
+          alt=""
+          aria-hidden="true"
+        >
+
+        <div
+          class="scroll-indicator"
+          aria-hidden="true"
+        >
+          <svg
+            class="scroll-indicator__ring"
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <path
+                id="scroll-indicator-circle-path"
+                d="
+                  M 100 100
+                  m -82 0
+                  a 82 82 0 1 1 164 0
+                  a 82 82 0 1 1 -164 0
+                "
+              />
+            </defs>
+
+            <text class="scroll-indicator__text">
+              <textPath
+                href="#scroll-indicator-circle-path"
+                startOffset="0%"
+              >
+                SCROLL DOWN •
+              </textPath>
+            </text>
+
+            <text class="scroll-indicator__text">
+              <textPath
+                href="#scroll-indicator-circle-path"
+                startOffset="25%"
+              >
+                SCROLL DOWN •
+              </textPath>
+            </text>
+
+            <text class="scroll-indicator__text">
+              <textPath
+                href="#scroll-indicator-circle-path"
+                startOffset="50%"
+              >
+                SCROLL DOWN •
+              </textPath>
+            </text>
+
+            <text class="scroll-indicator__text">
+              <textPath
+                href="#scroll-indicator-circle-path"
+                startOffset="75%"
+              >
+                SCROLL DOWN •
+              </textPath>
+            </text>
+          </svg>
+
+          <svg
+            class="scroll-indicator__arrow"
+            viewBox="0 0 24 32"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              class="scroll-indicator__arrow-line"
+              d="
+                M 12 3
+                V 27
+                M 5 20
+                L 12 27
+                L 19 20
+              "
+            />
+          </svg>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>

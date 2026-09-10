@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOI KHAM - Hero</title>
+
+  <style>
+    :root {
+      /* =========================
+         Hero Section
+      ========================= */
+      --hero-bg: #FFF9E6;
+      --hero-block-padding: clamp(48px, 7vw, 96px);
+      --hero-inline-padding: clamp(20px, 5vw, 72px);
+      --hero-content-width: 1440px;
+      --hero-gap: clamp(20px, 4vw, 64px);
+
+      /* =========================
+         Hero Product Images
+      ========================= */
+      --hero-product-image-radius: 0px;
+      --hero-product-image-size: clamp(90px, 9vw, 150px);
+
+      /* =========================
+         Hero Side Grids
+      ========================= */
+      --hero-grid-gap: clamp(10px, 1.5vw, 24px);
+      --hero-grid-size: clamp(280px, 30vw, 480px);
+
+      /* =========================
+         Central Child
+      ========================= */
+      --hero-center-gap: clamp(20px, 4vw, 56px);
+      --hero-center-title-size: clamp(28px, 3vw, 40px);
+      --hero-center-title-weight: 900;
+      --hero-center-title-line-height: 1;
+      --hero-center-headline-gap: 8px;
+      --hero-center-copy-size: 16px;
+      --hero-center-copy-weight: 400;
+      --hero-center-copy-line-height: 1.55;
+      --hero-center-copy-gap: clamp(16px, 2vw, 24px);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--hero-bg);
+    }
+
+    /* =========================
+       Hero Section
+    ========================= */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 100svh;
+      padding-block: var(--hero-block-padding);
+      padding-inline: var(--hero-inline-padding);
+      background-color: var(--hero-bg);
+    }
+
+    /* =========================
+       Hero Parent
+       Horizontal
+    ========================= */
+    .hero__container {
+      container: hero / inline-size;
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(280px, 1.2fr)
+        minmax(0, 1fr);
+      align-items: center;
+      width: min(100%, var(--hero-content-width));
+      min-width: 0;
+      gap: var(--hero-gap);
+    }
+
+    /* =========================
+       Left / Right Child
+    ========================= */
+    .hero__side {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+    }
+
+    /* =========================
+       Side 2 × 2 Grid
+    ========================= */
+    .hero__side-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      grid-template-areas:
+        "top-left top-right"
+        "bottom-left bottom-right";
+      align-items: center;
+      justify-items: center;
+      width: min(100%, var(--hero-grid-size));
+      aspect-ratio: 1;
+      gap: var(--hero-grid-gap);
+    }
+
+    /* =========================
+       Grid Positions
+    ========================= */
+    .hero__grid-item--top-left {
+      grid-area: top-left;
+    }
+
+    .hero__grid-item--top-right {
+      grid-area: top-right;
+    }
+
+    .hero__grid-item--bottom-left {
+      grid-area: bottom-left;
+    }
+
+    .hero__grid-item--bottom-right {
+      grid-area: bottom-right;
+    }
+
+    .hero__grid-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      min-width: 0;
+      min-height: 0;
+      aspect-ratio: 1 / 1;
+    }
+
+    /* =========================
+       Product Image
+    ========================= */
+    .hero__product-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      object-fit: contain;
+      object-position: center;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* =========================
+       Left Grid Rotation
+
+       1 3
+       3 2
+
+       1 = tilted left
+       3 = tilted right
+       3 = tilted left
+       2 = tilted right
+    ========================= */
+    .hero__side--left
+      .hero__grid-item--top-left
+      .hero__product-image {
+      rotate: -8deg;
+      transform-origin: center;
+    }
+
+    .hero__side--left
+      .hero__grid-item--top-right
+      .hero__product-image {
+      rotate: 32deg;
+      transform-origin: center;
+    }
+
+    .hero__side--left
+      .hero__grid-item--bottom-left
+      .hero__product-image {
+      rotate: -8deg;
+      transform-origin: center;
+    }
+
+    .hero__side--left
+      .hero__grid-item--bottom-right
+      .hero__product-image {
+      rotate: 8deg;
+      transform-origin: center;
+    }
+
+    /* =========================
+       Right Grid Rotation
+
+       3 2
+       1 3
+    ========================= */
+    .hero__side--right
+      .hero__grid-item--top-left
+      .hero__product-image {
+      transform: rotate(8deg);
+      transform-origin: center;
+    }
+
+    .hero__side--right
+      .hero__grid-item--top-right
+      .hero__product-image {
+      transform: rotate(8deg);
+      transform-origin: center;
+    }
+
+    .hero__side--right
+      .hero__grid-item--bottom-left
+      .hero__product-image {
+      transform: rotate(-8deg);
+      transform-origin: center;
+    }
+
+    .hero__side--right
+      .hero__grid-item--bottom-right
+      .hero__product-image {
+      transform: rotate(32deg);
+      transform-origin: center;
+    }
+
+    /* =========================
+       Central Child
+       Vertical
+    ========================= */
+    .hero__center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+      gap: var(--hero-center-gap);
+      text-align: center;
+    }
+
+    /* =========================
+       Central Headline
+       Normal Text
+    ========================= */
+    .hero__center-headline {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+      gap: var(--hero-center-headline-gap);
+    }
+
+    /* =========================
+       Upper Headline
+       Left Aligned
+    ========================= */
+    .hero__center-headline-top {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      min-width: 0;
+      text-align: left;
+    }
+
+    /* =========================
+       Lower Headline
+       Right Aligned
+    ========================= */
+    .hero__center-headline-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      min-width: 0;
+      text-align: right;
+    }
+
+    .hero__center-headline-block {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      margin: 0;
+      color: #FDC000;
+      font-size: var(--hero-center-title-size);
+      font-weight: var(--hero-center-title-weight);
+      line-height: var(--hero-center-title-line-height);
+      text-wrap: balance;
+    }
+
+    /* =========================
+       Central Copy
+       4 Text Blocks
+    ========================= */
+    .hero__center-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+      gap: var(--hero-center-copy-gap);
+      text-align: center;
+    }
+
+    .hero__center-copy-block {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      color: #000000;
+      font-size: var(--hero-center-copy-size);
+      font-weight: var(--hero-center-copy-weight);
+      line-height: var(--hero-center-copy-line-height);
+      text-align: center;
+      text-wrap: pretty;
+    }
+
+    /* =========================
+       Responsive
+    ========================= */
+    @container hero (max-width: 1100px) {
+      .hero__container {
+        grid-template-columns:
+          minmax(0, 0.85fr)
+          minmax(260px, 1.2fr)
+          minmax(0, 0.85fr);
+        gap: clamp(16px, 3vw, 40px);
+      }
+
+      .hero__side-grid {
+        width: min(100%, 360px);
+      }
+
+      .hero__product-image {
+        width: min(100%, 120px);
+      }
+
+      .hero__center {
+        gap: clamp(16px, 3vw, 40px);
+      }
+
+      .hero__center-headline-block {
+        font-size: clamp(26px, 3vw, 34px);
+      }
+
+      .hero__center-copy {
+        gap: clamp(14px, 2vw, 20px);
+      }
+
+      .hero__center-copy-block {
+        font-size: 14px;
+      }
+    }
+
+    /* =========================
+       Mobile
+    ========================= */
+    @container hero (max-width: 700px) {
+      .hero {
+        min-height: auto;
+      }
+
+      .hero__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(32px, 8vw, 56px);
+      }
+
+      .hero__side {
+        width: 100%;
+      }
+
+      .hero__side-grid {
+        width: min(100%, 360px);
+      }
+
+      /* Hide all Hero images on mobile */
+      .hero__product-image {
+        display: none;
+      }
+
+      .hero__center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: clamp(24px, 6vw, 40px);
+      }
+
+      .hero__center-headline {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        width: 100%;
+        gap: 8px;
+      }
+
+      .hero__center-headline-top {
+        justify-content: flex-start;
+        text-align: left;
+      }
+
+      .hero__center-headline-bottom {
+        justify-content: flex-end;
+        text-align: right;
+      }
+
+      /* Smaller mobile headline + keep each line intact */
+      .hero__center-headline-block {
+        font-size: clamp(22px, 6vw, 30px);
+        white-space: nowrap;
+      }
+
+      .hero__center-copy {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: clamp(14px, 4vw, 20px);
+      }
+
+      .hero__center-copy-block {
+        width: 100%;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .hero__side--left {
+        order: 1;
+      }
+
+      .hero__center {
+        order: 2;
+      }
+
+      .hero__side--right {
+        order: 3;
+      }
+    }
+
+    /* =========================
+       Small Mobile
+    ========================= */
+    @container hero (max-width: 480px) {
+      .hero {
+        padding-inline: 20px;
+      }
+
+      .hero__container {
+        gap: 32px;
+      }
+
+      .hero__side-grid {
+        width: min(100%, 320px);
+        gap: 12px;
+      }
+
+      .hero__center {
+        gap: 28px;
+      }
+
+      .hero__center-headline {
+        gap: 8px;
+      }
+
+      .hero__center-headline-block {
+        font-size: 24px;
+      }
+
+      .hero__center-copy {
+        gap: 16px;
+      }
+
+      .hero__center-copy-block {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+    }
+
+    /* =========================
+       Very Small Mobile
+    ========================= */
+    @container hero (max-width: 360px) {
+      .hero {
+        padding-inline: 16px;
+      }
+
+      .hero__side-grid {
+        width: min(100%, 280px);
+        gap: 10px;
+      }
+
+      .hero__center {
+        gap: 24px;
+      }
+
+      .hero__center-headline {
+        gap: 8px;
+      }
+
+      .hero__center-headline-block {
+        font-size: 21px;
+      }
+
+      .hero__center-copy {
+        gap: 14px;
+      }
+
+      .hero__center-copy-block {
+        font-size: 13px;
+        line-height: 1.45;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="hero" aria-label="DOI KHAM Hero">
+
+    <div class="hero__container">
+
+      <!-- =========================
+           Left Child
+           1 3
+           3 2
+      ========================= -->
+      <div class="hero__side hero__side--left">
+
+        <div class="hero__side-grid">
+
+          <!-- 1 -->
+          <div class="hero__grid-item hero__grid-item--top-left">
+            <img
+              class="hero__product-image"
+              src="doi-kham-tomato-juice.png"
+              alt="Doi Kham Tomato Juice"
+              loading="eager"
+              decoding="async"
+              draggable="false"
+            />
+          </div>
+
+          <!-- 3 -->
+          <div class="hero__grid-item hero__grid-item--top-right">
+            <img
+              class="hero__product-image"
+              src="https://static.vecteezy.com/system/resources/thumbnails/070/183/417/small/vibrant-red-tomato-with-fresh-dew-drops-on-transparent-background-png.png"
+              alt="Fresh red tomato"
+              loading="eager"
+              decoding="async"
+              draggable="false"
+            />
+          </div>
+
+          <!-- 3 -->
+          <div class="hero__grid-item hero__grid-item--bottom-left">
+            <img
+              class="hero__product-image"
+              src="https://static.vecteezy.com/system/resources/thumbnails/070/183/417/small/vibrant-red-tomato-with-fresh-dew-drops-on-transparent-background-png.png"
+              alt="Fresh red tomato"
+              loading="eager"
+              decoding="async"
+              draggable="false"
+            />
+          </div>
+
+          <!-- 2 -->
+          <div class="hero__grid-item hero__grid-item--bottom-right">
+            <img
+              class="hero__product-image"
+              src="doi-kham-tomato-juice-low-sodium.png"
+              alt="Doi Kham Tomato Juice Low Sodium"
+              loading="eager"
+              decoding="async"
+              draggable="false"
+            />
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- =========================
+           Central Child
+           Vertical
+      ========================= -->
+      <div class="hero__center">
+
+        <!-- =========================
+             Central Headline
+             Normal Text
+        ========================= -->
+        <div class="hero__center-headline">
+
+          <!-- Left Aligned -->
+          <div class="hero__center-headline-top">
+            <p class="hero__center-headline-block">
+              PURE TOMATO,
+            </p>
+          </div>
+
+          <!-- Right Aligned -->
+          <div class="hero__center-headline-bottom">
+            <p class="hero__center-headline-block">
+              VIBRANT HEALTH.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- =========================
+             Central Copy
+             4 Text Blocks
+        ========================= -->
+        <div class="hero__center-copy">
+
+          <p class="hero__center-copy-block">
+            Drinking well should be a daily pleasure. A crisp sip of vibrant
+            tomato juice is one of life’s simplest, most refreshing daily
+            entertainments.
+          </p>
+
+          <p class="hero__center-copy-block">
+            Yet, choosing health often feels like a compromise—and busy,
+            fast-paced schedules turn daily nourishment into nothing more
+            than a chore to be rushed through.
+          </p>
+
+          <p class="hero__center-copy-block">
+            Where farm-fresh goodness and everyday vitality meet in a single
+            glass. That is the inspiration behind Doi Kham’s tomato journey:
+            wholesome nourishment made effortlessly real and vibrant.
+          </p>
+
+          <p class="hero__center-copy-block">
+            More radiance with every sip. More flavor in every harvest.
+            Bringing the rich crimson spirit of Thai fields and a splash of
+            natural color to your daily routine.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- =========================
+           Right Child
+      ========================= -->
+      <div class="hero__side hero__side--right">
+
+        <div class="hero__side-grid">
+
+          <!-- 3 -->
+          <div class="hero__grid-item hero__grid-item--top-left">
+            <img
+              class="hero__product-image"
+              src="https://static.vecteezy.com/system/resources/thumbnails/070/183/417/small/vibrant-red-tomato-with-fresh-dew-drops-on-transparent-background-png.png"
+              alt="Fresh red tomato"
+              loading="eager"
+              decoding="async"
+              draggable="false"
+            />
+          </div>
+
+          <!-- 2 -->
+          <div class="hero__grid-item hero__grid-item--top-right">
+            <img
+              class="hero__product-image"
+              src="doi-kham-tomato-juice-low-sodium.png"
+              alt="Doi Kham Tomato Juice Low Sodium"
+              loading="eager"
+              decoding="async"
+              draggable="false"
+            />
+          </div>
+
+          <!-- 1 -->
+          <div class="hero__grid-item hero__grid-item--bottom-left">
+            <img
+              class="hero__product-image"
+              src="doi-kham-tomato-juice.png"
+              alt="Doi Kham Tomato Juice"
+              loading="eager"
+              decoding="async"
+              draggable="false"
+            />
+          </div>
+
+          <!-- 3 -->
+          <div class="hero__grid-item hero__grid-item--bottom-right">
+            <img
+              class="hero__product-image"
+              src="https://static.vecteezy.com/system/resources/thumbnails/070/183/417/small/vibrant-red-tomato-with-fresh-dew-drops-on-transparent-background-png.png"
+              alt="Fresh red tomato"
+              loading="eager"
+              decoding="async"
+              draggable="false"
+            />
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>

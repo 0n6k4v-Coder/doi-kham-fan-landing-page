@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOI KHAM - FAQ</title>
+
+  <!--
+    Code Convention:
+    - Must read the latest official MDN documentation first.
+    - Must apply at least one current official MDN technique.
+    - Keep the code clean, clear, separated by concern, modular, and reusable.
+    - Keep everything in one HTML file.
+    - Do not start a new line unnecessarily; keep code formatting compact and readable.
+    - Preserve the existing baseline unless I explicitly ask for a change.
+    - Parent containers control spacing/gaps between direct children.
+    - Child containers control their own internal layout and spacing.
+    - Avoid unnecessary margin, transform, position, or offset hacks for layout alignment.
+    - Keep desktop behavior unchanged when a mobile-only change is requested.
+    - Keep the HTML previewable inside a standard fenced HTML code block.
+  -->
+
+  <style>
+    :root {
+      /* =========================
+         FAQ Section
+      ========================= */
+      --faq-bg: #FFF9E6;
+      --faq-card-bg: #FFFFFF;
+      --faq-title-color: #FFFFFF;
+      --faq-question-color: #FDC000;
+      --faq-text-color: #262626;
+      --faq-text-hover-color: #FDC000;
+      --faq-detail-color: #393230;
+      --faq-divider-color: #EEEEEE;
+      --faq-arrow-color: #262626;
+
+      --faq-block-padding: clamp(64px, 8vw, 120px);
+      --faq-inline-padding: clamp(20px, 5vw, 72px);
+      --faq-content-width: 1052px;
+
+      --faq-title-size: 72px;
+      --faq-title-weight: 900;
+      --faq-title-line-height: 1;
+
+      --faq-group-gap: clamp(12px, 1.5vw, 16px);
+
+      /* 1052 × 106 */
+      --faq-card-ratio: 1052 / 106;
+      --faq-card-radius: 24px;
+
+      /* Desktop: reduced horizontal padding */
+      --faq-card-padding-inline: clamp(20px, 2vw, 32px);
+      --faq-card-gap: clamp(20px, 3vw, 40px);
+
+      --faq-question-size: 20px;
+      --faq-question-weight: 700;
+
+      --faq-text-size: 16px;
+      --faq-text-weight: 700;
+      --faq-text-line-height: 1.4;
+      --faq-text-transition: 180ms ease;
+
+      --faq-arrow-size: 24px;
+      --faq-triangle-width: 14px;
+      --faq-triangle-height: 10px;
+      --faq-arrow-transition: 220ms ease;
+
+      --faq-detail-padding-top: 18px;
+      --faq-detail-padding-bottom: 22px;
+      --faq-detail-size: 14px;
+      --faq-detail-weight: 400;
+      --faq-detail-line-height: 1.55;
+
+      --faq-detail-transition: 280ms ease;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--faq-bg);
+    }
+
+    /* =========================
+       FAQ Section
+       Cream Background
+    ========================= */
+    .faq {
+      container: faq / inline-size;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding-block: var(--faq-block-padding);
+      padding-inline: var(--faq-inline-padding);
+      background-color: var(--faq-bg);
+    }
+
+    /* =========================
+       FAQ Parent
+       Vertical
+    ========================= */
+    .faq__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: min(100%, var(--faq-content-width));
+      min-width: 0;
+      gap: clamp(40px, 6vw, 72px);
+    }
+
+    /* =========================
+       Header
+       Center X + Y
+    ========================= */
+    .faq__header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .faq__header-text {
+      display: block;
+      margin: 0;
+      color: var(--faq-title-color);
+      font-size: var(--faq-title-size);
+      font-weight: var(--faq-title-weight);
+      line-height: var(--faq-title-line-height);
+      text-align: center;
+    }
+
+    /* =========================
+       FAQ Card Group
+       Vertical
+    ========================= */
+    .faq__list {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      min-width: 0;
+      gap: var(--faq-group-gap);
+    }
+
+    /* =========================
+       FAQ Card
+       24px Radius
+    ========================= */
+    .faq-card {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      overflow: hidden;
+      border-radius: var(--faq-card-radius);
+      background-color: var(--faq-card-bg);
+    }
+
+    /* =========================
+       FAQ Question Row
+       3 Elements
+    ========================= */
+    .faq-card__summary {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-width: 0;
+      min-height: 106px;
+      aspect-ratio: var(--faq-card-ratio);
+      padding-inline: var(--faq-card-padding-inline);
+      gap: var(--faq-card-gap);
+      border: 0;
+      background: transparent;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    /* =========================
+       Question
+    ========================= */
+    .faq-card__question {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 0 0 auto;
+      margin: 0;
+      color: var(--faq-question-color);
+      font-size: var(--faq-question-size);
+      font-weight: var(--faq-question-weight);
+      line-height: 1;
+    }
+
+    /* =========================
+       FAQ Text
+    ========================= */
+    .faq-card__text {
+      display: flex;
+      align-items: center;
+      flex: 1 1 auto;
+      min-width: 0;
+      margin: 0;
+      color: var(--faq-text-color);
+      font-size: var(--faq-text-size);
+      font-weight: var(--faq-text-weight);
+      line-height: var(--faq-text-line-height);
+      transition: color var(--faq-text-transition);
+    }
+
+    /* =========================
+       Right Arrow Area
+    ========================= */
+    .faq-card__action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      width: var(--faq-arrow-size);
+      height: var(--faq-arrow-size);
+      color: var(--faq-arrow-color);
+    }
+
+    /* =========================
+       Triangle Arrow
+       Closed = Down
+       Open = Up
+    ========================= */
+    .faq-card__arrow {
+      display: block;
+      width: var(--faq-triangle-width);
+      height: var(--faq-triangle-height);
+      background-color: currentColor;
+      clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        50% 100%
+      );
+      transition: rotate var(--faq-arrow-transition);
+      transform-origin: center;
+    }
+
+    .faq-card.is-open .faq-card__arrow {
+      rotate: 180deg;
+    }
+
+    /* =========================
+       Detail Wrapper
+       Animated Height
+    ========================= */
+    .faq-card__details {
+      display: block;
+      width: auto;
+      margin-inline: var(--faq-card-padding-inline);
+      height: 0;
+      overflow: hidden;
+      border-block-start: 1px solid transparent;
+      transition:
+        height var(--faq-detail-transition),
+        border-color var(--faq-detail-transition);
+      color: var(--faq-detail-color);
+      font-size: var(--faq-detail-size);
+      font-weight: var(--faq-detail-weight);
+      line-height: var(--faq-detail-line-height);
+    }
+
+    /* =========================
+       Detail Content
+    ========================= */
+    .faq-card__details-inner {
+      display: block;
+      padding-block-start: var(--faq-detail-padding-top);
+      padding-block-end: var(--faq-detail-padding-bottom);
+      padding-inline: 0;
+    }
+
+    .faq-card__details-text {
+      display: block;
+      max-width: 900px;
+      margin: 0;
+      color: var(--faq-detail-color);
+      font-size: var(--faq-detail-size);
+      font-weight: var(--faq-detail-weight);
+      line-height: var(--faq-detail-line-height);
+    }
+
+    /* =========================
+       Open State
+    ========================= */
+    .faq-card.is-open .faq-card__details {
+      border-block-start-color: var(--faq-divider-color);
+    }
+
+    /* =========================
+       FAQ Text Hover
+    ========================= */
+    @media (hover: hover) {
+      .faq-card:hover .faq-card__text {
+        color: var(--faq-text-hover-color);
+      }
+    }
+
+    /* =========================
+       Responsive
+    ========================= */
+    @container faq (max-width: 700px) {
+      .faq {
+        padding-block: clamp(48px, 10vw, 72px);
+      }
+
+      .faq__container {
+        gap: clamp(32px, 8vw, 48px);
+      }
+
+      .faq__header-text {
+        font-size: clamp(48px, 12vw, 64px);
+      }
+
+      /* Mobile: more horizontal padding */
+      .faq-card__summary {
+        min-height: 82px;
+        aspect-ratio: auto;
+        padding-inline: 32px;
+        gap: 16px;
+      }
+
+      .faq-card__question {
+        font-size: 18px;
+      }
+
+      .faq-card__text {
+        font-size: 14px;
+      }
+
+      .faq-card__action {
+        width: 20px;
+        height: 20px;
+      }
+
+      .faq-card__details {
+        margin-inline: 32px;
+      }
+
+      .faq-card__details-text {
+        font-size: 13px;
+      }
+    }
+
+    /* =========================
+       Small Mobile
+    ========================= */
+    @container faq (max-width: 480px) {
+      .faq {
+        padding-inline: 16px;
+      }
+
+      .faq__container {
+        gap: 32px;
+      }
+
+      .faq__header-text {
+        font-size: 48px;
+      }
+
+      .faq__list {
+        gap: 10px;
+      }
+
+      /* More mobile horizontal padding */
+      .faq-card__summary {
+        min-height: 76px;
+        padding-inline: 28px;
+        gap: 12px;
+      }
+
+      .faq-card__question {
+        font-size: 18px;
+      }
+
+      .faq-card__text {
+        font-size: 14px;
+        line-height: 1.35;
+      }
+
+      .faq-card__action {
+        width: 18px;
+        height: 18px;
+      }
+
+      .faq-card__details {
+        margin-inline: 28px;
+      }
+
+      .faq-card__details-inner {
+        padding-block-start: 14px;
+        padding-block-end: 18px;
+      }
+
+      .faq-card__details-text {
+        font-size: 13px;
+      }
+    }
+
+    /* =========================
+       Very Small Mobile
+    ========================= */
+    @container faq (max-width: 360px) {
+      .faq {
+        padding-inline: 12px;
+      }
+
+      .faq__header-text {
+        font-size: 42px;
+      }
+
+      .faq-card__summary {
+        min-height: 72px;
+        padding-inline: 24px;
+        gap: 10px;
+      }
+
+      .faq-card__question {
+        font-size: 18px;
+      }
+
+      .faq-card__text {
+        font-size: 14px;
+      }
+
+      .faq-card__action {
+        width: 17px;
+        height: 17px;
+      }
+
+      .faq-card__details {
+        margin-inline: 24px;
+      }
+
+      .faq-card__details-text {
+        font-size: 13px;
+      }
+    }
+
+    /* =========================
+       Reduced Motion
+    ========================= */
+    @media (prefers-reduced-motion: reduce) {
+      .faq-card__arrow,
+      .faq-card__details,
+      .faq-card__text {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="faq" aria-labelledby="faq-title">
+
+    <div class="faq__container">
+
+      <!-- =========================
+           Header
+      ========================= -->
+      <header class="faq__header">
+        <h2 class="faq__header-text" id="faq-title">
+          FAQ
+        </h2>
+      </header>
+
+      <!-- =========================
+           FAQ Card Group
+           5 Cards
+      ========================= -->
+      <div class="faq__list">
+
+        <!-- FAQ 1 -->
+        <article class="faq-card">
+
+          <button
+            class="faq-card__summary"
+            type="button"
+            aria-expanded="false"
+            aria-controls="faq-answer-1"
+          >
+            <span class="faq-card__question">Q.</span>
+
+            <span class="faq-card__text">
+              What makes Doi Kham tomato juice different?
+            </span>
+
+            <span class="faq-card__action" aria-hidden="true">
+              <span class="faq-card__arrow"></span>
+            </span>
+          </button>
+
+          <div
+            class="faq-card__details"
+            id="faq-answer-1"
+            role="region"
+            aria-hidden="true"
+          >
+            <div class="faq-card__details-inner">
+              <p class="faq-card__details-text">
+                Doi Kham tomato juice is made to bring the natural goodness of
+                carefully selected tomatoes into a refreshing and enjoyable
+                everyday drink.
+              </p>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- FAQ 2 -->
+        <article class="faq-card">
+
+          <button
+            class="faq-card__summary"
+            type="button"
+            aria-expanded="false"
+            aria-controls="faq-answer-2"
+          >
+            <span class="faq-card__question">Q.</span>
+
+            <span class="faq-card__text">
+              Where are the tomatoes used in Doi Kham juice grown?
+            </span>
+
+            <span class="faq-card__action" aria-hidden="true">
+              <span class="faq-card__arrow"></span>
+            </span>
+          </button>
+
+          <div
+            class="faq-card__details"
+            id="faq-answer-2"
+            role="region"
+            aria-hidden="true"
+          >
+            <div class="faq-card__details-inner">
+              <p class="faq-card__details-text">
+                The tomatoes are grown through farming partnerships in
+                Thailand, connecting the product with local agricultural
+                communities and fresh harvests.
+              </p>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- FAQ 3 -->
+        <article class="faq-card">
+
+          <button
+            class="faq-card__summary"
+            type="button"
+            aria-expanded="false"
+            aria-controls="faq-answer-3"
+          >
+            <span class="faq-card__question">Q.</span>
+
+            <span class="faq-card__text">
+              Is Doi Kham tomato juice made from 100% natural tomatoes?
+            </span>
+
+            <span class="faq-card__action" aria-hidden="true">
+              <span class="faq-card__arrow"></span>
+            </span>
+          </button>
+
+          <div
+            class="faq-card__details"
+            id="faq-answer-3"
+            role="region"
+            aria-hidden="true"
+          >
+            <div class="faq-card__details-inner">
+              <p class="faq-card__details-text">
+                The product is presented as a natural tomato-based drink,
+                designed to preserve the fresh character and vibrant taste of
+                the tomatoes.
+              </p>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- FAQ 4 -->
+        <article class="faq-card">
+
+          <button
+            class="faq-card__summary"
+            type="button"
+            aria-expanded="false"
+            aria-controls="faq-answer-4"
+          >
+            <span class="faq-card__question">Q.</span>
+
+            <span class="faq-card__text">
+              How should I enjoy Doi Kham tomato juice?
+            </span>
+
+            <span class="faq-card__action" aria-hidden="true">
+              <span class="faq-card__arrow"></span>
+            </span>
+          </button>
+
+          <div
+            class="faq-card__details"
+            id="faq-answer-4"
+            role="region"
+            aria-hidden="true"
+          >
+            <div class="faq-card__details-inner">
+              <p class="faq-card__details-text">
+                Chill before serving and enjoy it as a refreshing drink on its
+                own or as part of your daily routine.
+              </p>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- FAQ 5 -->
+        <article class="faq-card">
+
+          <button
+            class="faq-card__summary"
+            type="button"
+            aria-expanded="false"
+            aria-controls="faq-answer-5"
+          >
+            <span class="faq-card__question">Q.</span>
+
+            <span class="faq-card__text">
+              What is the best way to store Doi Kham tomato juice?
+            </span>
+
+            <span class="faq-card__action" aria-hidden="true">
+              <span class="faq-card__arrow"></span>
+            </span>
+          </button>
+
+          <div
+            class="faq-card__details"
+            id="faq-answer-5"
+            role="region"
+            aria-hidden="true"
+          >
+            <div class="faq-card__details-inner">
+              <p class="faq-card__details-text">
+                Follow the storage instructions provided on the product
+                packaging and refrigerate after opening when required.
+              </p>
+            </div>
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+    const faqCards = document.querySelectorAll(".faq-card");
+
+    function openFaq(card) {
+      const button = card.querySelector(".faq-card__summary");
+      const details = card.querySelector(".faq-card__details");
+
+      card.classList.add("is-open");
+      button.setAttribute("aria-expanded", "true");
+      details.setAttribute("aria-hidden", "false");
+
+      details.style.height = `${details.scrollHeight}px`;
+
+      const onOpenEnd = (event) => {
+        if (event.propertyName !== "height") return;
+        details.style.height = "auto";
+        details.removeEventListener("transitionend", onOpenEnd);
+      };
+
+      details.addEventListener("transitionend", onOpenEnd);
+    }
+
+    function closeFaq(card) {
+      const button = card.querySelector(".faq-card__summary");
+      const details = card.querySelector(".faq-card__details");
+
+      details.style.height = `${details.scrollHeight}px`;
+
+      requestAnimationFrame(() => {
+        card.classList.remove("is-open");
+        button.setAttribute("aria-expanded", "false");
+        details.setAttribute("aria-hidden", "true");
+        details.style.height = "0px";
+      });
+    }
+
+    faqCards.forEach((card) => {
+      const button = card.querySelector(".faq-card__summary");
+
+      button.addEventListener("click", () => {
+        const isOpen = card.classList.contains("is-open");
+
+        if (isOpen) {
+          closeFaq(card);
+        } else {
+          openFaq(card);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

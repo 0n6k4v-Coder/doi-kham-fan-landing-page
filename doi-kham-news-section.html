@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOI KHAM - News</title>
+
+  <!--
+    Code Convention:
+    - Must read the latest official MDN documentation first.
+    - Must apply at least one current official MDN technique.
+    - Keep the code clean, clear, separated by concern, modular, and reusable.
+    - Keep everything in one HTML file.
+    - Do not start a new line unnecessarily; keep code formatting compact and readable.
+    - Preserve the existing baseline unless I explicitly ask for a change.
+    - Parent containers control spacing/gaps between direct children.
+    - Child containers control their own internal layout and spacing.
+    - Avoid unnecessary margin, transform, position, or offset hacks for layout alignment.
+    - Keep desktop behavior unchanged when a mobile-only change is requested.
+    - Keep the HTML previewable inside a standard fenced HTML code block.
+  -->
+
+  <style>
+    :root {
+      /* =========================
+         News Section
+      ========================= */
+      --news-bg: #FFFFFF;
+      --news-page-bg: #FFF9E6;
+      --news-text: #2B2624;
+      --news-muted: #39323066;
+      --news-divider: #3932301A;
+      --news-accent: #FDC000;
+      --news-tag-bg: #FFDBA4;
+      --news-button-bg: #025627;
+      --news-button-text: #FFFFFF;
+      --news-action-text: #3B3630;
+
+      --news-block-padding: clamp(56px, 8vw, 112px);
+      --news-inline-padding: clamp(20px, 5vw, 72px);
+      --news-content-width: 1200px;
+      --news-radius: 24px;
+
+      --news-header-size: clamp(40px, 5vw, 64px);
+      --news-header-weight: 900;
+
+      --news-list-gap: clamp(16px, 2vw, 24px);
+      --news-card-gap: clamp(20px, 4vw, 48px);
+      --news-card-padding: clamp(20px, 3vw, 32px);
+
+      --news-headline-size: 16px;
+      --news-headline-weight: 700;
+      --news-headline-line-height: 1.35;
+
+      --news-metadata-gap: 16px;
+      --news-metadata-size: 14px;
+      --news-metadata-line-height: 1.2;
+
+      --news-tag-width: 52px;
+      --news-tag-height: 20px;
+      --news-tag-radius: 8px;
+      --news-tag-size: 11px;
+      --news-tag-weight: 700;
+
+      --news-action-size: 40px;
+      --news-action-radius: 8px;
+      --news-action-icon-size: 20px;
+
+      --news-actions-gap: 8px;
+      --news-read-more-width: 136px;
+      --news-read-more-height: 45px;
+      --news-down-button-size: 45px;
+      --news-actions-radius: 8px;
+      --news-actions-text-size: 14px;
+      --news-actions-text-weight: 700;
+      --news-down-icon-size: 18px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--news-page-bg);
+      color: var(--news-text);
+    }
+
+    /* =========================
+       News Section
+    ========================= */
+    .news {
+      container: news / inline-size;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      min-height: 100svh;
+
+      padding-block: var(--news-block-padding);
+      padding-inline: var(--news-inline-padding);
+
+      background-color: var(--news-page-bg);
+    }
+
+    /* =========================
+       News Parent
+       Vertical
+    ========================= */
+    .news__container {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+
+      width: min(100%, var(--news-content-width));
+      min-width: 0;
+
+      padding: clamp(24px, 4vw, 48px);
+
+      border-radius: var(--news-radius);
+
+      background-color: var(--news-bg);
+
+      gap: clamp(40px, 6vw, 72px);
+    }
+
+    /* =========================
+       Header
+       Center X + Y
+    ========================= */
+    .news__header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      min-width: 0;
+    }
+
+    .news__header-text {
+      display: block;
+
+      margin: 0;
+
+      color: var(--news-accent);
+
+      font-size: var(--news-header-size);
+      font-weight: var(--news-header-weight);
+      line-height: 1;
+      text-align: center;
+    }
+
+    /* =========================
+       News List
+       3 Cards
+    ========================= */
+    .news__list {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+
+      width: 100%;
+      min-width: 0;
+
+      gap: var(--news-list-gap);
+    }
+
+    /* =========================
+       News Card
+       Horizontal
+    ========================= */
+    .news-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 100%;
+      min-width: 0;
+
+      gap: var(--news-card-gap);
+      padding: var(--news-card-padding);
+
+      border-block-start: 1px solid var(--news-divider);
+    }
+
+    .news-card:last-child {
+      border-block-end: 1px solid var(--news-divider);
+    }
+
+    /* =========================
+       Left Content
+       Vertical
+    ========================= */
+    .news-card__content {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+
+      flex: 1 1 auto;
+      min-width: 0;
+
+      gap: 16px;
+    }
+
+    /* =========================
+       Metadata
+       Horizontal
+    ========================= */
+    .news-card__metadata {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      width: 100%;
+      min-width: 0;
+
+      gap: var(--news-metadata-gap);
+    }
+
+    /* =========================
+       Date
+    ========================= */
+    .news-card__date {
+      display: flex;
+      align-items: center;
+
+      min-width: 0;
+
+      margin: 0;
+
+      color: var(--news-muted);
+
+      font-size: var(--news-metadata-size);
+      font-weight: 400;
+      line-height: var(--news-metadata-line-height);
+    }
+
+    /* =========================
+       Category
+    ========================= */
+    .news-card__category {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex: 0 0 var(--news-tag-width);
+
+      width: var(--news-tag-width);
+      height: var(--news-tag-height);
+
+      border-radius: var(--news-tag-radius);
+
+      background-color: var(--news-tag-bg);
+      color: var(--news-action-text);
+
+      font-size: var(--news-tag-size);
+      font-weight: var(--news-tag-weight);
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    /* =========================
+       Headline
+    ========================= */
+    .news-card__headline {
+      display: block;
+
+      width: 100%;
+      max-width: 720px;
+
+      margin: 0;
+
+      color: var(--news-text);
+
+      font-size: var(--news-headline-size);
+      font-weight: var(--news-headline-weight);
+      line-height: var(--news-headline-line-height);
+      text-wrap: pretty;
+    }
+
+    /* =========================
+       Right Arrow Action
+       40 × 40
+    ========================= */
+    .news-card__action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex: 0 0 var(--news-action-size);
+
+      width: var(--news-action-size);
+      height: var(--news-action-size);
+
+      padding: 0;
+      border: 0;
+      border-radius: var(--news-action-radius);
+
+      background-color: var(--news-tag-bg);
+      color: var(--news-action-text);
+
+      cursor: pointer;
+    }
+
+    .news-card__action-icon {
+      display: block;
+
+      width: var(--news-action-icon-size);
+      height: var(--news-action-icon-size);
+
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* =========================
+       News Actions
+       Horizontal
+    ========================= */
+    .news__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      min-width: 0;
+
+      gap: var(--news-actions-gap);
+    }
+
+    /* =========================
+       Read More Button
+       136 × 45
+    ========================= */
+    .news__read-more {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex: 0 0 var(--news-read-more-width);
+
+      width: var(--news-read-more-width);
+      height: var(--news-read-more-height);
+
+      padding: 0;
+      border: 0;
+      border-radius: var(--news-actions-radius);
+
+      background-color: var(--news-button-bg);
+      color: var(--news-button-text);
+
+      font-size: var(--news-actions-text-size);
+      font-weight: var(--news-actions-text-weight);
+      line-height: 1;
+      text-align: center;
+      text-decoration: none;
+
+      cursor: pointer;
+    }
+
+    /* =========================
+       Down Arrow Button
+       45 × 45
+    ========================= */
+    .news__down-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex: 0 0 var(--news-down-button-size);
+
+      width: var(--news-down-button-size);
+      height: var(--news-down-button-size);
+
+      padding: 0;
+      border: 0;
+      border-radius: var(--news-actions-radius);
+
+      background-color: var(--news-button-bg);
+      color: var(--news-button-text);
+
+      cursor: pointer;
+    }
+
+    .news__down-icon {
+    display: block;
+    width: var(--news-down-icon-size);
+    height: var(--news-down-icon-size);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    }
+
+    /* =========================
+       Responsive
+    ========================= */
+    @container news (max-width: 700px) {
+      .news__container {
+        padding: 24px;
+        gap: 40px;
+      }
+
+      .news__header-text {
+        font-size: clamp(36px, 10vw, 48px);
+      }
+
+      .news-card {
+        align-items: flex-end;
+        gap: 20px;
+        padding-block: 20px;
+        padding-inline: 0;
+      }
+
+      .news-card__content {
+        gap: 12px;
+      }
+
+      .news-card__metadata {
+        gap: 12px;
+      }
+
+      .news-card__headline {
+        font-size: 16px;
+      }
+    }
+
+    /* =========================
+       Small Mobile
+    ========================= */
+    @container news (max-width: 480px) {
+      .news {
+        padding-inline: 12px;
+      }
+
+      .news__container {
+        padding: 20px;
+        gap: 32px;
+        border-radius: var(--news-radius);
+      }
+
+      .news__header-text {
+        font-size: 40px;
+      }
+
+      .news__list {
+        gap: 0;
+      }
+
+      .news-card {
+        gap: 16px;
+        padding-block: 18px;
+      }
+
+      .news-card__content {
+        gap: 10px;
+      }
+
+      .news-card__metadata {
+        gap: 10px;
+      }
+
+      .news-card__date {
+        font-size: 13px;
+      }
+
+      .news-card__category {
+        flex-basis: 52px;
+        width: 52px;
+        height: 20px;
+        font-size: 11px;
+      }
+
+      .news-card__headline {
+        font-size: 15px;
+        line-height: 1.4;
+      }
+
+      .news__actions {
+        gap: 8px;
+      }
+
+      .news__read-more {
+        flex-basis: 136px;
+        width: 136px;
+        height: 45px;
+      }
+
+      .news__down-button {
+        flex-basis: 45px;
+        width: 45px;
+        height: 45px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="news" aria-labelledby="news-title">
+
+    <div class="news__container">
+
+      <!-- =========================
+           Header
+      ========================= -->
+      <header class="news__header">
+        <h2 class="news__header-text" id="news-title">
+          NEWS
+        </h2>
+      </header>
+
+      <!-- =========================
+           News Container Group
+           3 News Cards
+      ========================= -->
+      <div class="news__list">
+
+        <!-- =========================
+             News Card 1
+        ========================= -->
+        <article class="news-card">
+
+          <div class="news-card__content">
+
+            <div class="news-card__metadata">
+
+              <time class="news-card__date" datetime="2026-01-15">
+                January 15, 2026
+              </time>
+
+              <span class="news-card__category">
+                NEWS
+              </span>
+
+            </div>
+
+            <h3 class="news-card__headline">
+              Doi Kham introduces a fresh way to enjoy everyday tomato goodness.
+            </h3>
+
+          </div>
+
+          <button
+            class="news-card__action"
+            type="button"
+            aria-label="Read Doi Kham introduces a fresh way to enjoy everyday tomato goodness"
+          >
+            <svg
+              class="news-card__action-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <!-- Long tail -->
+              <path d="M3 12h16"></path>
+
+              <!-- Arrow head -->
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+          </button>
+
+        </article>
+
+        <!-- =========================
+             News Card 2
+        ========================= -->
+        <article class="news-card">
+
+          <div class="news-card__content">
+
+            <div class="news-card__metadata">
+
+              <time class="news-card__date" datetime="2026-02-03">
+                February 3, 2026
+              </time>
+
+              <span class="news-card__category">
+                NEWS
+              </span>
+
+            </div>
+
+            <h3 class="news-card__headline">
+              From Thai farms to your daily routine: the story behind Doi Kham tomato juice.
+            </h3>
+
+          </div>
+
+          <button
+            class="news-card__action"
+            type="button"
+            aria-label="Read the story behind Doi Kham tomato juice"
+          >
+            <svg
+              class="news-card__action-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <!-- Long tail -->
+              <path d="M3 12h16"></path>
+
+              <!-- Arrow head -->
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+          </button>
+
+        </article>
+
+        <!-- =========================
+             News Card 3
+        ========================= -->
+        <article class="news-card">
+
+          <div class="news-card__content">
+
+            <div class="news-card__metadata">
+
+              <time class="news-card__date" datetime="2026-03-20">
+                March 20, 2026
+              </time>
+
+              <span class="news-card__category">
+                NEWS
+              </span>
+
+            </div>
+
+            <h3 class="news-card__headline">
+              Discover the vibrant taste and natural goodness in every can.
+            </h3>
+
+          </div>
+
+          <button
+            class="news-card__action"
+            type="button"
+            aria-label="Read Discover the vibrant taste and natural goodness in every can"
+          >
+            <svg
+              class="news-card__action-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <!-- Long tail -->
+              <path d="M3 12h16"></path>
+
+              <!-- Arrow head -->
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+          </button>
+
+        </article>
+
+      </div>
+
+      <!-- =========================
+           Action Container
+           Horizontal
+      ========================= -->
+      <div class="news__actions">
+
+        <a class="news__read-more" href="#">
+          Read More
+        </a>
+
+        <button
+          class="news__down-button"
+          type="button"
+          aria-label="Show more news"
+        >
+            <svg
+            class="news__down-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            >
+            <path d="M12 3v16"></path>
+            <path d="m6 13 6 6 6-6"></path>
+            </svg>
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+</html>

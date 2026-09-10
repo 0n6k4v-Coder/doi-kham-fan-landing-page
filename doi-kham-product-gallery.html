@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
+  <title>DOI KHAM — Infinite Product Gallery</title>
+
+  <style>
+    :root {
+      /* =======================================================
+         GALLERY
+         ======================================================= */
+
+      /* Gap between product boxes */
+      --gallery-gap: 25px;
+
+      /* Continuous loop speed */
+      --gallery-duration: 16s;
+
+      /*
+        Calculated by JavaScript from one complete
+        product box + the gap after it.
+      */
+      --gallery-loop-distance: 0px;
+
+      /*
+        Calculated from the rotated product box.
+      */
+      --gallery-height: 180px;
+
+      /* =======================================================
+         PRODUCT BOX
+         ======================================================= */
+
+      /*
+        The box is the layout unit.
+
+        Desktop:
+        180px × 460px
+
+        Mobile:
+        120px × proportional width
+      */
+      --product-box-width: 180px;
+      --product-box-height: 460px;
+
+      /*
+        Product image height inside the box.
+      */
+      --product-image-height: 180px;
+
+      /*
+        Rotate product to the left.
+      */
+      --product-rotation: -37deg;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* =========================================================
+       PRODUCT GALLERY
+       ========================================================= */
+
+    .product-gallery {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      width: 100%;
+      height: var(--gallery-height);
+
+      /*
+        Only the gallery viewport clips the moving track.
+      */
+      overflow: hidden;
+
+      background: transparent;
+    }
+
+    /* =========================================================
+       MOVING TRACK
+       ========================================================= */
+
+    /*
+      The track controls the horizontal gap
+      between product boxes.
+    */
+    .product-gallery__track {
+      display: flex;
+
+      width: max-content;
+
+      column-gap: var(--gallery-gap);
+
+      will-change: transform;
+
+      animation:
+        product-gallery-loop
+        var(--gallery-duration)
+        linear
+        infinite;
+    }
+
+    /* =========================================================
+       PRODUCT BOX
+       ========================================================= */
+
+    /*
+      ONE BOX = ONE PRODUCT
+
+      Box 01
+      └── Image 01
+
+      Box 02
+      └── Image 02
+
+      Box 03
+      └── Image 01
+      ...
+    */
+    .product-gallery__item {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex: 0 0 var(--product-box-width);
+
+      width: var(--product-box-width);
+      height: var(--product-box-height);
+
+      overflow: visible;
+    }
+
+    /* =========================================================
+       PRODUCT IMAGE
+       ========================================================= */
+
+    .product-gallery__image {
+      display: block;
+
+      width: auto;
+      height: var(--product-image-height);
+
+      max-width: none;
+
+      object-fit: contain;
+      object-position: center;
+
+      /*
+        Image rotation is independent from
+        the track animation.
+      */
+      rotate: var(--product-rotation);
+      transform-origin: center center;
+
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* =========================================================
+       INFINITE LOOP
+       ========================================================= */
+
+    @keyframes product-gallery-loop {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform:
+          translateX(
+            calc(-1 * var(--gallery-loop-distance))
+          );
+      }
+    }
+
+    /* =========================================================
+       HOVER
+       ========================================================= */
+
+    .product-gallery:hover
+      .product-gallery__track {
+      animation-play-state: paused;
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      .product-gallery__track {
+        animation: none;
+        transform: none;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 700px) {
+      :root {
+        /*
+          Mobile product image.
+        */
+        --product-image-height: 120px;
+
+        /*
+          Each product still has its own box.
+        */
+        --product-box-width: 140px;
+        --product-box-height: 300px;
+
+        /*
+          Gap between product boxes.
+        */
+        --gallery-gap: 50px;
+
+        --gallery-duration: 12s;
+      }
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --product-image-height: 120px;
+
+        --product-box-width: 140px;
+        --product-box-height: 300px;
+
+        --gallery-gap: 0px;
+
+        --gallery-duration: 10s;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+
+    <section
+      class="product-gallery"
+      id="product-gallery"
+      aria-label="DOI KHAM products"
+    >
+      <div
+        class="product-gallery__track"
+        id="product-gallery-track"
+      ></div>
+    </section>
+
+  </main>
+
+  <script>
+    (() => {
+      /* =======================================================
+         PRODUCT DATA
+         ======================================================= */
+
+      const products = [
+        {
+          id: "product-01",
+          name: "DOI KHAM Product 01",
+          image: "doi-kham-tomato-juice.png"
+        },
+        {
+          id: "product-02",
+          name: "DOI KHAM Product 02",
+          image:
+            "doi-kham-tomato-juice-low-sodium.png"
+        }
+      ];
+
+      /* =======================================================
+         ELEMENTS
+         ======================================================= */
+
+      const gallery =
+        document.querySelector(
+          "#product-gallery"
+        );
+
+      const track =
+        document.querySelector(
+          "#product-gallery-track"
+        );
+
+      if (
+        !gallery ||
+        !track ||
+        !products.length
+      ) {
+        return;
+      }
+
+      /* =======================================================
+         HELPERS
+         ======================================================= */
+
+      const nextFrame = () =>
+        new Promise((resolve) => {
+          requestAnimationFrame(resolve);
+        });
+
+      const waitForImages = (
+        container
+      ) => {
+        const images = [
+          ...container.querySelectorAll(
+            "img"
+          )
+        ];
+
+        if (!images.length) {
+          return Promise.resolve();
+        }
+
+        return Promise.all(
+          images.map((image) => {
+            if (image.complete) {
+              return Promise.resolve();
+            }
+
+            return new Promise((resolve) => {
+              image.addEventListener(
+                "load",
+                resolve,
+                { once: true }
+              );
+
+              image.addEventListener(
+                "error",
+                resolve,
+                { once: true }
+              );
+            });
+          })
+        );
+      };
+
+      /* =======================================================
+         PRODUCT BOX
+         ======================================================= */
+
+      const createProductItem = (
+        product,
+        isDuplicate = false
+      ) => {
+        const item =
+          document.createElement(
+            "article"
+          );
+
+        item.className =
+          "product-gallery__item";
+
+        item.dataset.productId =
+          product.id;
+
+        if (isDuplicate) {
+          item.setAttribute(
+            "aria-hidden",
+            "true"
+          );
+        }
+
+        const image =
+          document.createElement(
+            "img"
+          );
+
+        image.className =
+          "product-gallery__image";
+
+        image.src =
+          product.image;
+
+        image.alt =
+          isDuplicate
+            ? ""
+            : product.name;
+
+        image.loading =
+          "eager";
+
+        image.decoding =
+          "async";
+
+        item.appendChild(
+          image
+        );
+
+        return item;
+      };
+
+      /* =======================================================
+         BUILD TRACK
+         ======================================================= */
+
+      const rebuildTrack = async () => {
+        /*
+          Stop animation during measurement.
+        */
+        track.style.animation =
+          "none";
+
+        track.replaceChildren();
+
+        /*
+          -------------------------------------------------------
+          1. Create the first real product box.
+          -------------------------------------------------------
+        */
+
+        const firstItem =
+          createProductItem(
+            products[0]
+          );
+
+        track.appendChild(
+          firstItem
+        );
+
+        /*
+          Wait for the image to load.
+        */
+        await waitForImages(
+          firstItem
+        );
+
+        await nextFrame();
+
+        /*
+          -------------------------------------------------------
+          2. Measure the fixed product box.
+          -------------------------------------------------------
+        */
+
+        const itemWidth =
+          firstItem.getBoundingClientRect()
+            .width;
+
+        const itemHeight =
+          firstItem.getBoundingClientRect()
+            .height;
+
+        /*
+          -------------------------------------------------------
+          3. Calculate the loop distance.
+          -------------------------------------------------------
+
+          One loop is:
+
+          [Product Box] + [Gallery Gap]
+        */
+
+        const galleryGap =
+          parseFloat(
+            getComputedStyle(
+              track
+            ).columnGap
+          ) || 0;
+
+        const loopDistance =
+          itemWidth +
+          galleryGap;
+
+        gallery.style.setProperty(
+          "--gallery-loop-distance",
+          `${loopDistance}px`
+        );
+
+        /*
+          -------------------------------------------------------
+          4. Calculate enough vertical room for
+             the rotated image.
+          -------------------------------------------------------
+
+          The image itself remains 180px / 120px high.
+          The box provides the layout space around it.
+        */
+
+        const image =
+          firstItem.querySelector(
+            ".product-gallery__image"
+          );
+
+        if (image) {
+          const imageRect =
+            image.getBoundingClientRect();
+
+          const rotation =
+            parseFloat(
+              getComputedStyle(
+                document.documentElement
+              ).getPropertyValue(
+                "--product-rotation"
+              )
+            ) || -37;
+
+          const angle =
+            Math.abs(rotation) *
+            Math.PI /
+            180;
+
+          const rotatedHeight =
+            Math.abs(
+              imageRect.width *
+              Math.sin(angle)
+            ) +
+            Math.abs(
+              imageRect.height *
+              Math.cos(angle)
+            );
+
+          /*
+            Use whichever is larger:
+            the configured box height or
+            the rotated image's required height.
+          */
+          const galleryHeight =
+            Math.max(
+              itemHeight,
+              rotatedHeight
+            );
+
+          gallery.style.setProperty(
+            "--gallery-height",
+            `${galleryHeight}px`
+          );
+        }
+
+        await nextFrame();
+
+        /*
+          -------------------------------------------------------
+          5. Fill the track with individual boxes.
+          -------------------------------------------------------
+
+          A → B → A → B → A → B → ...
+        */
+
+        const galleryWidth =
+          gallery.getBoundingClientRect()
+            .width;
+
+        const requiredTrackWidth =
+          galleryWidth +
+          loopDistance * 2;
+
+        const requiredItems =
+          Math.max(
+            products.length * 2,
+            Math.ceil(
+              requiredTrackWidth /
+              loopDistance
+            )
+          );
+
+        let productIndex =
+          1;
+
+        while (
+          track.children.length <
+          requiredItems
+        ) {
+          const product =
+            products[
+              productIndex %
+              products.length
+            ];
+
+          track.appendChild(
+            createProductItem(
+              product,
+              true
+            )
+          );
+
+          productIndex++;
+        }
+
+        /*
+          -------------------------------------------------------
+          6. Restart animation.
+          -------------------------------------------------------
+        */
+
+        void track.offsetWidth;
+
+        track.style.animation =
+          "";
+      };
+
+      /* =======================================================
+         INITIAL BUILD
+         ======================================================= */
+
+      rebuildTrack();
+
+      /* =======================================================
+         RESPONSIVE REBUILD
+         ======================================================= */
+
+      let resizeFrame =
+        null;
+
+      const resizeObserver =
+        new ResizeObserver(() => {
+          if (resizeFrame) {
+            cancelAnimationFrame(
+              resizeFrame
+            );
+          }
+
+          resizeFrame =
+            requestAnimationFrame(() => {
+              rebuildTrack();
+            });
+        });
+
+      resizeObserver.observe(
+        gallery
+      );
+
+      /* =======================================================
+         FINAL IMAGE LOAD
+         ======================================================= */
+
+      window.addEventListener(
+        "load",
+        () => {
+          rebuildTrack();
+        }
+      );
+    })();
+  </script>
+
+</body>
+</html>

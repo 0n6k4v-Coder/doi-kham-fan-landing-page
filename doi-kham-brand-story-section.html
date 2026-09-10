@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOI KHAM - Brand Story</title>
+
+  <style>
+    :root {
+      /* =========================
+         Brand Story Section
+      ========================= */
+      --brand-story-bg: #FFF9E6;
+
+      --brand-story-title-color: #FDC000;
+      --brand-story-question-color: #FDC000;
+      --brand-story-text-color: #33261A;
+
+      --brand-story-block-padding: clamp(48px, 8vw, 96px);
+      --brand-story-inline-padding: clamp(20px, 5vw, 72px);
+
+      --brand-story-content-width: 1200px;
+      --brand-story-gap: clamp(24px, 4vw, 48px);
+
+      /* =========================
+         Child 1
+      ========================= */
+      --brand-story-heading-size: clamp(44px, 6vw, 64px);
+      --brand-story-heading-weight: 900;
+      --brand-story-heading-line-height: 1;
+
+      --brand-story-question-size: clamp(20px, 2.6vw, 28px);
+      --brand-story-question-weight: 700;
+      --brand-story-question-line-height: 1.2;
+
+      --brand-story-text-gap: clamp(12px, 2vw, 20px);
+
+      /* =========================
+         Child 2
+      ========================= */
+      --brand-story-content-gap: clamp(24px, 5vw, 64px);
+
+      --brand-story-image-width: 427px;
+      --brand-story-image-height: 302px;
+      --brand-story-image-ratio: 427 / 302;
+      --brand-story-image-radius: 24px;
+      --brand-story-image-rotate: -5deg;
+
+      --brand-story-copy-gap: clamp(18px, 2.5vw, 28px);
+
+      --brand-story-copy-size: clamp(15px, 1.5vw, 18px);
+      --brand-story-copy-weight: 400;
+      --brand-story-copy-line-height: 1.55;
+
+      /* =========================
+         Child 3
+         Desktop = 2 Images
+      ========================= */
+      --brand-story-gallery-gap: clamp(24px, 5vw, 64px);
+
+      --brand-story-gallery-left-width: 354px;
+      --brand-story-gallery-left-height: 240px;
+      --brand-story-gallery-left-ratio: 354 / 240;
+
+      --brand-story-gallery-right-width: 378px;
+      --brand-story-gallery-right-height: 252px;
+      --brand-story-gallery-right-ratio: 378 / 252;
+
+      --brand-story-gallery-radius: 24px;
+
+      --brand-story-gallery-left-rotate: -6deg;
+      --brand-story-gallery-right-rotate: 6deg;
+
+      --brand-story-gallery-min-height: 320px;
+
+      /* =========================
+         Child 4
+      ========================= */
+      --brand-story-ending-gap: clamp(24px, 5vw, 64px);
+
+      --brand-story-ending-text-width: min(100%, 720px);
+      --brand-story-ending-text-gap: clamp(18px, 2.5vw, 28px);
+
+      --brand-story-ending-text-size: 16px;
+      --brand-story-ending-text-weight: 400;
+      --brand-story-ending-text-line-height: 1.55;
+
+      --brand-story-ending-image-width: 142px;
+      --brand-story-ending-image-height: 345px;
+      --brand-story-ending-image-ratio: 142 / 345;
+      --brand-story-ending-image-radius: 24px;
+      --brand-story-ending-image-rotate: 5deg;
+
+      /* =========================
+         Mobile Stair Images
+      ========================= */
+      --brand-story-mobile-stair-image-width: min(65%, 260px);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--brand-story-bg);
+    }
+
+    /* =========================
+       Brand Story Section
+    ========================= */
+    .brand-story {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 100svh;
+      padding-block: var(--brand-story-block-padding);
+      padding-inline: var(--brand-story-inline-padding);
+      background-color: var(--brand-story-bg);
+    }
+
+    /* =========================
+       Parent Container
+       Vertical
+       Center X/Y
+       Controls Child Gaps
+    ========================= */
+    .brand-story__container {
+      container: brand-story / inline-size;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: min(100%, var(--brand-story-content-width));
+      min-width: 0;
+      gap: var(--brand-story-gap);
+    }
+
+    /* =========================
+       Child 1
+       Left Aligned
+    ========================= */
+    .brand-story__intro {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+      gap: var(--brand-story-text-gap);
+      text-align: left;
+    }
+
+    .brand-story__heading {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      color: var(--brand-story-title-color);
+      font-size: var(--brand-story-heading-size);
+      font-weight: var(--brand-story-heading-weight);
+      line-height: var(--brand-story-heading-line-height);
+      text-align: left;
+      text-wrap: balance;
+    }
+
+    .brand-story__question {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      color: var(--brand-story-question-color);
+      font-size: var(--brand-story-question-size);
+      font-weight: var(--brand-story-question-weight);
+      line-height: var(--brand-story-question-line-height);
+      text-align: left;
+      text-wrap: balance;
+    }
+
+    /* =========================
+       Child 2
+       Desktop = Horizontal
+    ========================= */
+    .brand-story__story {
+      display: grid;
+      grid-template-columns:
+        minmax(0, var(--brand-story-image-width))
+        minmax(0, 1fr);
+      align-items: center;
+      width: 100%;
+      min-width: 0;
+      gap: var(--brand-story-content-gap);
+    }
+
+    /* =========================
+       Child 2A
+       Image Container
+       Center X/Y
+    ========================= */
+    .brand-story__image-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: var(--brand-story-image-width);
+      min-width: 0;
+      overflow: visible;
+    }
+
+    .brand-story__image {
+      display: block;
+      width: min(100%, var(--brand-story-image-width));
+      height: auto;
+      aspect-ratio: var(--brand-story-image-ratio);
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: var(--brand-story-image-radius);
+      object-fit: cover;
+      object-position: center;
+      transform: rotate(var(--brand-story-image-rotate));
+      transform-origin: center;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* =========================
+       Child 2B
+       Four Text Blocks
+    ========================= */
+    .brand-story__copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+      gap: var(--brand-story-copy-gap);
+      text-align: left;
+    }
+
+    .brand-story__copy-block {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      color: var(--brand-story-text-color);
+      font-size: var(--brand-story-copy-size);
+      font-weight: var(--brand-story-copy-weight);
+      line-height: var(--brand-story-copy-line-height);
+      text-align: left;
+      text-wrap: pretty;
+    }
+
+    /* =========================
+       Child 3
+       Desktop = 2 Images
+       Horizontal
+    ========================= */
+    .brand-story__gallery {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+      align-items: stretch;
+      width: 100%;
+      min-width: 0;
+      gap: var(--brand-story-gallery-gap);
+      min-height: var(--brand-story-gallery-min-height);
+    }
+
+    /* =========================
+       Child 3 Image Containers
+    ========================= */
+    .brand-story__gallery-item {
+      display: flex;
+      width: 100%;
+      min-width: 0;
+      overflow: visible;
+    }
+
+    .brand-story__gallery-item--left {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .brand-story__gallery-item--right {
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+
+    /* =========================
+       Child 3 Images
+    ========================= */
+    .brand-story__gallery-image {
+      display: block;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: var(--brand-story-gallery-radius);
+      object-fit: cover;
+      object-position: center;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .brand-story__gallery-image--left {
+      width: min(100%, var(--brand-story-gallery-left-width));
+      aspect-ratio: var(--brand-story-gallery-left-ratio);
+      transform: rotate(var(--brand-story-gallery-left-rotate));
+      transform-origin: center;
+    }
+
+    .brand-story__gallery-image--right {
+      width: min(100%, var(--brand-story-gallery-right-width));
+      aspect-ratio: var(--brand-story-gallery-right-ratio);
+      transform: rotate(var(--brand-story-gallery-right-rotate));
+      transform-origin: center;
+    }
+
+    /* =========================
+       Child 4
+       Desktop = Horizontal
+    ========================= */
+    .brand-story__ending {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(180px, 1fr);
+      align-items: stretch;
+      width: 100%;
+      min-width: 0;
+      gap: var(--brand-story-ending-gap);
+    }
+
+    /* =========================
+       Child 4A
+       Three Text Blocks
+    ========================= */
+    .brand-story__ending-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      width: var(--brand-story-ending-text-width);
+      max-width: 100%;
+      min-width: 0;
+      gap: var(--brand-story-ending-text-gap);
+      text-align: left;
+    }
+
+    .brand-story__ending-block {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      color: var(--brand-story-text-color);
+      font-size: var(--brand-story-ending-text-size);
+      font-weight: var(--brand-story-ending-text-weight);
+      line-height: var(--brand-story-ending-text-line-height);
+      text-align: left;
+      text-wrap: pretty;
+    }
+
+    /* =========================
+       Child 4B
+       Image Center X/Y
+    ========================= */
+    .brand-story__ending-image-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+      overflow: visible;
+    }
+
+    .brand-story__ending-image {
+      display: block;
+      width: min(100%, var(--brand-story-ending-image-width));
+      height: auto;
+      aspect-ratio: var(--brand-story-ending-image-ratio);
+      margin: 0;
+      padding: 0;
+      border: 0;
+      object-fit: contain;
+      object-position: center;
+      transform: rotate(var(--brand-story-ending-image-rotate));
+      transform-origin: center;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* =========================
+       Tablet
+    ========================= */
+    @container brand-story (max-width: 900px) {
+      .brand-story__story {
+        grid-template-columns:
+          minmax(0, 40%)
+          minmax(0, 1fr);
+        gap: clamp(20px, 4vw, 40px);
+      }
+
+      .brand-story__image {
+        width: 100%;
+      }
+
+      .brand-story__copy-block {
+        font-size: clamp(14px, 1.8vw, 17px);
+      }
+
+      .brand-story__gallery {
+        gap: clamp(20px, 4vw, 40px);
+        min-height: clamp(280px, 34vw, 320px);
+      }
+
+      .brand-story__gallery-image--left {
+        width: min(100%, 354px);
+      }
+
+      .brand-story__gallery-image--right {
+        width: min(100%, 378px);
+      }
+
+      .brand-story__ending {
+        grid-template-columns:
+          minmax(0, 1fr)
+          minmax(160px, 240px);
+        gap: clamp(20px, 4vw, 40px);
+      }
+
+      .brand-story__ending-block {
+        font-size: clamp(14px, 1.7vw, 16px);
+      }
+    }
+
+    /* =========================
+       Mobile
+       Sequence:
+       Header
+       Subhead
+       Child 2 Text
+       Child 2 Image
+       Child 3 Image 1
+       Child 3 Image 2
+       Child 4 Text
+       Child 4 Image
+    ========================= */
+    @container brand-story (max-width: 700px) {
+      .brand-story__container {
+        gap: clamp(20px, 5vw, 32px);
+      }
+
+      .brand-story__intro {
+        gap: clamp(10px, 2.5vw, 16px);
+      }
+
+      .brand-story__heading {
+        font-size: clamp(40px, 12vw, 56px);
+      }
+
+      .brand-story__question {
+        font-size: clamp(20px, 6vw, 28px);
+      }
+
+      /* =========================
+         Child 2
+         Text → Image
+      ========================= */
+      .brand-story__story {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: clamp(24px, 5vw, 32px);
+      }
+
+      .brand-story__copy {
+        order: 1;
+        width: 100%;
+        gap: clamp(14px, 3vw, 20px);
+      }
+
+      .brand-story__image-container {
+        order: 2;
+        width: 100%;
+        max-width: none;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin: 0;
+      }
+
+      .brand-story__image {
+        width: var(--brand-story-mobile-stair-image-width);
+        max-width: 100%;
+      }
+
+      .brand-story__copy-block {
+        font-size: clamp(14px, 4vw, 16px);
+        line-height: 1.5;
+      }
+
+      /* =========================
+         Child 3
+         Same Mobile Gap as Child 2
+      ========================= */
+      .brand-story__gallery {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        min-height: auto;
+
+        /* Same gap as Child 2 */
+        gap: clamp(24px, 5vw, 32px);
+      }
+
+      .brand-story__gallery-item {
+        display: flex;
+        width: 100%;
+        min-width: 0;
+        min-height: 0;
+        overflow: visible;
+      }
+
+      /* Image 2 = Center */
+      .brand-story__gallery-item--left {
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Image 3 = Right */
+      .brand-story__gallery-item--right {
+        align-items: flex-end;
+        justify-content: flex-end;
+      }
+
+      .brand-story__gallery-image--left {
+        width: var(--brand-story-mobile-stair-image-width);
+        max-width: 100%;
+      }
+
+      .brand-story__gallery-image--right {
+        width: var(--brand-story-mobile-stair-image-width);
+        max-width: 100%;
+      }
+
+      /* =========================
+         Child 4
+         Text → Image
+      ========================= */
+      .brand-story__ending {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: clamp(24px, 5vw, 32px);
+      }
+
+      .brand-story__ending-copy {
+        order: 1;
+        width: 100%;
+        gap: clamp(14px, 3vw, 20px);
+      }
+
+      .brand-story__ending-block {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .brand-story__ending-image-container {
+        order: 2;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+      }
+
+      .brand-story__ending-image {
+        width: min(100%, var(--brand-story-ending-image-width));
+      }
+    }
+
+    /* =========================
+       Small Mobile
+    ========================= */
+    @container brand-story (max-width: 480px) {
+      .brand-story {
+        padding-inline: 20px;
+      }
+
+      .brand-story__image-container {
+        max-width: 100%;
+      }
+
+      .brand-story__image {
+        width: min(65%, 240px);
+        max-width: 100%;
+        border-radius: 24px;
+      }
+
+      .brand-story__copy-block {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .brand-story__gallery {
+        /* Same gap as Child 2 */
+        gap: clamp(24px, 5vw, 32px);
+      }
+
+      .brand-story__gallery-image--left {
+        width: min(65%, 240px);
+        border-radius: 24px;
+      }
+
+      .brand-story__gallery-image--right {
+        width: min(65%, 240px);
+        border-radius: 24px;
+      }
+
+      .brand-story__ending-block {
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .brand-story__ending-image-container {
+        justify-content: flex-end;
+      }
+
+      .brand-story__ending-image {
+        max-width: 120px;
+      }
+    }
+
+    /* =========================
+       Very Small Mobile
+    ========================= */
+    @container brand-story (max-width: 360px) {
+      .brand-story__story {
+        gap: 24px;
+      }
+
+      .brand-story__copy {
+        gap: 12px;
+      }
+
+      .brand-story__copy-block {
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .brand-story__gallery {
+        /* Same fixed minimum as Child 2 */
+        gap: 24px;
+      }
+
+      .brand-story__image {
+        width: 62%;
+        max-width: 220px;
+      }
+
+      .brand-story__gallery-image--left {
+        width: 62%;
+        max-width: 220px;
+      }
+
+      .brand-story__gallery-image--right {
+        width: 62%;
+        max-width: 220px;
+      }
+
+      .brand-story__ending {
+        gap: 24px;
+      }
+
+      .brand-story__ending-block {
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .brand-story__ending-image {
+        max-width: 105px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section
+    class="brand-story"
+    aria-labelledby="brand-story-heading"
+  >
+
+    <div class="brand-story__container">
+
+      <!-- =========================
+           Child 1
+      ========================= -->
+      <div class="brand-story__intro">
+
+        <h2
+          class="brand-story__heading"
+          id="brand-story-heading"
+        >
+          BRAND STORY
+        </h2>
+
+        <p class="brand-story__question">
+          Can healthy drinking be more fun?
+        </p>
+
+      </div>
+
+      <!-- =========================
+           Child 2
+      ========================= -->
+      <div class="brand-story__story">
+
+        <!-- Child 2A: Image -->
+        <div class="brand-story__image-container">
+
+          <img
+            class="brand-story__image"
+            src="https://www.doikham.co.th/_next/image?url=https%3A%2F%2Fdoikham.co.th%2Fcms%2Fuploads%2Fbanner_copy_e31e21faf3.webp&w=640&q=75"
+            alt="Doi Kham brand story"
+            width="427"
+            height="302"
+            loading="lazy"
+            decoding="async"
+            draggable="false"
+          />
+
+        </div>
+
+        <!-- Child 2B: Four Text Blocks -->
+        <div class="brand-story__copy">
+
+          <p class="brand-story__copy-block">
+            Doi Kham’s tomato journey began with a simple question:
+            What if healthy drinks were genuinely fun?
+          </p>
+
+          <p class="brand-story__copy-block">
+            Most health beverages feel like a chore—consumed purely for
+            results, leaving no room for joy.
+          </p>
+
+          <p class="brand-story__copy-block">
+            So we asked: what if wellness could be vibrantly delicious?
+          </p>
+
+          <p class="brand-story__copy-block">
+            By bringing hand-picked early-season tomatoes from northern
+            Thailand into your daily routine, we offer a refreshing way
+            to stay healthy: a crisp sip that is as free, casual, and
+            delicious as it is natural.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- =========================
+           Child 3
+      ========================= -->
+      <div class="brand-story__gallery">
+
+        <!-- Image 1 Desktop / Image 2 Mobile -->
+        <div class="brand-story__gallery-item brand-story__gallery-item--left">
+
+          <img
+            class="brand-story__gallery-image brand-story__gallery-image--left"
+            src="https://www.doikham.co.th/_next/image?url=https%3A%2F%2Fdoikham.co.th%2Fcms%2Fuploads%2Frectangle_160780_5_12dc948b9d.webp&w=640&q=75"
+            alt="Doi Kham tomato story"
+            width="354"
+            height="240"
+            loading="lazy"
+            decoding="async"
+            draggable="false"
+          />
+
+        </div>
+
+        <!-- Image 2 Desktop / Image 3 Mobile -->
+        <div class="brand-story__gallery-item brand-story__gallery-item--right">
+
+          <img
+            class="brand-story__gallery-image brand-story__gallery-image--right"
+            src="https://doikham.co.th/uploads/1_scaled_ad9cb1abe8.jpg"
+            alt="Doi Kham brand story"
+            width="378"
+            height="252"
+            loading="lazy"
+            decoding="async"
+            draggable="false"
+          />
+
+        </div>
+
+      </div>
+
+      <!-- =========================
+           Child 4
+      ========================= -->
+      <div class="brand-story__ending">
+
+        <!-- Child 4A: Three Text Blocks -->
+        <div class="brand-story__ending-copy">
+
+          <p class="brand-story__ending-block">
+            There is also a story behind Doi Kham's tomato journey.
+            Inspired by the rich fields of northern Thailand and
+            hand-picked early-season harvests, we chose a name and a
+            taste that values playfulness, vibrant health, and
+            approachability.
+          </p>
+
+          <p class="brand-story__ending-block">
+            From sustainable farming partnerships along the Mekong River
+            to a crisp, refreshing sip in every can, we embedded the
+            lively spirit of Thai farmers directly into the experience.
+          </p>
+
+          <p class="brand-story__ending-block">
+            We invite you to experience the bright side of Doi Kham
+            for yourself. Before you know it, you'll find yourself
+            falling in love with tomato juice!
+          </p>
+
+        </div>
+
+        <!-- Child 4B: Image -->
+        <div class="brand-story__ending-image-container">
+
+          <img
+            class="brand-story__ending-image"
+            src="doi-kham-tomato-juice.png"
+            alt="Doi Kham brand story"
+            width="142"
+            height="345"
+            loading="lazy"
+            decoding="async"
+            draggable="false"
+          />
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+</html>

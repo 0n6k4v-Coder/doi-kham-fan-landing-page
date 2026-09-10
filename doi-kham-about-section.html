@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOI KHAM - About</title>
+
+  <style>
+    :root {
+      /* =========================
+         About Section
+      ========================= */
+      --about-bg: #FFF9E6;
+      --about-title-color: #FDC000;
+      --about-text-color: #33261A;
+      --about-note-color: #736659;
+
+      --about-block-padding: clamp(32px, 7vw, 80px);
+      --about-inline-padding: clamp(20px, 5vw, 72px);
+
+      --about-content-width: 1200px;
+      --about-gap: clamp(20px, 3vw, 36px);
+
+      /* =========================
+         About Heading
+      ========================= */
+      --about-title-size: clamp(30px, 4cqw, 40px);
+      --about-title-weight: 900;
+      --about-title-line-height: 1;
+
+      /* =========================
+         About Description
+      ========================= */
+      --about-description-size: clamp(13px, 1.5cqw, 15px);
+      --about-description-weight: 400;
+      --about-description-line-height: 1.5;
+      --about-description-max-width: 850px;
+
+      /* =========================
+         About Cards
+      ========================= */
+      --about-cards-gap: clamp(12px, 2cqw, 28px);
+
+      --about-card-ratio: 320 / 150;
+      --about-card-background: #FFFFFF;
+      --about-card-radius: clamp(14px, 2cqw, 20px);
+      --about-card-padding: clamp(14px, 2.5cqw, 28px);
+
+      --about-card-header-color: #FDC000;
+      --about-card-header-size: 18px;
+      --about-card-header-weight: 700;
+      --about-card-header-line-height: 1.2;
+
+      --about-card-details-color: #33261A;
+      --about-card-details-size: 13px;
+      --about-card-details-weight: 400;
+      --about-card-details-line-height: 1.45;
+
+      --about-card-content-gap: 12px;
+
+      /* =========================
+         About Note
+      ========================= */
+      --about-note-width: min(720px, 100%);
+      --about-note-size: clamp(9px, 1.1cqw, 11px);
+      --about-note-weight: 400;
+      --about-note-line-height: 1.45;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--about-bg);
+    }
+
+    /* =========================
+       About Section
+    ========================= */
+    .about {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 100svh;
+      padding-block: var(--about-block-padding);
+      padding-inline: var(--about-inline-padding);
+      background-color: var(--about-bg);
+    }
+
+    /* =========================
+       Parent Container
+    ========================= */
+    .about__container {
+      container: about / inline-size;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      width: min(100%, var(--about-content-width));
+      min-width: 0;
+
+      gap: var(--about-gap);
+
+      /* Responsive custom properties belong to the container */
+      --about-card-header-size: 18px;
+      --about-card-details-size: 13px;
+      --about-card-content-gap: 12px;
+      --about-card-padding: clamp(14px, 2.5cqw, 28px);
+      --about-card-radius: clamp(14px, 2cqw, 20px);
+      --about-cards-gap: clamp(12px, 2cqw, 28px);
+
+      text-align: center;
+    }
+
+    /* =========================
+       Child 1
+    ========================= */
+    .about__heading-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .about__heading {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      color: var(--about-title-color);
+      font-size: var(--about-title-size);
+      font-weight: 900;
+      line-height: 1;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    /* =========================
+       Child 2
+    ========================= */
+    .about__description-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .about__description {
+      width: min(100%, var(--about-description-max-width));
+      margin: 0;
+      color: var(--about-text-color);
+      font-size: var(--about-description-size);
+      font-weight: 400;
+      line-height: var(--about-description-line-height);
+      text-align: center;
+      text-wrap: pretty;
+    }
+
+    /* =========================
+       Child 3
+       Cards Container
+    ========================= */
+    .about__cards-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .about__cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+
+      width: 100%;
+      min-width: 0;
+
+      gap: var(--about-cards-gap);
+    }
+
+    /* =========================
+       Reusable Card
+    ========================= */
+    .about-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      min-width: 0;
+
+      aspect-ratio: var(--about-card-ratio);
+
+      padding: var(--about-card-padding);
+
+      border-radius: var(--about-card-radius);
+
+      background-color: var(--about-card-background);
+
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* =========================
+       Card Content
+    ========================= */
+    .about-card__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+
+      gap: var(--about-card-content-gap);
+
+      text-align: center;
+    }
+
+    .about-card__header {
+      max-width: 100%;
+      margin: 0;
+
+      color: var(--about-card-header-color);
+
+      font-size: var(--about-card-header-size);
+      font-weight: 700;
+      line-height: 1.2;
+
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .about-card__details {
+      max-width: 100%;
+      margin: 0;
+
+      color: var(--about-card-details-color);
+
+      font-size: var(--about-card-details-size);
+      font-weight: 400;
+      line-height: 1.45;
+
+      text-align: center;
+      text-wrap: pretty;
+    }
+
+    /* =========================
+       Child 4
+    ========================= */
+    .about__note-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .about__note {
+      width: var(--about-note-width);
+      max-width: 100%;
+      margin: 0;
+
+      color: var(--about-note-color);
+
+      font-size: var(--about-note-size);
+      font-weight: 400;
+      line-height: var(--about-note-line-height);
+
+      text-align: center;
+      text-wrap: pretty;
+    }
+
+    /* =========================
+       Mobile
+       Child 3 = Vertical
+    ========================= */
+    @container about (max-width: 700px) {
+      .about__container {
+        --about-cards-gap: clamp(14px, 4cqw, 20px);
+        --about-card-padding: clamp(16px, 4cqw, 24px);
+        --about-card-radius: clamp(14px, 2.5cqw, 18px);
+
+        --about-card-header-size: 24px;
+        --about-card-details-size: 13px;
+
+        --about-card-content-gap: 10px;
+      }
+
+      .about__cards {
+        grid-template-columns: 1fr;
+        width: 100%;
+      }
+
+      .about-card {
+        width: 100%;
+        height: 137px;
+        aspect-ratio: auto;
+      }
+    }
+
+    /* =========================
+       Small Mobile
+    ========================= */
+    @container about (max-width: 480px) {
+      .about__container {
+        --about-cards-gap: 16px;
+        --about-card-padding: 18px;
+        --about-card-radius: 16px;
+
+        --about-card-header-size: 24px;
+        --about-card-details-size: 13px;
+
+        --about-card-content-gap: 10px;
+      }
+
+      .about-card {
+        width: 100%;
+        height: 137px;
+      }
+    }
+
+    /* =========================
+       Very Small Mobile
+    ========================= */
+    @container about (max-width: 360px) {
+      .about__container {
+        --about-cards-gap: 12px;
+        --about-card-padding: 14px;
+        --about-card-radius: 14px;
+
+        --about-card-header-size: 24px;
+        --about-card-details-size: 13px;
+      }
+
+      .about-card {
+        width: 100%;
+        height: 137px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="about" aria-labelledby="about-heading">
+
+    <div class="about__container">
+
+      <!-- Child 1 -->
+      <div class="about__heading-container">
+        <h2 class="about__heading" id="about-heading">
+          WHAT’S DOI KHAM?
+        </h2>
+      </div>
+
+      <!-- Child 2 -->
+      <div class="about__description-container">
+        <p class="about__description">
+          About Doi Kham Tomato<br />
+          A 100% natural, refreshing tomato juice crafted from hand-picked
+          early-season tomatoes grown by Thai farmers in the upper northeastern
+          region, capturing farm-fresh taste and wholesome goodness in every can.
+        </p>
+      </div>
+
+      <!-- Child 3 -->
+      <div class="about__cards-container">
+        <div class="about__cards" id="about-cards"></div>
+      </div>
+
+      <!-- Child 4 -->
+      <div class="about__note-container">
+        <p class="about__note">
+          *Nutritional values and Lycopene content are calculated based on Thai
+          RDI (Recommended Daily Intakes) for Thai people aged 6 years and above,
+          backed by over 20 years of sustainable farming partnerships along the Mekong River.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+    /* =========================
+       Card Data
+    ========================= */
+    const aboutCards = [
+      {
+        header: "HARVEST",
+        details:
+          "Hand-picked early-season tomatoes for a farm-fresh taste!"
+      },
+      {
+        header: "REFRESH",
+        details:
+          "A crisp twist on classic tomato juice for effortless wellness!"
+      },
+      {
+        header: "WELLNESS",
+        details:
+          "Packed with Lycopene and vitamins to nourish your daily glow!"
+      }
+    ];
+
+    /* =========================
+       Card Renderer
+    ========================= */
+    const aboutCardsContainer =
+      document.getElementById("about-cards");
+
+    function createAboutCard(card) {
+      const article = document.createElement("article");
+
+      article.className = "about-card";
+
+      article.innerHTML = `
+        <div class="about-card__content">
+          <h3 class="about-card__header">
+            ${card.header}
+          </h3>
+
+          <p class="about-card__details">
+            ${card.details}
+          </p>
+        </div>
+      `;
+
+      return article;
+    }
+
+    function renderAboutCards() {
+      const fragment = document.createDocumentFragment();
+
+      aboutCards.forEach(card => {
+        fragment.appendChild(createAboutCard(card));
+      });
+
+      aboutCardsContainer.replaceChildren(fragment);
+    }
+
+    renderAboutCards();
+  </script>
+
+</body>
+</html>

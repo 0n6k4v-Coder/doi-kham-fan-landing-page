@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
+  <title>DOI KHAM Footer</title>
+
+  <style>
+    :root {
+      --color-footer-bg: #FDC000;
+      --color-footer-text: #025627;
+
+      --footer-height: 380px;
+      --footer-inline-padding: clamp(24px, 4vw, 56px);
+      --footer-block-padding: clamp(24px, 4vh, 48px);
+
+      /* Gap between left and right sections */
+      --footer-content-gap: clamp(24px, 6vw, 96px);
+
+      /* Left-side spacing */
+      --footer-left-gap: 48px;
+      --footer-brand-gap: 24px;
+
+      /* Right-side spacing */
+      --footer-link-gap: 16px;
+
+      --footer-title-size: 64px;
+      --footer-description-size: 18px;
+      --footer-copyright-size: 16px;
+      --footer-link-size: 16px;
+
+      --doi-kham-scale-x: 1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      position: relative;
+      width: 100%;
+      min-height: 100dvh;
+      overflow: clip;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    .footer {
+      position: absolute;
+      inset-inline: 0;
+      inset-block-end: 0;
+      z-index: 10;
+
+      display: grid;
+      align-items: center;
+
+      width: 100%;
+      height: var(--footer-height);
+
+      padding:
+        var(--footer-block-padding)
+        var(--footer-inline-padding);
+
+      background-color: var(--color-footer-bg);
+      color: var(--color-footer-text);
+    }
+
+    /*
+      Shared parent for the left and right sections.
+
+      Desktop:
+      - aligns both section boxes to the same top edge
+      - controls the horizontal relationship between them
+    */
+    .footer__content-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      width: 100%;
+      min-width: 0;
+
+      gap: var(--footer-content-gap);
+    }
+
+    /* =========================================================
+       ALL FOOTER TEXT
+       ========================================================= */
+
+    /*
+      Trim extra vertical font-metric space.
+    */
+    .footer__brand,
+    .footer__description,
+    .footer__copyright,
+    .footer__link {
+      text-box: trim-both cap alphabetic;
+    }
+
+    /* =========================================================
+       LEFT
+       ========================================================= */
+
+    .footer__left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      flex: 0 1 auto;
+      min-width: 0;
+
+      /*
+        Brand group → copyright
+      */
+      gap: var(--footer-left-gap);
+    }
+
+    .footer__brand-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      width: fit-content;
+      max-width: 100%;
+      min-width: 0;
+
+      /*
+        Brand title → subtitle
+      */
+      gap: var(--footer-brand-gap);
+    }
+
+    .footer__brand {
+      display: block;
+
+      width: max-content;
+      max-width: none;
+
+      color: var(--color-footer-text);
+
+      font-size: var(--footer-title-size);
+      line-height: 1;
+      font-weight: 900;
+
+      white-space: nowrap;
+
+      text-box: trim-both cap alphabetic;
+
+      /*
+        Preserve dynamic overall width matching.
+      */
+      transform: scaleX(var(--doi-kham-scale-x));
+      transform-origin: left center;
+    }
+
+    .footer__description {
+      display: block;
+
+      width: max-content;
+      max-width: 100%;
+
+      color: var(--color-footer-text);
+
+      font-size: var(--footer-description-size);
+      line-height: 1.2;
+      font-weight: 900;
+
+      white-space: nowrap;
+
+      text-box: trim-both cap alphabetic;
+    }
+
+    .footer__copyright {
+      display: block;
+
+      color: var(--color-footer-text);
+
+      font-size: var(--footer-copyright-size);
+      line-height: 1.2;
+      font-weight: 400;
+
+      white-space: nowrap;
+
+      text-box: trim-both cap alphabetic;
+    }
+
+    /* =========================================================
+       RIGHT
+       ========================================================= */
+
+    .footer__right {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+
+      flex: 0 1 auto;
+      min-width: 0;
+
+      /*
+        Gap between the two link columns.
+      */
+      gap: var(--footer-content-gap);
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      min-width: 0;
+
+      /*
+        Gap between links inside each group.
+      */
+      gap: var(--footer-link-gap);
+    }
+
+    .footer__link {
+      display: block;
+
+      color: var(--color-footer-text);
+
+      font-size: var(--footer-link-size);
+      line-height: 1.2;
+      font-weight: 700;
+
+      white-space: nowrap;
+
+      text-box: trim-both cap alphabetic;
+    }
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 700px) {
+      :root {
+        --footer-height: auto;
+
+        --footer-inline-padding: 24px;
+        --footer-block-padding: 32px;
+
+        --footer-left-gap: 36px;
+        --footer-brand-gap: 24px;
+        --footer-link-gap: 16px;
+
+        --footer-title-size: 48px;
+        --footer-description-size: 16px;
+        --footer-copyright-size: 14px;
+        --footer-link-size: 14px;
+      }
+
+      .footer {
+        position: relative;
+
+        width: 100%;
+        height: auto;
+        min-height: 380px;
+      }
+
+      /*
+        Mobile only:
+        hide the entire right section.
+      */
+      .footer__right {
+        display: none;
+      }
+
+      /*
+        Parent centers the remaining left section.
+      */
+      .footer__content-row {
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+      }
+
+      /*
+        Left section is centered as a complete unit.
+      */
+      .footer__left {
+        align-items: center;
+        text-align: center;
+
+        width: 100%;
+        max-width: 100%;
+      }
+
+      /*
+        Keep the brand group centered.
+      */
+      .footer__brand-group {
+        align-items: center;
+
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .footer__brand {
+        transform-origin: center center;
+      }
+
+      /*
+        Mobile subtitle can wrap naturally.
+      */
+      .footer__description {
+        width: auto;
+        max-width: 100%;
+
+        white-space: normal;
+      }
+
+      .footer__copyright {
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --footer-inline-padding: 20px;
+        --footer-block-padding: 28px;
+
+        --footer-title-size: 42px;
+        --footer-description-size: 15px;
+        --footer-copyright-size: 13px;
+        --footer-link-size: 14px;
+
+        --footer-left-gap: 32px;
+        --footer-brand-gap: 24px;
+        --footer-link-gap: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <footer class="footer">
+      <div class="footer__content-row">
+
+        <!-- ===================================================
+             LEFT
+             =================================================== -->
+
+        <div class="footer__left">
+
+          <div class="footer__brand-group">
+
+            <div
+              class="footer__brand"
+              id="doi-kham-brand"
+            >
+              DOI KHAM
+            </div>
+
+            <div
+              class="footer__description"
+              id="footer-description"
+            >
+              PURE TOMATO, VIBRANT HEALTH.
+            </div>
+
+          </div>
+
+          <div class="footer__copyright">
+            ©︎doi-kham. All Rights Reserved.
+          </div>
+
+        </div>
+
+        <!-- ===================================================
+             RIGHT
+             =================================================== -->
+
+        <div class="footer__right">
+
+          <nav
+            class="footer__links"
+            aria-label="Primary navigation"
+          >
+            <a
+              class="footer__link"
+              href="#"
+            >
+              About
+            </a>
+
+            <a
+              class="footer__link"
+              href="#"
+            >
+              Products
+            </a>
+
+            <a
+              class="footer__link"
+              href="#"
+            >
+              Story
+            </a>
+
+            <a
+              class="footer__link"
+              href="#"
+            >
+              News
+            </a>
+          </nav>
+
+          <nav
+            class="footer__links"
+            aria-label="Legal and social navigation"
+          >
+            <a
+              class="footer__link"
+              href="#"
+            >
+              Privacy Policy
+            </a>
+
+            <a
+              class="footer__link"
+              href="#"
+            >
+              Terms &amp; Service
+            </a>
+
+            <a
+              class="footer__link"
+              href="#"
+            >
+              Contact
+            </a>
+
+            <a
+              class="footer__link"
+              href="#"
+            >
+              Instagram
+            </a>
+          </nav>
+
+        </div>
+
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- =========================================================
+       DYNAMIC DOI KHAM WIDTH
+       ========================================================= -->
+
+  <script>
+    (() => {
+      const brandElement =
+        document.querySelector("#doi-kham-brand");
+
+      const descriptionElement =
+        document.querySelector("#footer-description");
+
+      if (!brandElement || !descriptionElement) {
+        return;
+      }
+
+      const updateBrandWidth = () => {
+        const descriptionWidth =
+          descriptionElement.getBoundingClientRect().width;
+
+        const brandWidth =
+          brandElement.offsetWidth;
+
+        if (!brandWidth) {
+          return;
+        }
+
+        /*
+          Match the overall DOI KHAM width
+          to the subtitle width.
+        */
+        brandElement.style.setProperty(
+          "--doi-kham-scale-x",
+          descriptionWidth / brandWidth
+        );
+      };
+
+      const resizeObserver =
+        new ResizeObserver(() => {
+          updateBrandWidth();
+        });
+
+      resizeObserver.observe(descriptionElement);
+
+      if (document.fonts?.ready) {
+        document.fonts.ready.then(updateBrandWidth);
+      }
+
+      window.addEventListener(
+        "resize",
+        updateBrandWidth
+      );
+
+      updateBrandWidth();
+    })();
+  </script>
+</body>
+</html>
