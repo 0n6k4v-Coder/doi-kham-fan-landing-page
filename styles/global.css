@@ -1,0 +1,187 @@
+/*
+Code Convention:
+- Must read the latest official MDN documentation first.
+- Must apply at least one current official MDN technique.
+- Keep the code clean, clear, separated by concern, modular, and reusable.
+- Keep everything in one HTML file.
+- Do not start a new line unnecessarily; keep code formatting compact and readable.
+- Preserve the existing baseline unless I explicitly ask for a change.
+- Parent containers control spacing/gaps between direct children.
+- Child containers control their own internal layout and spacing.
+- Avoid unnecessary margin, transform, position, or offset hacks for layout alignment.
+- Keep desktop behavior unchanged when a mobile-only change is requested.
+- Keep the HTML previewable inside a standard fenced HTML code block.
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  inline-size: 100%;
+  min-block-size: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-block-size: 100dvh;
+  overflow: clip;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+:root {
+  --color-bg-center: #F8EDCF;
+  --color-bg-light: #F6E9C8;
+  --color-bg-mid: #F4E5C0;
+  --color-bg-dark: #F3E2BD;
+  --color-bg-edge: #EBD3A4;
+
+  --color-doi-kham: #FDC000;
+  --color-text-group: #025627;
+  --color-scroll-down: #D71D1A;
+
+  --bg-position-x: 50%;
+  --bg-position-y: 45%;
+
+  --header-inline-padding: clamp(16px, 4vw, 56px);
+  --header-block-padding: 16px;
+  --header-max-height: 100px;
+
+  --logo-size: 92px;
+}
+
+.page {
+  position: relative;
+
+  inline-size: 100%;
+  min-block-size: 100dvh;
+
+  overflow: clip;
+  isolation: isolate;
+
+  background:
+    radial-gradient(
+      ellipse
+      clamp(280px, 34vw, 490px)
+      clamp(250px, 32vh, 300px)
+      at var(--bg-position-x) var(--bg-position-y),
+      var(--color-bg-center) 0%,
+      var(--color-bg-light) 18%,
+      var(--color-bg-mid) 36%,
+      var(--color-bg-dark) 62%,
+      var(--color-bg-edge) 100%
+    );
+}
+
+.page::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse
+      clamp(220px, 28vw, 400px)
+      clamp(200px, 26vh, 250px)
+      at 50% 43%,
+      rgb(255 255 255 / 5.5%) 0%,
+      rgb(255 249 230 / 2.5%) 45%,
+      transparent 70%
+    );
+
+  filter: blur(clamp(12px, 1.4vw, 20px));
+}
+
+.header {
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+
+  inline-size: 100%;
+  block-size: var(--header-max-height);
+  max-block-size: var(--header-max-height);
+
+  padding-block: var(--header-block-padding);
+  padding-inline: var(--header-inline-padding);
+}
+
+.header__logo {
+  display: block;
+
+  inline-size: var(--logo-size);
+  block-size: var(--logo-size);
+
+  max-inline-size: 100%;
+  max-block-size: 100%;
+
+  flex: 0 1 auto;
+
+  object-fit: contain;
+}
+
+.main {
+  position: relative;
+
+  inline-size: 100%;
+  block-size: calc(100dvh - var(--header-max-height));
+  min-block-size: calc(100dvh - var(--header-max-height));
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-inline-padding: clamp(16px, 5vw, 28px);
+    --header-block-padding: 16px;
+
+    --logo-size: 92px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --header-inline-padding: 18px;
+    --header-block-padding: 16px;
+
+    --logo-size: 92px;
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --header-inline-padding: 14px;
+    --header-block-padding: 16px;
+
+    --logo-size: 92px;
+  }
+}
+
+@media (min-aspect-ratio: 2/1) {
+  .page {
+    background:
+      radial-gradient(
+        ellipse
+        min(34vw, 55vh)
+        min(32vh, 52vh)
+        at var(--bg-position-x) var(--bg-position-y),
+        var(--color-bg-center) 0%,
+        var(--color-bg-light) 18%,
+        var(--color-bg-mid) 36%,
+        var(--color-bg-dark) 62%,
+        var(--color-bg-edge) 100%
+      );
+  }
+}
