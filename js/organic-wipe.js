@@ -2,8 +2,6 @@ const transition = document.querySelector(".hero-transition");
 const organicWipe = document.querySelector(".organic-wipe");
 
 if (transition && organicWipe) {
-  const initialOffset = 115;
-
   let targetProgress = 0;
   let currentProgress = 0;
   let frameId = 0;
@@ -16,26 +14,45 @@ if (transition && organicWipe) {
     return value * value * (3 - 2 * value);
   };
 
+  const getScrollRange = () => {
+    return Math.max(
+      transition.offsetHeight - window.innerHeight,
+      1
+    );
+  };
+
   const getProgress = () => {
-    const rect = transition.getBoundingClientRect();
-    const transitionDistance =
-      transition.offsetHeight - window.innerHeight;
+    const transitionTop =
+      transition.getBoundingClientRect().top +
+      window.scrollY;
 
-    if (transitionDistance <= 0) {
-      return 1;
-    }
-
-    const scrollPosition = -rect.top;
+    const currentScroll =
+      window.scrollY - transitionTop;
 
     return clamp(
-      scrollPosition / transitionDistance,
+      currentScroll / getScrollRange(),
       0,
       1
     );
   };
 
   const getTranslateY = (progress) => {
-    return initialOffset - (easeInOut(progress) * initialOffset);
+    const easedProgress =
+      easeInOut(progress);
+
+    /*
+     * Start far enough below the Hero that the oversized
+     * organic geometry cannot appear before scrolling.
+     *
+     * End at 0% so the wipe's own geometry reaches its
+     * intended final position without overshooting above it.
+     */
+    const startOffset = 120;
+
+    return (
+      startOffset -
+      (easedProgress * startOffset)
+    );
   };
 
   const render = () => {
@@ -46,13 +63,18 @@ if (transition && organicWipe) {
       `translate3d(0, ${getTranslateY(currentProgress)}%, 0)`;
 
     if (
-      Math.abs(targetProgress - currentProgress) > 0.001
+      Math.abs(
+        targetProgress - currentProgress
+      ) > 0.001
     ) {
-      frameId = window.requestAnimationFrame(render);
+      frameId =
+        window.requestAnimationFrame(render);
+
       return;
     }
 
-    currentProgress = targetProgress;
+    currentProgress =
+      targetProgress;
 
     organicWipe.style.transform =
       `translate3d(0, ${getTranslateY(currentProgress)}%, 0)`;
@@ -61,16 +83,21 @@ if (transition && organicWipe) {
   };
 
   const scheduleRender = () => {
-    targetProgress = getProgress();
+    targetProgress =
+      getProgress();
 
     if (!frameId) {
-      frameId = window.requestAnimationFrame(render);
+      frameId =
+        window.requestAnimationFrame(render);
     }
   };
 
   const initialize = () => {
-    targetProgress = getProgress();
-    currentProgress = targetProgress;
+    targetProgress =
+      getProgress();
+
+    currentProgress =
+      targetProgress;
 
     organicWipe.style.transform =
       `translate3d(0, ${getTranslateY(currentProgress)}%, 0)`;
@@ -84,8 +111,7 @@ if (transition && organicWipe) {
 
   window.addEventListener(
     "resize",
-    scheduleRender,
-    { passive: true }
+    scheduleRender
   );
 
   initialize();
