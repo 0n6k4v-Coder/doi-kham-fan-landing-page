@@ -1,9 +1,15 @@
 doi-kham-organic-detail {
+  display: block;
+  inline-size: 100%;
+  min-inline-size: 0;
+
   --organic-detail-bg: #FFF9E6;
   --organic-detail-block-padding: clamp(48px, 7vw, 96px);
   --organic-detail-inline-padding: clamp(20px, 5vw, 72px);
   --organic-detail-content-width: 1440px;
   --organic-detail-gap: clamp(20px, 4vw, 64px);
+  --organic-detail-product-image-radius: 0px;
+  --organic-detail-product-image-size: clamp(90px, 9vw, 150px);
   --organic-detail-grid-gap: clamp(10px, 1.5vw, 24px);
   --organic-detail-grid-size: clamp(280px, 30vw, 480px);
   --organic-detail-center-gap: clamp(20px, 4vw, 56px);
@@ -15,10 +21,6 @@ doi-kham-organic-detail {
   --organic-detail-copy-weight: 400;
   --organic-detail-copy-line-height: 1.55;
   --organic-detail-copy-gap: clamp(16px, 2vw, 24px);
-
-  display: block;
-  inline-size: 100%;
-  min-inline-size: 0;
 }
 
 .organic-detail {
@@ -89,21 +91,21 @@ doi-kham-organic-detail {
   margin: 0;
   padding: 0;
   border: 0;
-  border-radius: 0;
+  border-radius: var(--organic-detail-product-image-radius);
   object-fit: contain;
   object-position: center;
   user-select: none;
   -webkit-user-drag: none;
 }
 
-.organic-detail__side--left .organic-detail__grid-item--top-left .organic-detail__product-image { rotate: -8deg; transform-origin: center; }
-.organic-detail__side--left .organic-detail__grid-item--top-right .organic-detail__product-image { rotate: 32deg; transform-origin: center; }
-.organic-detail__side--left .organic-detail__grid-item--bottom-left .organic-detail__product-image { rotate: -8deg; transform-origin: center; }
-.organic-detail__side--left .organic-detail__grid-item--bottom-right .organic-detail__product-image { rotate: 8deg; transform-origin: center; }
-.organic-detail__side--right .organic-detail__grid-item--top-left .organic-detail__product-image { rotate: 8deg; transform-origin: center; }
-.organic-detail__side--right .organic-detail__grid-item--top-right .organic-detail__product-image { rotate: 8deg; transform-origin: center; }
-.organic-detail__side--right .organic-detail__grid-item--bottom-left .organic-detail__product-image { rotate: -8deg; transform-origin: center; }
-.organic-detail__side--right .organic-detail__grid-item--bottom-right .organic-detail__product-image { rotate: 32deg; transform-origin: center; }
+.organic-detail__side--left .organic-detail__grid-item--top-left .organic-detail__product-image { transform: rotate(-8deg); transform-origin: center; }
+.organic-detail__side--left .organic-detail__grid-item--top-right .organic-detail__product-image { transform: rotate(32deg); transform-origin: center; }
+.organic-detail__side--left .organic-detail__grid-item--bottom-left .organic-detail__product-image { transform: rotate(-8deg); transform-origin: center; }
+.organic-detail__side--left .organic-detail__grid-item--bottom-right .organic-detail__product-image { transform: rotate(8deg); transform-origin: center; }
+.organic-detail__side--right .organic-detail__grid-item--top-left .organic-detail__product-image { transform: rotate(8deg); transform-origin: center; }
+.organic-detail__side--right .organic-detail__grid-item--top-right .organic-detail__product-image { transform: rotate(8deg); transform-origin: center; }
+.organic-detail__side--right .organic-detail__grid-item--bottom-left .organic-detail__product-image { transform: rotate(-8deg); transform-origin: center; }
+.organic-detail__side--right .organic-detail__grid-item--bottom-right .organic-detail__product-image { transform: rotate(32deg); transform-origin: center; }
 
 .organic-detail__center {
   display: flex;
@@ -165,7 +167,7 @@ doi-kham-organic-detail {
   inline-size: 100%;
   max-inline-size: 100%;
   margin: 0;
-  color: #000;
+  color: #000000;
   font-size: var(--organic-detail-copy-size);
   font-weight: var(--organic-detail-copy-weight);
   line-height: var(--organic-detail-copy-line-height);
@@ -224,8 +226,4 @@ doi-kham-organic-detail {
   .organic-detail__center-headline-block { font-size: 21px; }
   .organic-detail__center-copy { gap: 14px; }
   .organic-detail__center-copy-block { font-size: 13px; line-height: 1.45; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .organic-detail__product-image { transition: none; }
 }
