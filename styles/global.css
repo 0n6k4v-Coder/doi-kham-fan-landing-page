@@ -202,8 +202,6 @@ p {
       var(--organic-oval-start-offset),
       0
     );
-
-  will-change: transform;
 }
 
 /* TABLET / MOBILE */

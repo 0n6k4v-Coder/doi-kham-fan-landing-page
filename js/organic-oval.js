@@ -4,7 +4,8 @@ const organicOval = document.querySelector(".organic-oval");
 if (organicSection && organicOval) {
   let targetProgress = 0;
   let currentProgress = 0;
-  let frameId = 0;
+  let animationFrameId = null;
+  let previousTimestamp = 0;
 
   const clamp = (value, min, max) => {
     return Math.min(Math.max(value, min), max);
@@ -37,8 +38,7 @@ if (organicSection && organicOval) {
   };
 
   const getTranslateY = (progress) => {
-    const easedProgress =
-      easeInOut(progress);
+    const easedProgress = easeInOut(progress);
 
     const startOffset =
       parseFloat(
@@ -54,9 +54,25 @@ if (organicSection && organicOval) {
     );
   };
 
-  const render = () => {
+  const render = (timestamp) => {
+    if (!previousTimestamp) {
+      previousTimestamp = timestamp;
+    }
+
+    const deltaTime =
+      Math.min(
+        timestamp - previousTimestamp,
+        32
+      );
+
+    previousTimestamp = timestamp;
+
+    const smoothing =
+      1 - Math.pow(0.001, deltaTime / 1000);
+
     currentProgress +=
-      (targetProgress - currentProgress) * 0.18;
+      (targetProgress - currentProgress) *
+      smoothing;
 
     organicOval.style.transform =
       `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
@@ -66,7 +82,7 @@ if (organicSection && organicOval) {
         targetProgress - currentProgress
       ) > 0.001
     ) {
-      frameId =
+      animationFrameId =
         window.requestAnimationFrame(render);
 
       return;
@@ -78,25 +94,26 @@ if (organicSection && organicOval) {
     organicOval.style.transform =
       `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
 
-    frameId = 0;
+    animationFrameId = null;
+    previousTimestamp = 0;
+
+    organicOval.style.willChange = "auto";
   };
 
   const scheduleRender = () => {
-    targetProgress =
-      getProgress();
+    targetProgress = getProgress();
 
-    if (!frameId) {
-      frameId =
+    if (!animationFrameId) {
+      organicOval.style.willChange = "transform";
+
+      animationFrameId =
         window.requestAnimationFrame(render);
     }
   };
 
   const initialize = () => {
-    targetProgress =
-      getProgress();
-
-    currentProgress =
-      targetProgress;
+    targetProgress = getProgress();
+    currentProgress = targetProgress;
 
     organicOval.style.transform =
       `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
