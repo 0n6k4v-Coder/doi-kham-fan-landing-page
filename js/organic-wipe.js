@@ -1,7 +1,7 @@
-const transition = document.querySelector(".hero-transition");
-const organicWipe = document.querySelector(".organic-wipe");
+const organicSection = document.querySelector(".organic-section");
+const organicOval = document.querySelector(".organic-oval");
 
-if (transition && organicWipe) {
+if (organicSection && organicOval) {
   let targetProgress = 0;
   let currentProgress = 0;
   let frameId = 0;
@@ -16,21 +16,21 @@ if (transition && organicWipe) {
 
   const getScrollRange = () => {
     return Math.max(
-      transition.offsetHeight - window.innerHeight,
+      organicSection.offsetHeight - window.innerHeight,
       1
     );
   };
 
   const getProgress = () => {
-    const transitionTop =
-      transition.getBoundingClientRect().top +
+    const sectionTop =
+      organicSection.getBoundingClientRect().top +
       window.scrollY;
 
-    const currentScroll =
-      window.scrollY - transitionTop;
+    const scrollPosition =
+      window.scrollY - sectionTop;
 
     return clamp(
-      currentScroll / getScrollRange(),
+      scrollPosition / getScrollRange(),
       0,
       1
     );
@@ -40,14 +40,13 @@ if (transition && organicWipe) {
     const easedProgress =
       easeInOut(progress);
 
-    /*
-     * Start far enough below the Hero that the oversized
-     * organic geometry cannot appear before scrolling.
-     *
-     * End at 0% so the wipe's own geometry reaches its
-     * intended final position without overshooting above it.
-     */
-    const startOffset = 120;
+    const startOffset =
+      parseFloat(
+        getComputedStyle(document.documentElement)
+          .getPropertyValue(
+            "--organic-oval-start-offset"
+          )
+      ) || 120;
 
     return (
       startOffset -
@@ -59,8 +58,8 @@ if (transition && organicWipe) {
     currentProgress +=
       (targetProgress - currentProgress) * 0.18;
 
-    organicWipe.style.transform =
-      `translate3d(0, ${getTranslateY(currentProgress)}%, 0)`;
+    organicOval.style.transform =
+      `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
 
     if (
       Math.abs(
@@ -76,8 +75,8 @@ if (transition && organicWipe) {
     currentProgress =
       targetProgress;
 
-    organicWipe.style.transform =
-      `translate3d(0, ${getTranslateY(currentProgress)}%, 0)`;
+    organicOval.style.transform =
+      `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
 
     frameId = 0;
   };
@@ -99,8 +98,8 @@ if (transition && organicWipe) {
     currentProgress =
       targetProgress;
 
-    organicWipe.style.transform =
-      `translate3d(0, ${getTranslateY(currentProgress)}%, 0)`;
+    organicOval.style.transform =
+      `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
   };
 
   window.addEventListener(

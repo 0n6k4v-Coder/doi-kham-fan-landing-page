@@ -31,6 +31,7 @@ body {
 
 body {
   min-block-size: 100%;
+  background: var(--color-bg-mid);
 }
 
 body::before {
@@ -46,26 +47,16 @@ body::before {
   background:
     radial-gradient(
       ellipse
-      clamp(280px, 34vw, 490px)
-      clamp(250px, 32vh, 300px)
-      at var(--bg-position-x) var(--bg-position-y),
-      var(--color-bg-center) 0%,
-      var(--color-bg-light) 18%,
-      var(--color-bg-mid) 36%,
-      var(--color-bg-dark) 62%,
-      var(--color-bg-edge) 100%
-    ),
-    radial-gradient(
-      ellipse
-      clamp(220px, 28vw, 400px)
-      clamp(200px, 26vh, 250px)
-      at 50% 43%,
-      rgb(255 255 255 / 5.5%) 0%,
-      rgb(255 249 230 / 2.5%) 45%,
-      transparent 70%
+      clamp(220px, 34vw, 520px)
+      clamp(180px, 30vh, 360px)
+      at 50% 45%,
+      rgb(255 255 255 / 9%) 0%,
+      rgb(255 249 230 / 5%) 24%,
+      rgb(255 245 220 / 2.5%) 48%,
+      transparent 72%
     );
 
-  filter: blur(clamp(12px, 1.4vw, 20px));
+  filter: blur(clamp(18px, 2.5vw, 36px));
 }
 
 h1,
@@ -85,9 +76,6 @@ p {
   --color-text-group: #025627;
   --color-scroll-down: #D71D1A;
 
-  --bg-position-x: 50%;
-  --bg-position-y: 45%;
-
   --header-inline-padding: clamp(16px, 4vw, 56px);
   --header-block-padding: 16px;
   --header-max-height: 100px;
@@ -96,15 +84,9 @@ p {
 
   --hero-stage-height: calc(100vh - var(--header-max-height));
 
-  --organic-track-height: 220vh;
-
-  /*
-   * The wipe is based primarily on viewport width.
-   * This keeps its proportions stable when viewport height changes.
-   */
-  --organic-wipe-height: clamp(680px, 72vw, 1100px);
-
-  --organic-wipe-start-offset: 115%;
+  --organic-section-height: 220vh;
+  --organic-oval-height: clamp(120vh, 150vw, 170vh);
+  --organic-oval-start-offset: 120%;
 }
 
 /* PAGE SHELL */
@@ -161,149 +143,67 @@ p {
   inline-size: 100%;
 }
 
-/* HERO TRANSITION TRACK */
-.hero-transition {
+/* HERO SECTION */
+.hero-section {
   position: relative;
 
   inline-size: 100%;
-  block-size: var(--organic-track-height);
+  block-size: var(--hero-stage-height);
 
   overflow: visible;
-
-  isolation: isolate;
 }
 
 /* FIXED HERO */
 .hero-stage {
   position: fixed;
-
   inset-block-start: var(--header-max-height);
   inset-inline: 0;
 
-  z-index: 2;
+  z-index: 1;
 
   inline-size: 100%;
   block-size: var(--hero-stage-height);
   min-block-size: var(--hero-stage-height);
 
-  isolation: isolate;
-
   overflow: visible;
 }
 
-/* ORGANIC WIPE */
-.organic-wipe {
-  position: absolute;
+/* ORGANIC SECTION */
+.organic-section {
+  position: relative;
 
-  z-index: 5;
-
-  inset-block-start: 0;
-  inset-inline: 0;
+  z-index: 2;
 
   inline-size: 100%;
-  block-size: var(--organic-wipe-height);
+  block-size: var(--organic-section-height);
 
   overflow: visible;
-
-  pointer-events: none;
-  user-select: none;
-
-  transform: translate3d(
-    0,
-    var(--organic-wipe-start-offset),
-    0
-  );
-
-  will-change: transform;
 }
 
-/* ORGANIC WIPE / SHAPES */
-.organic-wipe__layer,
-.organic-wipe__highlight {
+/* FULL-WIDTH VERTICAL OVAL */
+.organic-oval {
   position: absolute;
 
-  inset-block-start: 50%;
+  inset-block-start: 0;
   inset-inline-start: 50%;
 
-  inline-size: 140%;
-  block-size: 118%;
+  inline-size: 100%;
+  block-size: var(--organic-oval-height);
 
-  pointer-events: none;
-}
+  background: var(--color-bg-center);
 
-.organic-wipe__layer {
-  background:
-    radial-gradient(
-      ellipse 58% 54% at 50% 44%,
-      var(--color-bg-center) 0%,
-      var(--color-bg-light) 28%,
-      var(--color-bg-mid) 54%,
-      var(--color-bg-dark) 77%,
-      var(--color-bg-edge) 100%
-    );
+  border-radius: 50%;
 
-  transform-origin: center;
-}
-
-.organic-wipe__layer--back {
-  transform:
-    translate(-50%, -50%)
-    rotate(-4deg)
-    scale(1.04);
-
-  border-radius:
-    47% 53% 44% 56% /
-    40% 47% 53% 60%;
-
-  opacity: 0.94;
-}
-
-.organic-wipe__layer--front {
-  transform:
-    translate(-50%, -50%)
-    rotate(2.5deg)
-    scale(1.01);
-
-  background:
-    radial-gradient(
-      ellipse 62% 58% at 50% 42%,
-      var(--color-bg-center) 0%,
-      var(--color-bg-light) 24%,
-      var(--color-bg-mid) 52%,
-      var(--color-bg-dark) 76%,
-      var(--color-bg-edge) 100%
-    );
-
-  border-radius:
-    55% 45% 58% 42% /
-    36% 57% 43% 64%;
-
-  opacity: 0.99;
-}
-
-.organic-wipe__highlight {
-  z-index: 3;
-
-  inline-size: min(88vw, 1350px);
-  block-size: 82%;
+  pointer-events: auto;
 
   transform:
-    translate(-50%, -50%)
-    rotate(-1deg);
-
-  background:
-    radial-gradient(
-      ellipse 58% 58% at 50% 45%,
-      rgb(255 255 255 / 12%) 0%,
-      rgb(255 249 230 / 6%) 40%,
-      transparent 75%
+    translate3d(
+      -50%,
+      var(--organic-oval-start-offset),
+      0
     );
 
-  border-radius:
-    52% 44% 56% 48% /
-    45% 58% 42% 55%;
-
-  filter: blur(clamp(14px, 1.8vw, 26px));
+  will-change: transform;
 }
 
 /* TABLET / MOBILE */
@@ -315,37 +215,8 @@ p {
 
     --hero-stage-height: calc(100vh - var(--header-max-height));
 
-    --organic-track-height: 215vh;
-
-    /*
-     * Keep mobile sizing separate for now.
-     * Mobile art direction will be tuned later.
-     */
-    --organic-wipe-height: var(--hero-stage-height);
-  }
-
-  .organic-wipe__layer {
-    inline-size: 142vw;
-    block-size: 126%;
-  }
-
-  .organic-wipe__highlight {
-    inline-size: 98vw;
-    block-size: 82%;
-  }
-
-  .organic-wipe__layer--back {
-    transform:
-      translate(-50%, -50%)
-      rotate(-5deg)
-      scale(1.07);
-  }
-
-  .organic-wipe__layer--front {
-    transform:
-      translate(-50%, -50%)
-      rotate(3deg)
-      scale(1.02);
+    --organic-section-height: 215vh;
+    --organic-oval-height: 150vh;
   }
 }
 
@@ -355,31 +226,8 @@ p {
     --header-block-padding: 16px;
     --logo-size: 92px;
 
-    --organic-track-height: 205vh;
-    --organic-wipe-height: var(--hero-stage-height);
-  }
-
-  .organic-wipe__layer {
-    inline-size: 166vw;
-  }
-
-  .organic-wipe__highlight {
-    inline-size: 112vw;
-    block-size: 78%;
-  }
-
-  .organic-wipe__layer--back {
-    transform:
-      translate(-50%, -50%)
-      rotate(-6deg)
-      scale(1.09);
-  }
-
-  .organic-wipe__layer--front {
-    transform:
-      translate(-50%, -50%)
-      rotate(4deg)
-      scale(1.04);
+    --organic-section-height: 205vh;
+    --organic-oval-height: 150vh;
   }
 }
 
@@ -389,47 +237,15 @@ p {
     --header-block-padding: 16px;
     --logo-size: 92px;
 
-    --organic-track-height: 200vh;
-    --organic-wipe-height: var(--hero-stage-height);
-  }
-
-  .organic-wipe__layer {
-    inline-size: 182vw;
-  }
-
-  .organic-wipe__highlight {
-    inline-size: 120vw;
+    --organic-section-height: 200vh;
+    --organic-oval-height: 150vh;
   }
 }
 
 /* WIDE VIEWPORT */
 @media (min-aspect-ratio: 2/1) {
   :root {
-    --organic-track-height: 230vh;
-    --organic-wipe-height: clamp(680px, 60vw, 1050px);
-  }
-
-  body::before {
-    background:
-      radial-gradient(
-        ellipse
-        min(34vw, 55vh)
-        min(32vh, 52vh)
-        at var(--bg-position-x) var(--bg-position-y),
-        var(--color-bg-center) 0%,
-        var(--color-bg-light) 18%,
-        var(--color-bg-mid) 36%,
-        var(--color-bg-dark) 62%,
-        var(--color-bg-edge) 100%
-      ),
-      radial-gradient(
-        ellipse
-        min(28vw, 40vh)
-        min(26vh, 36vh)
-        at 50% 43%,
-        rgb(255 255 255 / 5.5%) 0%,
-        rgb(255 249 230 / 2.5%) 45%,
-        transparent 70%
-      );
+    --organic-section-height: 230vh;
+    --organic-oval-height: clamp(760px, 120vw, 1100px);
   }
 }
