@@ -1,8 +1,8 @@
-# Organic Detail Migration Memory
+# Tomato Detail Migration Memory
 
 ## Scope
 
-This document records Stage 1 and Stage 2 of migrating the standalone `doi-kham-hero.html` source into a reusable organic-oval detail component. It is intended to be external project memory for future work.
+This document records Stage 1 and Stage 2 of migrating the standalone `doi-kham-hero.html` source into a reusable tomato-detail component. It is intended to be external project memory for future work.
 
 ## Source of truth
 
@@ -10,7 +10,7 @@ This document records Stage 1 and Stage 2 of migrating the standalone `doi-kham-
 - Branch: `feat/migrate-hero-component`
 - Source blob SHA: `3f96226a0b7c070d4970998d430ef049b0dd155d`
 - Existing Hero custom element: `<doi-kham-hero>`
-- New component: `<doi-kham-organic-detail>`
+- New component: `<doi-kham-tomato-detail>`
 
 ## Stage 1 — Source inventory
 
@@ -32,7 +32,7 @@ Each side contains a 2 × 2 `.hero__side-grid` with four `.hero__grid-item` cell
 - `.hero__center-copy`
   - Four paragraph blocks containing the tomato-juice narrative copy.
 
-The original standalone Hero also contains a page Header, but Header is not part of the new organic-detail component.
+The original standalone Hero also contains a page Header, but Header is not part of the new tomato-detail component.
 
 ### Asset inventory
 
@@ -89,9 +89,9 @@ The original source's visual behavior is preserved in Stage 2. The new component
 
 ```text
 components/
-└── organic-detail/
-    ├── doi-kham-organic-detail.js
-    └── doi-kham-organic-detail.css
+└── tomato-detail/
+    ├── doi-kham-tomato-detail.js
+    └── doi-kham-tomato-detail.css
 ```
 
 ### Component boundary
@@ -99,10 +99,10 @@ components/
 The new custom element owns only the detail content:
 
 ```html
-<doi-kham-organic-detail></doi-kham-organic-detail>
+<doi-kham-tomato-detail></doi-kham-tomato-detail>
 ```
 
-Its internal root is `.organic-detail`, followed by `.organic-detail__container` and the left/center/right content groups.
+Its internal root is `.tomato-detail`, followed by `.tomato-detail__container` and the left/center/right content groups.
 
 The migration deliberately excludes:
 
@@ -119,9 +119,9 @@ The migration deliberately excludes:
 
 ### CSS ownership
 
-All extracted selectors were renamed from `.hero__*` to `.organic-detail__*` to avoid collisions with the existing `<doi-kham-hero>` component.
+All extracted selectors were renamed from `.hero__*` to `.tomato-detail__*` to avoid collisions with the existing `<doi-kham-hero>` component.
 
-The component keeps its own tokens on `doi-kham-organic-detail`, rather than adding new `:root` variables. This prevents the migrated component from leaking its implementation-specific tokens into the rest of the page.
+The component keeps its own tokens on `doi-kham-tomato-detail`, rather than adding new `:root` variables. This prevents the migrated component from leaking its implementation-specific tokens into the rest of the page.
 
 Container queries remain component-owned and continue to use the component's inline size as their responsive input.
 
@@ -146,7 +146,7 @@ Stage 2 only extracts and defines the component. It does not yet change the orga
 The next stage is to mount:
 
 ```html
-<doi-kham-organic-detail></doi-kham-organic-detail>
+<doi-kham-tomato-detail></doi-kham-tomato-detail>
 ```
 
 inside `.organic-oval` and verify the containing geometry before tuning the component for the oval.
@@ -154,7 +154,7 @@ inside `.organic-oval` and verify the containing geometry before tuning the comp
 ## Important integration invariants
 
 1. The organic oval remains the owner of its shape, position, stacking, and scroll movement.
-2. The detail component remains content/layout only.
+2. The tomato-detail component remains content/layout only.
 3. The component must not introduce another full-screen background or flare.
 4. The component must not create a second oval/wipe layer.
 5. Existing Hero behavior remains unchanged.
@@ -164,5 +164,5 @@ inside `.organic-oval` and verify the containing geometry before tuning the comp
 ## Known follow-up concerns
 
 - The external Vecteezy tomato asset should eventually be evaluated for production reliability/licensing and may later be replaced by a repository-owned asset; that is outside Stage 2.
-- The original source contains an SVG/animation-based scroll indicator, but that belongs to the standalone Hero component and is intentionally not part of the organic detail component.
+- The original source contains an SVG/animation-based scroll indicator, but that belongs to the standalone Hero component and is intentionally not part of the tomato-detail component.
 - The organic oval's overflow and clipping behavior must be verified when the component is mounted because the side artwork can extend beyond individual grid cells.
