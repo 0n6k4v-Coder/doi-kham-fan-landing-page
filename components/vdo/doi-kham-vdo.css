@@ -61,10 +61,3 @@ doi-kham-vdo {
     aspect-ratio: var(--video-ratio-mobile);
   }
 }
-
-@container doi-kham-vdo (max-width: 400px) {
-  .vdo-player {
-    inline-size: 100%;
-    aspect-ratio: var(--video-ratio-mobile);
-  }
-}
