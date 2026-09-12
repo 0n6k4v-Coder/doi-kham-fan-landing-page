@@ -15,7 +15,6 @@ Code Convention:
 
 doi-kham-tomato-detail {
   display: block;
-
   inline-size: 100%;
   min-inline-size: 0;
 
@@ -53,35 +52,26 @@ doi-kham-tomato-detail {
   display: flex;
   align-items: center;
   justify-content: center;
-
   inline-size: 100%;
   min-inline-size: 0;
   min-block-size: 100%;
-
   padding-block: var(--tomato-detail-block-padding);
   padding-inline: var(--tomato-detail-inline-padding);
-
   background: transparent;
-
   font-family: Arial, Helvetica, sans-serif;
 }
 
 /* SOURCE HERO__CONTAINER */
 .tomato-detail__container {
   container: tomato-detail / inline-size;
-
   display: grid;
-
   grid-template-columns:
     minmax(0, 1fr)
     minmax(280px, 1.2fr)
     minmax(0, 1fr);
-
   align-items: center;
-
   inline-size: min(100%, var(--tomato-detail-content-width));
   min-inline-size: 0;
-
   gap: var(--tomato-detail-gap);
 }
 
@@ -90,7 +80,6 @@ doi-kham-tomato-detail {
   display: flex;
   align-items: center;
   justify-content: center;
-
   inline-size: 100%;
   min-inline-size: 0;
 }
@@ -98,27 +87,15 @@ doi-kham-tomato-detail {
 /* 2 × 2 PRODUCT GRID */
 .tomato-detail__side-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
-  grid-template-rows:
-    repeat(2, minmax(0, 1fr));
-
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
   grid-template-areas:
     "top-left top-right"
     "bottom-left bottom-right";
-
   align-items: center;
   justify-items: center;
-
-  inline-size: min(
-    100%,
-    var(--tomato-detail-grid-size)
-  );
-
+  inline-size: min(100%, var(--tomato-detail-grid-size));
   aspect-ratio: 1;
-
   gap: var(--tomato-detail-grid-gap);
 }
 
@@ -144,38 +121,27 @@ doi-kham-tomato-detail {
   display: flex;
   align-items: center;
   justify-content: center;
-
   inline-size: 100%;
   block-size: 100%;
-
   min-inline-size: 0;
   min-block-size: 0;
-
   aspect-ratio: 1 / 1;
 }
 
 /* PRODUCT IMAGE */
 .tomato-detail__product-image {
   display: block;
-
   inline-size: 100%;
   block-size: 100%;
-
   min-inline-size: 0;
   min-block-size: 0;
-
   margin: 0;
   padding: 0;
   border: 0;
-
-  border-radius:
-    var(--tomato-detail-product-image-radius);
-
+  border-radius: var(--tomato-detail-product-image-radius);
   object-fit: contain;
   object-position: center;
-
   user-select: none;
-
   -webkit-user-drag: none;
 }
 
@@ -241,15 +207,11 @@ doi-kham-tomato-detail {
 .tomato-detail__center {
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
   inline-size: 100%;
   min-inline-size: 0;
-
   gap: var(--tomato-detail-center-gap);
-
   text-align: center;
 }
 
@@ -257,13 +219,10 @@ doi-kham-tomato-detail {
 .tomato-detail__center-headline {
   display: flex;
   flex-direction: column;
-
   align-items: stretch;
   justify-content: center;
-
   inline-size: 100%;
   min-inline-size: 0;
-
   gap: var(--tomato-detail-headline-gap);
 }
 
@@ -271,7 +230,6 @@ doi-kham-tomato-detail {
 .tomato-detail__center-headline-bottom {
   display: flex;
   align-items: center;
-
   inline-size: 100%;
   min-inline-size: 0;
 }
@@ -288,22 +246,13 @@ doi-kham-tomato-detail {
 
 .tomato-detail__center-headline-block {
   display: block;
-
   inline-size: auto;
   max-inline-size: 100%;
-
   margin: 0;
-
   color: #FDC000;
-
-  /*
-    Scale headline with the actual container width.
-    cqw = 1% of the query container's inline size.
-  */
   font-size: var(--tomato-detail-title-size);
   font-weight: var(--tomato-detail-title-weight);
   line-height: var(--tomato-detail-title-line-height);
-
   white-space: nowrap;
 }
 
@@ -311,32 +260,23 @@ doi-kham-tomato-detail {
 .tomato-detail__center-copy {
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
   inline-size: 100%;
   min-inline-size: 0;
-
   gap: var(--tomato-detail-copy-gap);
-
   text-align: center;
 }
 
 .tomato-detail__center-copy-block {
   display: block;
-
   inline-size: 100%;
   max-inline-size: 100%;
-
   margin: 0;
-
   color: #000000;
-
   font-size: var(--tomato-detail-copy-size);
   font-weight: var(--tomato-detail-copy-weight);
   line-height: var(--tomato-detail-copy-line-height);
-
   text-align: center;
   text-wrap: pretty;
 }
@@ -348,7 +288,6 @@ doi-kham-tomato-detail {
       minmax(0, 0.85fr)
       minmax(260px, 1.2fr)
       minmax(0, 0.85fr);
-
     gap: clamp(16px, 3vw, 40px);
   }
 
@@ -378,98 +317,22 @@ doi-kham-tomato-detail {
 }
 
 /* CONTAINER QUERY: MOBILE */
-@container tomato-detail (max-width: 700px) {
-  .tomato-detail {
-    min-block-size: auto;
-  }
-
+@media (max-width: 700px) {
   .tomato-detail__container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
     align-items: center;
-
-    gap: clamp(32px, 8vw, 56px);
+    justify-items: center;
   }
 
   .tomato-detail__side {
-    inline-size: 100%;
-  }
-
-  .tomato-detail__side-grid {
-    inline-size: min(100%, 360px);
-  }
-
-  .tomato-detail__product-image {
     display: none;
   }
 
   .tomato-detail__center {
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
+    grid-column: 1;
     inline-size: 100%;
-
-    gap: clamp(24px, 6vw, 40px);
-  }
-
-  .tomato-detail__center-headline {
-    display: flex;
-    flex-direction: column;
-
-    align-items: stretch;
-    justify-content: center;
-
-    inline-size: 100%;
-
-    gap: 8px;
-  }
-
-  .tomato-detail__center-headline-top {
-    justify-content: flex-start;
-    text-align: left;
-  }
-
-  .tomato-detail__center-headline-bottom {
-    justify-content: flex-end;
-    text-align: right;
-  }
-
-  .tomato-detail__center-headline-block {
-    font-size: clamp(20px, 5.5cqw, 30px);
-    white-space: nowrap;
-  }
-
-  .tomato-detail__center-copy {
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    inline-size: 100%;
-
-    gap: clamp(14px, 4vw, 20px);
-  }
-
-  .tomato-detail__center-copy-block {
-    inline-size: 100%;
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  .tomato-detail__side--left {
-    order: 1;
-  }
-
-  .tomato-detail__center {
-    order: 2;
-  }
-
-  .tomato-detail__side--right {
-    order: 3;
+    min-inline-size: 0;
   }
 }
 
@@ -481,11 +344,6 @@ doi-kham-tomato-detail {
 
   .tomato-detail__container {
     gap: 32px;
-  }
-
-  .tomato-detail__side-grid {
-    inline-size: min(100%, 320px);
-    gap: 12px;
   }
 
   .tomato-detail__center {
@@ -514,11 +372,6 @@ doi-kham-tomato-detail {
 @container tomato-detail (max-width: 360px) {
   .tomato-detail {
     padding-inline: 16px;
-  }
-
-  .tomato-detail__side-grid {
-    inline-size: min(100%, 280px);
-    gap: 10px;
   }
 
   .tomato-detail__center {
