@@ -24,7 +24,7 @@ doi-kham-vdo {
   --video-radius: 24px;
 }
 
-.doi-kham-vdo__container {
+.vdo-section__container {
   container: doi-kham-vdo / inline-size;
   display: flex;
   align-items: center;
@@ -34,7 +34,7 @@ doi-kham-vdo {
   margin-inline: auto;
 }
 
-.doi-kham-vdo__player {
+.vdo-player {
   display: block;
   inline-size: 100%;
   max-inline-size: var(--video-container-width);
@@ -51,11 +51,11 @@ doi-kham-vdo {
 }
 
 @container doi-kham-vdo (max-width: 700px) {
-  .doi-kham-vdo__container {
+  .vdo-section__container {
     inline-size: 100%;
   }
 
-  .doi-kham-vdo__player {
+  .vdo-player {
     inline-size: 100%;
     max-inline-size: 100%;
     aspect-ratio: var(--video-ratio-mobile);
@@ -63,7 +63,7 @@ doi-kham-vdo {
 }
 
 @container doi-kham-vdo (max-width: 400px) {
-  .doi-kham-vdo__player {
+  .vdo-player {
     inline-size: 100%;
     aspect-ratio: var(--video-ratio-mobile);
   }
