@@ -82,21 +82,16 @@ p {
 
   --logo-size: 92px;
 
-  --hero-stage-height:
-    calc(100vh - var(--header-max-height));
+  --hero-stage-height: calc(100vh - var(--header-max-height));
 
   --organic-section-height: 220vh;
-
-  --organic-container-height:
-    clamp(120vh, 150vw, 170vh);
-
+  --organic-container-height: clamp(120vh, 150vw, 170vh);
   --organic-container-start-offset: 120%;
 }
 
 /* PAGE SHELL */
 .page {
   position: relative;
-
   z-index: 1;
 
   inline-size: 100%;
@@ -161,7 +156,6 @@ p {
 /* FIXED HERO */
 .hero-stage {
   position: fixed;
-
   inset-block-start: var(--header-max-height);
   inset-inline: 0;
 
@@ -191,7 +185,7 @@ p {
   position: absolute;
 
   inset-block-start: 0;
-  inset-inline-start: 0;
+  inset-inline-start: 50%;
 
   inline-size: 100%;
   block-size: var(--organic-container-height);
@@ -200,7 +194,7 @@ p {
   align-items: flex-start;
   justify-content: center;
 
-  overflow: visible;
+  box-sizing: border-box;
 
   background: var(--color-bg-center);
 
@@ -208,7 +202,7 @@ p {
 
   transform:
     translate3d(
-      0,
+      -50%,
       var(--organic-container-start-offset),
       0
     );
@@ -217,18 +211,13 @@ p {
 /* TABLET / MOBILE */
 @media (max-width: 768px) {
   :root {
-    --header-inline-padding:
-      clamp(16px, 5vw, 28px);
-
+    --header-inline-padding: clamp(16px, 5vw, 28px);
     --header-block-padding: 16px;
-
     --logo-size: 92px;
 
-    --hero-stage-height:
-      calc(100vh - var(--header-max-height));
+    --hero-stage-height: calc(100vh - var(--header-max-height));
 
     --organic-section-height: 215vh;
-
     --organic-container-height: 150vh;
   }
 }
@@ -236,13 +225,10 @@ p {
 @media (max-width: 480px) {
   :root {
     --header-inline-padding: 18px;
-
     --header-block-padding: 16px;
-
     --logo-size: 92px;
 
     --organic-section-height: 205vh;
-
     --organic-container-height: 150vh;
   }
 }
@@ -250,13 +236,10 @@ p {
 @media (max-width: 360px) {
   :root {
     --header-inline-padding: 14px;
-
     --header-block-padding: 16px;
-
     --logo-size: 92px;
 
     --organic-section-height: 200vh;
-
     --organic-container-height: 150vh;
   }
 }
@@ -265,8 +248,6 @@ p {
 @media (min-aspect-ratio: 2/1) {
   :root {
     --organic-section-height: 230vh;
-
-    --organic-container-height:
-      clamp(760px, 120vw, 1100px);
+    --organic-container-height: clamp(760px, 120vw, 1100px);
   }
 }

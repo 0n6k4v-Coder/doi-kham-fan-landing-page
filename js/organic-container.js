@@ -59,10 +59,11 @@ if (organicSection && organicContainer) {
       previousTimestamp = timestamp;
     }
 
-    const deltaTime = Math.min(
-      timestamp - previousTimestamp,
-      32
-    );
+    const deltaTime =
+      Math.min(
+        timestamp - previousTimestamp,
+        32
+      );
 
     previousTimestamp = timestamp;
 
@@ -74,7 +75,7 @@ if (organicSection && organicContainer) {
       smoothing;
 
     organicContainer.style.transform =
-      `translate3d(0, ${getTranslateY(currentProgress)}%, 0)`;
+      `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
 
     if (
       Math.abs(
@@ -87,10 +88,11 @@ if (organicSection && organicContainer) {
       return;
     }
 
-    currentProgress = targetProgress;
+    currentProgress =
+      targetProgress;
 
     organicContainer.style.transform =
-      `translate3d(0, ${getTranslateY(currentProgress)}%, 0)`;
+      `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
 
     animationFrameId = null;
     previousTimestamp = 0;
@@ -114,7 +116,7 @@ if (organicSection && organicContainer) {
     currentProgress = targetProgress;
 
     organicContainer.style.transform =
-      `translate3d(0, ${getTranslateY(currentProgress)}%, 0)`;
+      `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
   };
 
   window.addEventListener(
