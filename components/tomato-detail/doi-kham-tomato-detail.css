@@ -18,8 +18,6 @@ doi-kham-tomato-detail {
   inline-size: 100%;
   min-inline-size: 0;
 
-  --tomato-detail-bg: #FFF9E6;
-
   --tomato-detail-block-padding: clamp(48px, 7vw, 96px);
   --tomato-detail-inline-padding: clamp(20px, 5vw, 72px);
 
@@ -28,7 +26,6 @@ doi-kham-tomato-detail {
   --tomato-detail-gap: clamp(20px, 4vw, 64px);
 
   --tomato-detail-product-image-radius: 0px;
-  --tomato-detail-product-image-size: clamp(90px, 9vw, 150px);
 
   --tomato-detail-grid-gap: clamp(10px, 1.5vw, 24px);
   --tomato-detail-grid-size: clamp(280px, 30vw, 480px);
@@ -316,7 +313,7 @@ doi-kham-tomato-detail {
   }
 }
 
-/* CONTAINER QUERY: MOBILE */
+/* MEDIA QUERY: MOBILE */
 @media (max-width: 700px) {
   .tomato-detail__container {
     display: grid;
