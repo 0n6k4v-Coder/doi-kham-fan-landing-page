@@ -1,2 +1,3 @@
 import "../components/hero/doi-kham-hero.js";
-import "./organic-oval.js";
+import "../components/tomato-detail/doi-kham-tomato-detail.js";
+import "./organic-container.js";

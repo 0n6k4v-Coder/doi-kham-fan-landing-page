@@ -1,7 +1,7 @@
 const organicSection = document.querySelector(".organic-section");
-const organicOval = document.querySelector(".organic-oval");
+const organicContainer = document.querySelector(".organic-container");
 
-if (organicSection && organicOval) {
+if (organicSection && organicContainer) {
   let targetProgress = 0;
   let currentProgress = 0;
   let animationFrameId = null;
@@ -44,7 +44,7 @@ if (organicSection && organicOval) {
       parseFloat(
         getComputedStyle(document.documentElement)
           .getPropertyValue(
-            "--organic-oval-start-offset"
+            "--organic-container-start-offset"
           )
       ) || 120;
 
@@ -59,11 +59,10 @@ if (organicSection && organicOval) {
       previousTimestamp = timestamp;
     }
 
-    const deltaTime =
-      Math.min(
-        timestamp - previousTimestamp,
-        32
-      );
+    const deltaTime = Math.min(
+      timestamp - previousTimestamp,
+      32
+    );
 
     previousTimestamp = timestamp;
 
@@ -74,8 +73,8 @@ if (organicSection && organicOval) {
       (targetProgress - currentProgress) *
       smoothing;
 
-    organicOval.style.transform =
-      `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
+    organicContainer.style.transform =
+      `translate3d(0, ${getTranslateY(currentProgress)}%, 0)`;
 
     if (
       Math.abs(
@@ -88,23 +87,22 @@ if (organicSection && organicOval) {
       return;
     }
 
-    currentProgress =
-      targetProgress;
+    currentProgress = targetProgress;
 
-    organicOval.style.transform =
-      `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
+    organicContainer.style.transform =
+      `translate3d(0, ${getTranslateY(currentProgress)}%, 0)`;
 
     animationFrameId = null;
     previousTimestamp = 0;
 
-    organicOval.style.willChange = "auto";
+    organicContainer.style.willChange = "auto";
   };
 
   const scheduleRender = () => {
     targetProgress = getProgress();
 
     if (!animationFrameId) {
-      organicOval.style.willChange = "transform";
+      organicContainer.style.willChange = "transform";
 
       animationFrameId =
         window.requestAnimationFrame(render);
@@ -115,8 +113,8 @@ if (organicSection && organicOval) {
     targetProgress = getProgress();
     currentProgress = targetProgress;
 
-    organicOval.style.transform =
-      `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
+    organicContainer.style.transform =
+      `translate3d(0, ${getTranslateY(currentProgress)}%, 0)`;
   };
 
   window.addEventListener(
