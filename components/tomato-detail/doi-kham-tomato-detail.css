@@ -59,7 +59,7 @@ doi-kham-tomato-detail {
   min-block-size: 100%;
 
   padding-block: var(--tomato-detail-block-padding);
-  padding-inline: 0;
+  padding-inline: var(--tomato-detail-inline-padding);
 
   background: transparent;
 
@@ -476,7 +476,7 @@ doi-kham-tomato-detail {
 /* CONTAINER QUERY: SMALL MOBILE */
 @container tomato-detail (max-width: 480px) {
   .tomato-detail {
-    padding-inline: 0px;
+    padding-inline: 20px;
   }
 
   .tomato-detail__container {
@@ -513,7 +513,7 @@ doi-kham-tomato-detail {
 /* CONTAINER QUERY: VERY SMALL MOBILE */
 @container tomato-detail (max-width: 360px) {
   .tomato-detail {
-    padding-inline: 0px;
+    padding-inline: 16px;
   }
 
   .tomato-detail__side-grid {

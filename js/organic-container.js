@@ -15,38 +15,53 @@ if (organicSection && organicContainer) {
     return value * value * (3 - 2 * value);
   };
 
+  const getSectionTop = () => {
+    return (
+      organicSection.getBoundingClientRect().top +
+      window.scrollY
+    );
+  };
+
   const getScrollRange = () => {
     return Math.max(
-      organicSection.offsetHeight - window.innerHeight,
+      organicSection.offsetHeight,
       1
     );
   };
 
   const getProgress = () => {
-    const sectionTop =
-      organicSection.getBoundingClientRect().top +
-      window.scrollY;
+    const sectionTop = getSectionTop();
 
     const scrollPosition =
       window.scrollY - sectionTop;
 
+    /*
+     * Start the cream movement immediately
+     * when the organic section enters the viewport.
+     */
     return clamp(
-      scrollPosition / getScrollRange(),
+      scrollPosition / window.innerHeight,
       0,
       1
     );
   };
 
+  const getStartOffset = () => {
+    const value = parseFloat(
+      getComputedStyle(document.documentElement)
+        .getPropertyValue(
+          "--organic-container-start-offset"
+        )
+    );
+
+    return Number.isFinite(value)
+      ? value
+      : 0;
+  };
+
   const getTranslateY = (progress) => {
     const easedProgress = easeInOut(progress);
-
-    const startOffset =
-      parseFloat(
-        getComputedStyle(document.documentElement)
-          .getPropertyValue(
-            "--organic-container-start-offset"
-          )
-      ) || 120;
+    const startOffset = getStartOffset();
 
     return (
       startOffset -
@@ -59,11 +74,10 @@ if (organicSection && organicContainer) {
       previousTimestamp = timestamp;
     }
 
-    const deltaTime =
-      Math.min(
-        timestamp - previousTimestamp,
-        32
-      );
+    const deltaTime = Math.min(
+      timestamp - previousTimestamp,
+      32
+    );
 
     previousTimestamp = timestamp;
 
@@ -75,7 +89,11 @@ if (organicSection && organicContainer) {
       smoothing;
 
     organicContainer.style.transform =
-      `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
+      `translate3d(
+        -50%,
+        ${getTranslateY(currentProgress)}%,
+        0
+      )`;
 
     if (
       Math.abs(
@@ -88,11 +106,14 @@ if (organicSection && organicContainer) {
       return;
     }
 
-    currentProgress =
-      targetProgress;
+    currentProgress = targetProgress;
 
     organicContainer.style.transform =
-      `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
+      `translate3d(
+        -50%,
+        ${getTranslateY(currentProgress)}%,
+        0
+      )`;
 
     animationFrameId = null;
     previousTimestamp = 0;
@@ -116,13 +137,19 @@ if (organicSection && organicContainer) {
     currentProgress = targetProgress;
 
     organicContainer.style.transform =
-      `translate3d(-50%, ${getTranslateY(currentProgress)}%, 0)`;
+      `translate3d(
+        -50%,
+        ${getTranslateY(currentProgress)}%,
+        0
+      )`;
   };
 
   window.addEventListener(
     "scroll",
     scheduleRender,
-    { passive: true }
+    {
+      passive: true
+    }
   );
 
   window.addEventListener(
