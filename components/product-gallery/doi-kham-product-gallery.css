@@ -29,6 +29,7 @@ doi-kham-product-gallery {
   align-items: center;
   inline-size: 100%;
   block-size: auto;
+  padding-block: 5px;
   overflow: hidden;
   background: transparent;
 }
@@ -84,10 +85,6 @@ doi-kham-product-gallery {
     --gallery-duration: 12s;
     --product-box-width: 140px;
     --product-image-height: 120px;
-  }
-
-  .product-gallery__item {
-    block-size: 125px;
   }
 }
 
