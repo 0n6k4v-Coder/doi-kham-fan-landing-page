@@ -25,35 +25,36 @@ doi-kham-about {
   --about-content-width: 1200px;
   --about-gap: clamp(20px, 3vw, 36px);
 
-  --about-title-size: clamp(30px, 4cqw, 40px);
+  --about-title-size: 72px;
   --about-title-weight: 900;
   --about-title-line-height: 1;
 
-  --about-description-size: clamp(13px, 1.5cqw, 15px);
+  --about-description-size: 16px;
   --about-description-weight: 400;
   --about-description-line-height: 1.5;
   --about-description-max-width: 850px;
 
   --about-cards-gap: clamp(12px, 2cqw, 28px);
+  --about-card-width: 380px;
   --about-card-ratio: 320 / 150;
   --about-card-background: #FFFFFF;
   --about-card-radius: clamp(14px, 2cqw, 20px);
   --about-card-padding: clamp(14px, 2.5cqw, 28px);
 
-  --about-card-header-color: #FDC000;
-  --about-card-header-size: 18px;
-  --about-card-header-weight: 700;
+  --about-card-header-color: #000000;
+  --about-card-header-size: 30px;
+  --about-card-header-weight: 900;
   --about-card-header-line-height: 1.2;
 
   --about-card-details-color: #33261A;
-  --about-card-details-size: 13px;
+  --about-card-details-size: 14px;
   --about-card-details-weight: 400;
   --about-card-details-line-height: 1.45;
 
   --about-card-content-gap: 12px;
 
   --about-note-width: min(720px, 100%);
-  --about-note-size: clamp(9px, 1.1cqw, 11px);
+  --about-note-size: 12px;
   --about-note-weight: 400;
   --about-note-line-height: 1.45;
 }
@@ -75,8 +76,8 @@ doi-kham-about {
   inline-size: min(100%, var(--about-content-width));
   min-inline-size: 0;
   gap: var(--about-gap);
-  --about-card-header-size: 18px;
-  --about-card-details-size: 13px;
+  --about-card-header-size: 30px;
+  --about-card-details-size: 14px;
   --about-card-content-gap: 12px;
   --about-card-padding: clamp(14px, 2.5cqw, 28px);
   --about-card-radius: clamp(14px, 2cqw, 20px);
@@ -120,8 +121,9 @@ doi-kham-about {
 
 .about__cards {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, var(--about-card-width)));
   align-items: stretch;
+  justify-content: center;
   inline-size: 100%;
   min-inline-size: 0;
   gap: var(--about-cards-gap);
@@ -190,12 +192,16 @@ doi-kham-about {
 
 @container about (max-width: 700px) {
   .about__container {
+    --about-title-size: 34px;
     --about-cards-gap: clamp(14px, 4cqw, 20px);
     --about-card-padding: clamp(16px, 4cqw, 24px);
     --about-card-radius: clamp(14px, 2.5cqw, 18px);
     --about-card-header-size: 24px;
-    --about-card-details-size: 13px;
+    --about-card-header-color: #000000;
+    --about-card-header-weight: 900;
+    --about-card-details-size: 14px;
     --about-card-content-gap: 10px;
+    --about-note-size: 11px;
   }
 
   .about__cards {
@@ -208,6 +214,16 @@ doi-kham-about {
     block-size: 137px;
     aspect-ratio: auto;
   }
+
+  .about-card__content {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .about-card__header,
+  .about-card__details {
+    text-align: left;
+  }
 }
 
 @container about (max-width: 480px) {
@@ -216,7 +232,7 @@ doi-kham-about {
     --about-card-padding: 18px;
     --about-card-radius: 16px;
     --about-card-header-size: 24px;
-    --about-card-details-size: 13px;
+    --about-card-details-size: 14px;
     --about-card-content-gap: 10px;
   }
 
@@ -232,7 +248,7 @@ doi-kham-about {
     --about-card-padding: 14px;
     --about-card-radius: 14px;
     --about-card-header-size: 24px;
-    --about-card-details-size: 13px;
+    --about-card-details-size: 14px;
   }
 
   .about-card {
