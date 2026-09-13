@@ -132,6 +132,13 @@ p {
   overflow: visible;
 }
 
+/* NEWS + FAQ GROUP */
+.news-faq-section {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(48px, 6vw, 72px);
+}
+
 /* NEWS SECTION */
 .news-section {
   position: relative;
