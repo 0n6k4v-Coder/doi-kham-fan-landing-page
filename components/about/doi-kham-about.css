@@ -41,9 +41,9 @@ doi-kham-about {
   --about-card-radius: clamp(14px, 2cqw, 20px);
   --about-card-padding: clamp(14px, 2.5cqw, 28px);
 
-  --about-card-header-color: #000000;
+  --about-card-header-color: #FDC000;
   --about-card-header-size: 30px;
-  --about-card-header-weight: 900;
+  --about-card-header-weight: 800;
   --about-card-header-line-height: 1.2;
 
   --about-card-details-color: #33261A;
@@ -197,8 +197,8 @@ doi-kham-about {
     --about-card-padding: clamp(16px, 4cqw, 24px);
     --about-card-radius: clamp(14px, 2.5cqw, 18px);
     --about-card-header-size: 24px;
-    --about-card-header-color: #000000;
-    --about-card-header-weight: 900;
+    --about-card-header-color: #FDC000;
+    --about-card-header-weight: 800;
     --about-card-details-size: 14px;
     --about-card-content-gap: 10px;
     --about-note-size: 11px;
