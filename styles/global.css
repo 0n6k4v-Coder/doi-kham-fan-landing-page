@@ -21,14 +21,10 @@ body {
 
 body::before {
   content: "";
-
   position: fixed;
   inset: 0;
-
   z-index: 0;
-
   pointer-events: none;
-
   background:
     radial-gradient(
       ellipse
@@ -40,7 +36,6 @@ body::before {
       rgb(255 245 220 / 2.5%) 48%,
       transparent 72%
     );
-
   filter: blur(clamp(18px, 2.5vw, 36px));
 }
 
@@ -81,10 +76,8 @@ p {
 .page {
   position: relative;
   z-index: 1;
-
   inline-size: 100%;
   min-block-size: 100vh;
-
   isolation: isolate;
 }
 
@@ -92,107 +85,79 @@ p {
 .header {
   position: sticky;
   inset-block-start: 0;
-
   z-index: 10;
-
   display: flex;
   align-items: center;
-
   inline-size: 100%;
   block-size: var(--header-max-height);
   max-block-size: var(--header-max-height);
-
   padding-block: var(--header-block-padding);
   padding-inline: var(--header-inline-padding);
-
   background: transparent;
 }
 
 .header__logo {
   display: block;
-
   inline-size: var(--logo-size);
   block-size: var(--logo-size);
-
   max-inline-size: 100%;
   max-block-size: 100%;
-
   flex: 0 1 auto;
-
   object-fit: contain;
 }
 
 /* MAIN */
 .main {
   position: relative;
-
   z-index: 1;
-
   inline-size: 100%;
 }
 
 /* HERO SECTION */
 .hero-section {
   position: relative;
-
   inline-size: 100%;
   block-size: var(--hero-stage-height);
-
   overflow: visible;
 }
 
 /* FIXED HERO */
 .hero-stage {
   position: fixed;
-
   inset-block-start: var(--header-max-height);
   inset-inline: 0;
-
   z-index: 1;
-
   inline-size: 100%;
   block-size: var(--hero-stage-height);
   min-block-size: var(--hero-stage-height);
-
   overflow: visible;
 }
 
 /* ORGANIC SECTION */
 .organic-section {
   position: relative;
-
   z-index: 2;
-
   inline-size: 100%;
   block-size: var(--organic-section-height);
-
   overflow: visible;
 }
 
 /* RECTANGULAR CONTENT CONTAINER */
 .organic-container {
   position: absolute;
-
   inset-block-start: 0;
   inset-inline-start: 50%;
-
   inline-size: 100%;
   block-size: auto;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   row-gap: var(--organic-container-gap);
-
   box-sizing: border-box;
-
   padding-block: var(--organic-container-block-padding);
-
   background: var(--color-bg-center);
-
   pointer-events: auto;
-
   transform: translate3d(
     -50%,
     var(--organic-container-start-offset),
@@ -206,11 +171,8 @@ p {
     --header-inline-padding: clamp(16px, 5vw, 28px);
     --header-block-padding: 16px;
     --logo-size: 92px;
-
     --hero-stage-height: calc(100vh - var(--header-max-height));
-
     --organic-section-height: 215vh;
-
     --organic-container-start-offset: 0%;
   }
 }
@@ -220,11 +182,8 @@ p {
     --header-inline-padding: 18px;
     --header-block-padding: 16px;
     --logo-size: 92px;
-
     --organic-section-height: 205vh;
-
     --organic-child-inline-padding: 20px;
-
     --organic-container-start-offset: 0%;
   }
 }
@@ -234,11 +193,8 @@ p {
     --header-inline-padding: 14px;
     --header-block-padding: 16px;
     --logo-size: 92px;
-
     --organic-section-height: 200vh;
-
     --organic-child-inline-padding: 16px;
-
     --organic-container-start-offset: 0%;
   }
 }
@@ -247,7 +203,6 @@ p {
 @media (min-aspect-ratio: 2/1) {
   :root {
     --organic-section-height: 230vh;
-
     --organic-container-start-offset: 0%;
   }
 }
