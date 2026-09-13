@@ -70,7 +70,6 @@ p {
   --hero-stage-height: calc(100vh - var(--header-max-height));
 
   --organic-section-height: 220vh;
-  --organic-container-height: clamp(120vh, 150vw, 170vh);
   --organic-container-gap: clamp(32px, 6vw, 64px);
   --organic-container-block-padding: clamp(48px, 7vw, 96px);
   --organic-container-inline-padding: clamp(20px, 5vw, 72px);
@@ -178,7 +177,7 @@ p {
   inset-inline-start: 50%;
 
   inline-size: 100%;
-  block-size: var(--organic-container-height);
+  block-size: auto;
 
   display: flex;
   flex-direction: column;
@@ -212,7 +211,6 @@ p {
     --hero-stage-height: calc(100vh - var(--header-max-height));
 
     --organic-section-height: 215vh;
-    --organic-container-height: 150vh;
 
     --organic-container-start-offset: 0%;
   }
@@ -225,7 +223,6 @@ p {
     --logo-size: 92px;
 
     --organic-section-height: 205vh;
-    --organic-container-height: 150vh;
 
     --organic-container-block-padding: clamp(48px, 7vw, 96px);
     --organic-container-inline-padding: 20px;
@@ -241,7 +238,6 @@ p {
     --logo-size: 92px;
 
     --organic-section-height: 200vh;
-    --organic-container-height: 150vh;
 
     --organic-container-block-padding: clamp(48px, 7vw, 96px);
     --organic-container-inline-padding: 16px;
@@ -254,7 +250,6 @@ p {
 @media (min-aspect-ratio: 2/1) {
   :root {
     --organic-section-height: 230vh;
-    --organic-container-height: clamp(760px, 120vw, 1100px);
 
     --organic-container-start-offset: 0%;
   }
