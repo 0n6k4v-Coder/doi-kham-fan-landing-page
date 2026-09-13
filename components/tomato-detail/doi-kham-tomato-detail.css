@@ -17,6 +17,7 @@ doi-kham-tomato-detail {
   display: block;
   inline-size: 100%;
   min-inline-size: 0;
+  padding-inline: var(--organic-child-inline-padding);
 
   --tomato-detail-content-width: 1440px;
   --tomato-detail-gap: clamp(20px, 4vw, 64px);
@@ -47,7 +48,6 @@ doi-kham-tomato-detail {
   justify-content: center;
   inline-size: 100%;
   min-inline-size: 0;
-  min-block-size: 100%;
   background: transparent;
   font-family: Arial, Helvetica, sans-serif;
 }

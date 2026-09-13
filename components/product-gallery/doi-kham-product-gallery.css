@@ -17,6 +17,7 @@ doi-kham-product-gallery {
   display: block;
   inline-size: 100%;
   min-inline-size: 0;
+  padding-inline: 0;
   --gallery-height: 180px;
   --gallery-loop-distance: 0px;
   --product-rotation: -37deg;

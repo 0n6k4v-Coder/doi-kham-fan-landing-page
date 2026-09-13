@@ -17,6 +17,7 @@ doi-kham-about {
   display: block;
   inline-size: 100%;
   min-inline-size: 0;
+  padding-inline: var(--organic-child-inline-padding);
 
   --about-title-color: #FDC000;
   --about-text-color: #33261A;

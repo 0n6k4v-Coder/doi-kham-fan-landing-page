@@ -17,6 +17,7 @@ doi-kham-vdo {
   display: block;
   inline-size: 100%;
   min-inline-size: 0;
+  padding-inline: var(--organic-child-inline-padding);
 
   --video-container-width: 1270px;
   --video-ratio-desktop: 1270 / 715;
