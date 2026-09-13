@@ -170,7 +170,7 @@ p {
 }
 
 .organic-surface__top-circle {
-  aspect-ratio: 4 / 1;
+  aspect-ratio: 6 / 1;
   background: var(--color-bg-center);
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
 }
@@ -189,7 +189,7 @@ p {
 }
 
 .organic-surface__bottom-circle {
-  aspect-ratio: 4 / 1;
+  aspect-ratio: 6 / 1;
   background: var(--color-bg-center);
   border-radius: 0 0 50% 50% / 0 0 100% 100%;
 }
@@ -202,6 +202,10 @@ p {
     --logo-size: 92px;
     --hero-stage-height: calc(100vh - var(--header-max-height));
     --organic-section-height: 215vh;
+  }
+
+  .organic-container {
+    padding-block: var(--organic-container-gap);
   }
 }
 
