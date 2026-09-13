@@ -80,16 +80,16 @@ class DoiKhamProductLine extends HTMLElement {
           </div>
           <div class="product-line-up__controls" aria-label="Product carousel controls">
             <div class="product-line-up__control">
-              <button class="product-line-up__control-button" type="button" aria-label="Previous product">
+              <button class="product-line-up__control-button" type="button" data-direction="previous" aria-label="Previous product">
                 <svg class="product-line-up__control-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
                   <path d="M14.5 5.5L8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </button>
             </div>
             <div class="product-line-up__control">
-              <button class="product-line-up__control-button" type="button" aria-label="Next product">
+              <button class="product-line-up__control-button" type="button" data-direction="next" aria-label="Next product">
                 <svg class="product-line-up__control-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-                  <path d="M9.5 5.5L16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M9.5 5.5L16 12l-6.5-6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </button>
             </div>
@@ -102,8 +102,8 @@ class DoiKhamProductLine extends HTMLElement {
   cacheElements() {
     this.content = this.querySelector(".product-line-up__content");
     this.cards = this.querySelector(".product-line-up__cards");
-    this.previousButton = this.querySelector(".product-line-up__control-button:first-of-type");
-    this.nextButton = this.querySelector(".product-line-up__control-button:last-of-type");
+    this.previousButton = this.querySelector('[data-direction="previous"]');
+    this.nextButton = this.querySelector('[data-direction="next"]');
     this.handleWindowResize = this.handleWindowResize.bind(this);
     this.handlePrevious = this.handlePrevious.bind(this);
     this.handleNext = this.handleNext.bind(this);
