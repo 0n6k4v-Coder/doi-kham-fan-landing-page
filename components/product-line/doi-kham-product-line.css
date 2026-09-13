@@ -9,7 +9,6 @@ Code Convention:
 - Parent containers control spacing/gaps between direct children.
 - Child containers control their own internal layout and spacing.
 - Avoid unnecessary margin, transform, position, or offset hacks for layout alignment.
-- Keep desktop behavior unchanged when a mobile-only change is requested.
 - Keep the HTML previewable inside a standard fenced HTML code block.
 */
 
@@ -58,7 +57,7 @@ doi-kham-product-line {
 .product-line-up__logo-container { display: flex; align-items: center; justify-content: center; inline-size: 100%; block-size: auto; padding-inline: var(--organic-child-inline-padding, 0); }
 .product-line-up__logo { display: block; inline-size: var(--line-up-logo-size); block-size: var(--line-up-logo-size); flex: 0 0 auto; object-fit: contain; object-position: center; }
 .product-line-up__title { display: block; inline-size: max-content; max-inline-size: 100%; margin: 0; padding-inline: var(--organic-child-inline-padding, 0); color: var(--line-up-title-color); font-size: var(--line-up-title-size); line-height: 1; font-weight: var(--line-up-title-weight); text-align: center; white-space: nowrap; }
-.product-line-up__content { display: flex; justify-content: center; inline-size: 100%; max-inline-size: var(--product-cards-max-width); min-inline-size: 0; }
+.product-line-up__content { display: flex; justify-content: center; inline-size: 100%; max-inline-size: none; min-inline-size: 0; padding-inline: var(--organic-child-inline-padding, 0); box-sizing: border-box; }
 .product-line-up__cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; inline-size: 100%; min-inline-size: 0; gap: var(--product-card-gap); padding: 0; }
 .product-card-shell { position: relative; inline-size: 100%; min-inline-size: 0; min-block-size: 0; aspect-ratio: var(--product-card-ratio); overflow: visible; }
 .product-card-back { position: absolute; inset: 0; z-index: 0; inline-size: 100%; block-size: 100%; border-radius: var(--product-card-radius); background-color: var(--product-card-back-bg); pointer-events: none; }
