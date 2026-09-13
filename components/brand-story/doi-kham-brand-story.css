@@ -1,0 +1,147 @@
+/*
+Code Convention:
+- Must read the latest official MDN documentation first.
+- Must apply at least one current official MDN technique.
+- Keep the code clean, clear, separated by concern, modular, and reusable.
+- Keep everything in one HTML file.
+- Do not start a new line unnecessarily; keep code formatting compact and readable.
+- Preserve the existing baseline unless I explicitly ask for a change.
+- Parent containers control spacing/gaps between direct children.
+- Child containers control their own internal layout and spacing.
+- Avoid unnecessary margin, transform, position, or offset hacks for layout alignment.
+- Keep the HTML previewable inside a standard fenced HTML code block.
+*/
+
+doi-kham-brand-story {
+  display: block;
+  inline-size: 100%;
+  min-inline-size: 0;
+  --brand-story-bg: #FFF9E6;
+  --brand-story-title-color: #FDC000;
+  --brand-story-question-color: #FDC000;
+  --brand-story-text-color: #33261A;
+  --brand-story-block-padding: clamp(48px, 8vw, 96px);
+  --brand-story-inline-padding: clamp(20px, 5vw, 72px);
+  --brand-story-content-width: 1200px;
+  --brand-story-gap: clamp(24px, 4vw, 48px);
+  --brand-story-heading-size: clamp(44px, 6vw, 64px);
+  --brand-story-heading-weight: 900;
+  --brand-story-heading-line-height: 1;
+  --brand-story-question-size: clamp(20px, 2.6vw, 28px);
+  --brand-story-question-weight: 700;
+  --brand-story-question-line-height: 1.2;
+  --brand-story-text-gap: clamp(12px, 2vw, 20px);
+  --brand-story-content-gap: clamp(24px, 5vw, 64px);
+  --brand-story-image-width: 427px;
+  --brand-story-image-height: 302px;
+  --brand-story-image-ratio: 427 / 302;
+  --brand-story-image-radius: 24px;
+  --brand-story-image-rotate: -5deg;
+  --brand-story-copy-gap: clamp(18px, 2.5vw, 28px);
+  --brand-story-copy-size: clamp(15px, 1.5vw, 18px);
+  --brand-story-copy-weight: 400;
+  --brand-story-copy-line-height: 1.55;
+  --brand-story-gallery-gap: clamp(24px, 5vw, 64px);
+  --brand-story-gallery-left-width: 354px;
+  --brand-story-gallery-left-height: 240px;
+  --brand-story-gallery-left-ratio: 354 / 240;
+  --brand-story-gallery-right-width: 378px;
+  --brand-story-gallery-right-height: 252px;
+  --brand-story-gallery-right-ratio: 378 / 252;
+  --brand-story-gallery-radius: 24px;
+  --brand-story-gallery-left-rotate: -6deg;
+  --brand-story-gallery-right-rotate: 6deg;
+  --brand-story-gallery-min-height: 320px;
+  --brand-story-ending-gap: clamp(24px, 5vw, 64px);
+  --brand-story-ending-text-width: min(100%, 720px);
+  --brand-story-ending-text-gap: clamp(18px, 2.5vw, 28px);
+  --brand-story-ending-text-size: 16px;
+  --brand-story-ending-text-weight: 400;
+  --brand-story-ending-text-line-height: 1.55;
+  --brand-story-ending-image-width: 142px;
+  --brand-story-ending-image-height: 345px;
+  --brand-story-ending-image-ratio: 142 / 345;
+  --brand-story-ending-image-radius: 24px;
+  --brand-story-ending-image-rotate: 5deg;
+  --brand-story-mobile-stair-image-width: min(65%, 260px);
+}
+
+.brand-story { display: flex; align-items: center; justify-content: center; inline-size: 100%; min-block-size: 100svh; padding-block: var(--brand-story-block-padding); padding-inline: var(--brand-story-inline-padding); background-color: var(--brand-story-bg); }
+.brand-story__container { container: brand-story / inline-size; display: flex; flex-direction: column; align-items: center; justify-content: center; inline-size: min(100%, var(--brand-story-content-width)); min-inline-size: 0; gap: var(--brand-story-gap); }
+.brand-story__intro { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; inline-size: 100%; min-inline-size: 0; gap: var(--brand-story-text-gap); text-align: left; }
+.brand-story__heading { display: block; inline-size: 100%; max-inline-size: 100%; margin: 0; color: var(--brand-story-title-color); font-size: var(--brand-story-heading-size); font-weight: var(--brand-story-heading-weight); line-height: var(--brand-story-heading-line-height); text-align: left; text-wrap: balance; }
+.brand-story__question { display: block; inline-size: 100%; max-inline-size: 100%; margin: 0; color: var(--brand-story-question-color); font-size: var(--brand-story-question-size); font-weight: var(--brand-story-question-weight); line-height: var(--brand-story-question-line-height); text-align: left; text-wrap: balance; }
+.brand-story__story { display: grid; grid-template-columns: minmax(0, var(--brand-story-image-width)) minmax(0, 1fr); align-items: center; inline-size: 100%; min-inline-size: 0; gap: var(--brand-story-content-gap); }
+.brand-story__image-container { display: flex; align-items: center; justify-content: center; inline-size: 100%; max-inline-size: var(--brand-story-image-width); min-inline-size: 0; overflow: visible; }
+.brand-story__image { display: block; inline-size: min(100%, var(--brand-story-image-width)); block-size: auto; aspect-ratio: var(--brand-story-image-ratio); margin: 0; padding: 0; border: 0; border-radius: var(--brand-story-image-radius); object-fit: cover; object-position: center; transform: rotate(var(--brand-story-image-rotate)); transform-origin: center; user-select: none; -webkit-user-drag: none; }
+.brand-story__copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; inline-size: 100%; min-inline-size: 0; gap: var(--brand-story-copy-gap); text-align: left; }
+.brand-story__copy-block { inline-size: 100%; max-inline-size: 100%; margin: 0; color: var(--brand-story-text-color); font-size: var(--brand-story-copy-size); font-weight: var(--brand-story-copy-weight); line-height: var(--brand-story-copy-line-height); text-align: left; text-wrap: pretty; }
+.brand-story__gallery { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; inline-size: 100%; min-inline-size: 0; gap: var(--brand-story-gallery-gap); min-block-size: var(--brand-story-gallery-min-height); }
+.brand-story__gallery-item { display: flex; inline-size: 100%; min-inline-size: 0; overflow: visible; }
+.brand-story__gallery-item--left { align-items: flex-start; justify-content: flex-start; }
+.brand-story__gallery-item--right { align-items: flex-end; justify-content: flex-end; }
+.brand-story__gallery-image { display: block; block-size: auto; margin: 0; padding: 0; border: 0; border-radius: var(--brand-story-gallery-radius); object-fit: cover; object-position: center; user-select: none; -webkit-user-drag: none; }
+.brand-story__gallery-image--left { inline-size: min(100%, var(--brand-story-gallery-left-width)); aspect-ratio: var(--brand-story-gallery-left-ratio); transform: rotate(var(--brand-story-gallery-left-rotate)); transform-origin: center; }
+.brand-story__gallery-image--right { inline-size: min(100%, var(--brand-story-gallery-right-width)); aspect-ratio: var(--brand-story-gallery-right-ratio); transform: rotate(var(--brand-story-gallery-right-rotate)); transform-origin: center; }
+.brand-story__ending { display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, 1fr); align-items: stretch; inline-size: 100%; min-inline-size: 0; gap: var(--brand-story-ending-gap); }
+.brand-story__ending-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; inline-size: var(--brand-story-ending-text-width); max-inline-size: 100%; min-inline-size: 0; gap: var(--brand-story-ending-text-gap); text-align: left; }
+.brand-story__ending-block { inline-size: 100%; max-inline-size: 100%; margin: 0; color: var(--brand-story-text-color); font-size: var(--brand-story-ending-text-size); font-weight: var(--brand-story-ending-text-weight); line-height: var(--brand-story-ending-text-line-height); text-align: left; text-wrap: pretty; }
+.brand-story__ending-image-container { display: flex; align-items: center; justify-content: center; inline-size: 100%; min-inline-size: 0; overflow: visible; }
+.brand-story__ending-image { display: block; inline-size: min(100%, var(--brand-story-ending-image-width)); block-size: auto; aspect-ratio: var(--brand-story-ending-image-ratio); margin: 0; padding: 0; border: 0; border-radius: var(--brand-story-ending-image-radius); object-fit: contain; object-position: center; transform: rotate(var(--brand-story-ending-image-rotate)); transform-origin: center; user-select: none; -webkit-user-drag: none; }
+
+@container brand-story (max-width: 900px) {
+  .brand-story__story { grid-template-columns: minmax(0, 40%) minmax(0, 1fr); gap: clamp(20px, 4vw, 40px); }
+  .brand-story__image { inline-size: 100%; }
+  .brand-story__copy-block { font-size: clamp(14px, 1.8vw, 17px); }
+  .brand-story__gallery { gap: clamp(20px, 4vw, 40px); min-block-size: clamp(280px, 34vw, 320px); }
+  .brand-story__gallery-image--left { inline-size: min(100%, 354px); }
+  .brand-story__gallery-image--right { inline-size: min(100%, 378px); }
+  .brand-story__ending { grid-template-columns: minmax(0, 1fr) minmax(160px, 240px); gap: clamp(20px, 4vw, 40px); }
+  .brand-story__ending-block { font-size: clamp(14px, 1.7vw, 16px); }
+}
+
+@container brand-story (max-width: 700px) {
+  .brand-story__container { gap: clamp(20px, 5vw, 32px); }
+  .brand-story__intro { gap: clamp(10px, 2.5vw, 16px); }
+  .brand-story__heading { font-size: clamp(40px, 12vw, 56px); }
+  .brand-story__question { font-size: clamp(20px, 6vw, 28px); }
+  .brand-story__story { display: flex; flex-direction: column; align-items: stretch; inline-size: 100%; gap: clamp(24px, 5vw, 32px); }
+  .brand-story__copy { order: 1; inline-size: 100%; gap: clamp(14px, 3vw, 20px); }
+  .brand-story__image-container { order: 2; inline-size: 100%; max-inline-size: none; align-items: flex-start; justify-content: flex-start; }
+  .brand-story__image { inline-size: var(--brand-story-mobile-stair-image-width); max-inline-size: 100%; }
+  .brand-story__copy-block { font-size: clamp(14px, 4vw, 16px); line-height: 1.5; }
+  .brand-story__gallery { display: flex; flex-direction: column; align-items: stretch; inline-size: 100%; min-block-size: auto; gap: clamp(24px, 5vw, 32px); }
+  .brand-story__gallery-item { display: flex; inline-size: 100%; min-inline-size: 0; min-block-size: 0; overflow: visible; }
+  .brand-story__gallery-item--left { align-items: center; justify-content: center; }
+  .brand-story__gallery-item--right { align-items: flex-end; justify-content: flex-end; }
+  .brand-story__gallery-image--left, .brand-story__gallery-image--right { inline-size: var(--brand-story-mobile-stair-image-width); max-inline-size: 100%; }
+  .brand-story__ending { display: flex; flex-direction: column; align-items: stretch; inline-size: 100%; gap: clamp(24px, 5vw, 32px); }
+  .brand-story__ending-copy { order: 1; inline-size: 100%; gap: clamp(14px, 3vw, 20px); }
+  .brand-story__ending-block { font-size: 16px; line-height: 1.5; }
+  .brand-story__ending-image-container { order: 2; display: flex; align-items: center; justify-content: flex-end; inline-size: 100%; }
+  .brand-story__ending-image { inline-size: min(100%, var(--brand-story-ending-image-width)); }
+}
+
+@container brand-story (max-width: 480px) {
+  .brand-story { padding-inline: 20px; }
+  .brand-story__image-container { max-inline-size: 100%; }
+  .brand-story__image { inline-size: min(65%, 240px); max-inline-size: 100%; border-radius: 24px; }
+  .brand-story__copy-block { font-size: 14px; line-height: 1.5; }
+  .brand-story__gallery { gap: clamp(24px, 5vw, 32px); }
+  .brand-story__gallery-image--left, .brand-story__gallery-image--right { inline-size: min(65%, 240px); border-radius: 24px; }
+  .brand-story__ending-block { font-size: 15px; line-height: 1.5; }
+  .brand-story__ending-image-container { justify-content: flex-end; }
+  .brand-story__ending-image { max-inline-size: 120px; }
+}
+
+@container brand-story (max-width: 360px) {
+  .brand-story__story { gap: 24px; }
+  .brand-story__copy { gap: 12px; }
+  .brand-story__copy-block { font-size: 13px; line-height: 1.45; }
+  .brand-story__gallery { gap: 24px; }
+  .brand-story__image { inline-size: 62%; max-inline-size: 220px; }
+  .brand-story__gallery-image--left, .brand-story__gallery-image--right { inline-size: 62%; max-inline-size: 220px; }
+  .brand-story__ending { gap: 24px; }
+  .brand-story__ending-block { font-size: 14px; line-height: 1.45; }
+  .brand-story__ending-image { max-inline-size: 105px; }
+}
