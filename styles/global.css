@@ -68,8 +68,8 @@ p {
   --organic-container-gap: clamp(32px, 6vw, 64px);
   --organic-container-block-padding: clamp(48px, 7vw, 96px);
   --organic-child-inline-padding: clamp(20px, 5vw, 72px);
+  --organic-surface-width: min(100%, var(--section-content-width));
 
-  --organic-container-start-offset: 0%;
   --section-content-width: 1200px;
 }
 
@@ -156,10 +156,29 @@ p {
   overflow: visible;
 }
 
+/* ORGANIC SURFACE */
+.organic-surface {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  inline-size: 100%;
+  gap: 0;
+}
+
+.organic-surface__top-circle,
+.organic-surface__bottom-circle,
+.organic-container {
+  inline-size: var(--organic-surface-width);
+}
+
+.organic-surface__top-circle {
+  aspect-ratio: 2 / 1;
+  background: var(--color-bg-center);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
 /* RECTANGULAR CONTENT CONTAINER */
 .organic-container {
-  position: relative;
-  inline-size: 100%;
   block-size: auto;
   display: flex;
   flex-direction: column;
@@ -170,11 +189,12 @@ p {
   padding-block: var(--organic-container-block-padding);
   background: var(--color-bg-center);
   pointer-events: auto;
-  transform: translate3d(
-    -50%,
-    var(--organic-container-start-offset),
-    0
-  );
+}
+
+.organic-surface__bottom-circle {
+  aspect-ratio: 2 / 1;
+  background: var(--color-bg-center);
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
 }
 
 /* TABLET / MOBILE */
@@ -185,7 +205,6 @@ p {
     --logo-size: 92px;
     --hero-stage-height: calc(100vh - var(--header-max-height));
     --organic-section-height: 215vh;
-    --organic-container-start-offset: 0%;
   }
 }
 
@@ -196,7 +215,6 @@ p {
     --logo-size: 92px;
     --organic-section-height: 205vh;
     --organic-child-inline-padding: 20px;
-    --organic-container-start-offset: 0%;
   }
 }
 
@@ -207,7 +225,6 @@ p {
     --logo-size: 92px;
     --organic-section-height: 200vh;
     --organic-child-inline-padding: 16px;
-    --organic-container-start-offset: 0%;
   }
 }
 
@@ -215,6 +232,5 @@ p {
 @media (min-aspect-ratio: 2/1) {
   :root {
     --organic-section-height: 230vh;
-    --organic-container-start-offset: 0%;
   }
 }
