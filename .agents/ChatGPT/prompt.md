@@ -33,3 +33,24 @@ Code Convention:
 - Keep desktop behavior unchanged when a mobile-only change is requested.
 - Keep the HTML previewable inside a standard fenced HTML code block.
 ```
+
+```text
+Git Commit & Push Convention:
+
+- For every Git commit/push workflow, read and follow the latest repository git-auto-commit-push SKILL:
+  https://github.com/0n6k4v-Coder/skills/blob/master/0n6k4v/git-auto-commit-push/SKILL.md
+- Follow the SKILL workflow in order: check status, review the full diff, draft the commit message, ask for explicit confirmation, commit, push, and verify the final commit.
+- Generate the commit message from the actual diff only. Do not invent changes that are not present.
+- Always use Conventional Commits format.
+- The commit title must be concise, clear, and written in the imperative mood.
+- The commit body must be detailed, with file/area-specific bullets explaining what changed and the purpose of each meaningful change.
+- Call out each meaningfully changed file or area instead of giving a vague summary.
+- The commit message itself must always be written in English, regardless of the conversation language.
+- Before committing, show the complete proposed commit message in a fenced code block and explicitly ask for confirmation.
+- Do not commit or push until the user explicitly approves the proposed commit message.
+- After confirmation, commit and push the current feature branch, then verify the final commit hash, author, message, and remote state.
+- Never use force push or amend unless the user explicitly asks.
+- End every generated commit message with this exact attribution line:
+  Author: ChatGPT Luna (Web Browser Chat)
+- Do not include an email address for the attribution.
+```
