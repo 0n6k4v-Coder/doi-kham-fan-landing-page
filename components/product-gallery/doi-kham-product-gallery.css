@@ -85,6 +85,10 @@ doi-kham-product-gallery {
     --product-box-width: 140px;
     --product-image-height: 120px;
   }
+
+  .product-gallery__item {
+    block-size: 125px;
+  }
 }
 
 @container product-gallery (max-width: 480px) {
