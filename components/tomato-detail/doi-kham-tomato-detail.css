@@ -48,6 +48,7 @@ doi-kham-tomato-detail {
   justify-content: center;
   inline-size: 100%;
   min-inline-size: 0;
+  min-block-size: 100%;
   background: transparent;
   font-family: Arial, Helvetica, sans-serif;
 }
