@@ -35,9 +35,71 @@ class DoiKhamFaq extends HTMLElement {
   }
 
   setupInteractions() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     this.querySelectorAll(".faq-card").forEach((card) => {
-      card.addEventListener("toggle", () => {
-        card.classList.toggle("is-open", card.open);
+      const summary = card.querySelector(".faq-card__summary");
+      const details = card.querySelector(".faq-card__details");
+      let animationFrame = 0;
+
+      const openFaq = () => {
+        cancelAnimationFrame(animationFrame);
+        card.open = true;
+        card.classList.add("is-open");
+        details.style.height = "0px";
+
+        if (prefersReducedMotion) {
+          details.style.height = "auto";
+          return;
+        }
+
+        animationFrame = requestAnimationFrame(() => {
+          details.style.height = `${details.scrollHeight}px`;
+        });
+
+        const onOpenEnd = (event) => {
+          if (event.propertyName !== "height") return;
+          details.style.height = "auto";
+          details.removeEventListener("transitionend", onOpenEnd);
+        };
+
+        details.addEventListener("transitionend", onOpenEnd);
+      };
+
+      const closeFaq = () => {
+        cancelAnimationFrame(animationFrame);
+        details.style.height = `${details.scrollHeight}px`;
+
+        if (prefersReducedMotion) {
+          card.classList.remove("is-open");
+          card.open = false;
+          details.style.height = "";
+          return;
+        }
+
+        animationFrame = requestAnimationFrame(() => {
+          card.classList.remove("is-open");
+          details.style.height = "0px";
+        });
+
+        const onCloseEnd = (event) => {
+          if (event.propertyName !== "height") return;
+          card.open = false;
+          details.style.height = "";
+          details.removeEventListener("transitionend", onCloseEnd);
+        };
+
+        details.addEventListener("transitionend", onCloseEnd);
+      };
+
+      summary.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        if (card.open) {
+          closeFaq();
+        } else {
+          openFaq();
+        }
       });
     });
   }
