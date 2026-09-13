@@ -89,7 +89,7 @@ class DoiKhamProductLine extends HTMLElement {
             <div class="product-line-up__control">
               <button class="product-line-up__control-button" type="button" data-direction="next" aria-label="Next product">
                 <svg class="product-line-up__control-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-                  <path d="M9.5 5.5L16 12l-6.5-6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M9.5 5.5L16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </button>
             </div>
