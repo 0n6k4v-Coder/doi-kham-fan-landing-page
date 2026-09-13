@@ -137,21 +137,10 @@ class DoiKhamProductGallery extends HTMLElement {
 
     const itemRect = firstItem.getBoundingClientRect();
     const itemWidth = itemRect.width;
-    const itemHeight = itemRect.height;
     const galleryGap = parseFloat(getComputedStyle(this.track).columnGap) || 0;
     const loopDistance = itemWidth + galleryGap;
 
     this.gallery.style.setProperty("--gallery-loop-distance", `${loopDistance}px`);
-
-    const image = firstItem.querySelector(".product-gallery__image");
-    if (image) {
-      const imageRect = image.getBoundingClientRect();
-      const rotation = parseFloat(getComputedStyle(image).rotate) || -37;
-      const angle = Math.abs(rotation) * Math.PI / 180;
-      const rotatedHeight = Math.abs(imageRect.width * Math.sin(angle)) + Math.abs(imageRect.height * Math.cos(angle));
-      const galleryHeight = Math.max(itemHeight, rotatedHeight);
-      this.gallery.style.setProperty("--gallery-height", `${galleryHeight}px`);
-    }
 
     await this.nextFrame();
 
