@@ -18,13 +18,9 @@ doi-kham-about {
   inline-size: 100%;
   min-inline-size: 0;
 
-  --about-bg: #FFF9E6;
   --about-title-color: #FDC000;
   --about-text-color: #33261A;
   --about-note-color: #736659;
-
-  --about-block-padding: clamp(32px, 7vw, 80px);
-  --about-inline-padding: clamp(20px, 5vw, 72px);
 
   --about-content-width: 1200px;
   --about-gap: clamp(20px, 3vw, 36px);
@@ -67,10 +63,6 @@ doi-kham-about {
   align-items: center;
   justify-content: center;
   inline-size: 100%;
-  min-block-size: 100svh;
-  padding-block: var(--about-block-padding);
-  padding-inline: var(--about-inline-padding);
-  background-color: var(--about-bg);
   font-family: Arial, Helvetica, sans-serif;
 }
 
