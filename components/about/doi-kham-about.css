@@ -192,7 +192,7 @@ doi-kham-about {
 
 @container about (max-width: 700px) {
   .about__container {
-    --about-title-size: 34px;
+    --about-title-size: 44px;
     --about-cards-gap: clamp(14px, 4cqw, 20px);
     --about-card-padding: clamp(16px, 4cqw, 24px);
     --about-card-radius: clamp(14px, 2.5cqw, 18px);
@@ -202,6 +202,11 @@ doi-kham-about {
     --about-card-details-size: 14px;
     --about-card-content-gap: 10px;
     --about-note-size: 11px;
+  }
+
+  .about__heading,
+  .about__note {
+    text-align: left;
   }
 
   .about__cards {
