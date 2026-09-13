@@ -5,4 +5,5 @@ import "../components/about/doi-kham-about.js";
 import "../components/product-gallery/doi-kham-product-gallery.js";
 import "../components/product-line/doi-kham-product-line.js";
 import "../components/brand-story/doi-kham-brand-story.js";
+import "../components/news/doi-kham-news.js";
 import "./organic-container.js";
