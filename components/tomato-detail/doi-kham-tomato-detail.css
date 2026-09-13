@@ -326,6 +326,15 @@ doi-kham-tomato-detail {
     min-inline-size: 0;
     align-items: flex-start;
   }
+
+  .tomato-detail__center-copy {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .tomato-detail__center-copy-block {
+    text-align: left;
+  }
 }
 
 /* CONTAINER QUERY: SMALL MOBILE */
