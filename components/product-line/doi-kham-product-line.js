@@ -65,13 +65,15 @@ class DoiKhamProductLine extends HTMLElement {
     this.innerHTML = `
       <section class="product-line-up" aria-labelledby="product-line-up-title">
         <div class="product-line-up__container">
-          <img
-            class="product-line-up__logo"
-            src="https://www.doikham.co.th/images/layout/header/logo.png"
-            alt="DOI KHAM"
-            width="72"
-            height="72"
-          >
+          <div class="product-line-up__logo-container">
+            <img
+              class="product-line-up__logo"
+              src="https://www.doikham.co.th/images/layout/header/logo.png"
+              alt="DOI KHAM"
+              width="72"
+              height="72"
+            >
+          </div>
           <h2 class="product-line-up__title" id="product-line-up-title">RED HARVEST LINE</h2>
           <div class="product-line-up__content">
             <div class="product-line-up__cards"></div>
