@@ -66,7 +66,6 @@ p {
 
   --organic-section-height: 220vh;
   --organic-container-gap: clamp(32px, 6vw, 64px);
-  --organic-container-block-padding: clamp(48px, 7vw, 96px);
   --organic-child-inline-padding: clamp(20px, 5vw, 72px);
 
   --section-content-width: 1200px;
@@ -185,7 +184,6 @@ p {
   justify-content: flex-start;
   row-gap: var(--organic-container-gap);
   box-sizing: border-box;
-  padding-block: var(--organic-container-block-padding);
   background: var(--color-bg-center);
   pointer-events: auto;
 }
