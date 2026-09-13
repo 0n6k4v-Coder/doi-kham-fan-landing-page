@@ -12,57 +12,7 @@ Code Convention:
 - Keep the HTML previewable inside a standard fenced HTML code block.
 */
 
-doi-kham-brand-story {
-  display: block;
-  inline-size: 100%;
-  min-inline-size: 0;
-  --brand-story-title-color: #FDC000;
-  --brand-story-question-color: #FDC000;
-  --brand-story-text-color: #33261A;
-  --brand-story-inline-padding: clamp(20px, 5vw, 72px);
-  --brand-story-content-width: 1200px;
-  --brand-story-gap: clamp(24px, 4vw, 48px);
-  --brand-story-heading-size: clamp(44px, 6vw, 64px);
-  --brand-story-heading-weight: 900;
-  --brand-story-heading-line-height: 1;
-  --brand-story-question-size: clamp(20px, 2.6vw, 28px);
-  --brand-story-question-weight: 700;
-  --brand-story-question-line-height: 1.2;
-  --brand-story-text-gap: clamp(12px, 2vw, 20px);
-  --brand-story-content-gap: clamp(24px, 5vw, 64px);
-  --brand-story-image-width: 427px;
-  --brand-story-image-height: 302px;
-  --brand-story-image-ratio: 427 / 302;
-  --brand-story-image-radius: 24px;
-  --brand-story-image-rotate: -5deg;
-  --brand-story-copy-gap: clamp(18px, 2.5vw, 28px);
-  --brand-story-copy-size: clamp(15px, 1.5vw, 18px);
-  --brand-story-copy-weight: 400;
-  --brand-story-copy-line-height: 1.55;
-  --brand-story-gallery-gap: clamp(24px, 5vw, 64px);
-  --brand-story-gallery-left-width: 354px;
-  --brand-story-gallery-left-height: 240px;
-  --brand-story-gallery-left-ratio: 354 / 240;
-  --brand-story-gallery-right-width: 378px;
-  --brand-story-gallery-right-height: 252px;
-  --brand-story-gallery-right-ratio: 378 / 252;
-  --brand-story-gallery-radius: 24px;
-  --brand-story-gallery-left-rotate: -6deg;
-  --brand-story-gallery-right-rotate: 6deg;
-  --brand-story-gallery-min-height: 320px;
-  --brand-story-ending-gap: clamp(24px, 5vw, 64px);
-  --brand-story-ending-text-width: min(100%, 720px);
-  --brand-story-ending-text-gap: clamp(18px, 2.5vw, 28px);
-  --brand-story-ending-text-size: 16px;
-  --brand-story-ending-text-weight: 400;
-  --brand-story-ending-text-line-height: 1.55;
-  --brand-story-ending-image-width: 142px;
-  --brand-story-ending-image-height: 345px;
-  --brand-story-ending-image-ratio: 142 / 345;
-  --brand-story-ending-image-radius: 24px;
-  --brand-story-ending-image-rotate: 5deg;
-  --brand-story-mobile-stair-image-width: min(65%, 260px);
-}
+doi-kham-brand-story { display: block; inline-size: 100%; min-inline-size: 0; padding-inline: var(--organic-child-inline-padding, 0); --brand-story-title-color: #FDC000; --brand-story-question-color: #FDC000; --brand-story-text-color: #33261A; --brand-story-content-width: 1200px; --brand-story-gap: clamp(24px, 4vw, 48px); --brand-story-heading-size: 84px; --brand-story-heading-weight: 900; --brand-story-heading-line-height: 1; --brand-story-question-size: 36px; --brand-story-question-weight: 700; --brand-story-question-line-height: 1.2; --brand-story-text-gap: clamp(12px, 2vw, 20px); --brand-story-content-gap: clamp(24px, 5vw, 64px); --brand-story-image-width: 427px; --brand-story-image-height: 302px; --brand-story-image-ratio: 427 / 302; --brand-story-image-radius: 24px; --brand-story-image-rotate: -5deg; --brand-story-copy-gap: clamp(18px, 2.5vw, 28px); --brand-story-copy-size: 16px; --brand-story-copy-weight: 400; --brand-story-copy-line-height: 1.55; --brand-story-gallery-gap: clamp(24px, 5vw, 64px); --brand-story-gallery-left-width: 354px; --brand-story-gallery-left-height: 240px; --brand-story-gallery-left-ratio: 354 / 240; --brand-story-gallery-right-width: 378px; --brand-story-gallery-right-height: 252px; --brand-story-gallery-right-ratio: 378 / 252; --brand-story-gallery-radius: 24px; --brand-story-gallery-left-rotate: -6deg; --brand-story-gallery-right-rotate: 6deg; --brand-story-gallery-min-height: 320px; --brand-story-ending-gap: clamp(24px, 5vw, 64px); --brand-story-ending-text-width: min(100%, 720px); --brand-story-ending-text-gap: clamp(18px, 2.5vw, 28px); --brand-story-ending-text-size: 16px; --brand-story-ending-text-weight: 400; --brand-story-ending-text-line-height: 1.55; --brand-story-ending-image-width: 142px; --brand-story-ending-image-height: 345px; --brand-story-ending-image-ratio: 142 / 345; --brand-story-ending-image-radius: 24px; --brand-story-ending-image-rotate: 5deg; --brand-story-mobile-stair-image-width: min(65%, 260px); }
 
 .brand-story { display: flex; align-items: center; justify-content: center; inline-size: 100%; min-block-size: 0; padding: 0; background-color: transparent; }
 .brand-story__container { container: brand-story / inline-size; display: flex; flex-direction: column; align-items: center; justify-content: center; inline-size: min(100%, var(--brand-story-content-width)); min-inline-size: 0; gap: var(--brand-story-gap); }
@@ -90,24 +40,24 @@ doi-kham-brand-story {
 @container brand-story (max-width: 900px) {
   .brand-story__story { grid-template-columns: minmax(0, 40%) minmax(0, 1fr); gap: clamp(20px, 4vw, 40px); }
   .brand-story__image { inline-size: 100%; }
-  .brand-story__copy-block { font-size: clamp(14px, 1.8vw, 17px); }
+  .brand-story__copy-block { font-size: 16px; }
   .brand-story__gallery { gap: clamp(20px, 4vw, 40px); min-block-size: clamp(280px, 34vw, 320px); }
   .brand-story__gallery-image--left { inline-size: min(100%, 354px); }
   .brand-story__gallery-image--right { inline-size: min(100%, 378px); }
   .brand-story__ending { grid-template-columns: minmax(0, 1fr) minmax(160px, 240px); gap: clamp(20px, 4vw, 40px); }
-  .brand-story__ending-block { font-size: clamp(14px, 1.7vw, 16px); }
+  .brand-story__ending-block { font-size: 16px; }
 }
 
 @container brand-story (max-width: 700px) {
   .brand-story__container { gap: clamp(20px, 5vw, 32px); }
   .brand-story__intro { gap: clamp(10px, 2.5vw, 16px); }
-  .brand-story__heading { font-size: clamp(40px, 12vw, 56px); }
-  .brand-story__question { font-size: clamp(20px, 6vw, 28px); }
+  .brand-story__heading { font-size: 48px; }
+  .brand-story__question { font-size: 22px; }
   .brand-story__story { display: flex; flex-direction: column; align-items: stretch; inline-size: 100%; gap: clamp(24px, 5vw, 32px); }
   .brand-story__copy { order: 1; inline-size: 100%; gap: clamp(14px, 3vw, 20px); }
   .brand-story__image-container { order: 2; inline-size: 100%; max-inline-size: none; align-items: flex-start; justify-content: flex-start; }
   .brand-story__image { inline-size: var(--brand-story-mobile-stair-image-width); max-inline-size: 100%; }
-  .brand-story__copy-block { font-size: clamp(14px, 4vw, 16px); line-height: 1.5; }
+  .brand-story__copy-block { font-size: 13px; line-height: 1.5; }
   .brand-story__gallery { display: flex; flex-direction: column; align-items: stretch; inline-size: 100%; min-block-size: auto; gap: clamp(24px, 5vw, 32px); }
   .brand-story__gallery-item { display: flex; inline-size: 100%; min-inline-size: 0; min-block-size: 0; overflow: visible; }
   .brand-story__gallery-item--left { align-items: center; justify-content: center; }
@@ -115,7 +65,7 @@ doi-kham-brand-story {
   .brand-story__gallery-image--left, .brand-story__gallery-image--right { inline-size: var(--brand-story-mobile-stair-image-width); max-inline-size: 100%; }
   .brand-story__ending { display: flex; flex-direction: column; align-items: stretch; inline-size: 100%; gap: clamp(24px, 5vw, 32px); }
   .brand-story__ending-copy { order: 1; inline-size: 100%; gap: clamp(14px, 3vw, 20px); }
-  .brand-story__ending-block { font-size: 16px; line-height: 1.5; }
+  .brand-story__ending-block { font-size: 13px; line-height: 1.5; }
   .brand-story__ending-image-container { order: 2; display: flex; align-items: center; justify-content: flex-end; inline-size: 100%; }
   .brand-story__ending-image { inline-size: min(100%, var(--brand-story-ending-image-width)); }
 }
@@ -123,10 +73,10 @@ doi-kham-brand-story {
 @container brand-story (max-width: 480px) {
   .brand-story__image-container { max-inline-size: 100%; }
   .brand-story__image { inline-size: min(65%, 240px); max-inline-size: 100%; border-radius: 24px; }
-  .brand-story__copy-block { font-size: 14px; line-height: 1.5; }
+  .brand-story__copy-block { font-size: 13px; line-height: 1.5; }
   .brand-story__gallery { gap: clamp(24px, 5vw, 32px); }
   .brand-story__gallery-image--left, .brand-story__gallery-image--right { inline-size: min(65%, 240px); border-radius: 24px; }
-  .brand-story__ending-block { font-size: 15px; line-height: 1.5; }
+  .brand-story__ending-block { font-size: 13px; line-height: 1.5; }
   .brand-story__ending-image-container { justify-content: flex-end; }
   .brand-story__ending-image { max-inline-size: 120px; }
 }
@@ -139,6 +89,6 @@ doi-kham-brand-story {
   .brand-story__image { inline-size: 62%; max-inline-size: 220px; }
   .brand-story__gallery-image--left, .brand-story__gallery-image--right { inline-size: 62%; max-inline-size: 220px; }
   .brand-story__ending { gap: 24px; }
-  .brand-story__ending-block { font-size: 14px; line-height: 1.45; }
+  .brand-story__ending-block { font-size: 13px; line-height: 1.45; }
   .brand-story__ending-image { max-inline-size: 105px; }
 }
