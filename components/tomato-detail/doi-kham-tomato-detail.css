@@ -18,11 +18,7 @@ doi-kham-tomato-detail {
   inline-size: 100%;
   min-inline-size: 0;
 
-  --tomato-detail-block-padding: clamp(48px, 7vw, 96px);
-  --tomato-detail-inline-padding: clamp(20px, 5vw, 72px);
-
   --tomato-detail-content-width: 1440px;
-
   --tomato-detail-gap: clamp(20px, 4vw, 64px);
 
   --tomato-detail-product-image-radius: 0px;
@@ -52,8 +48,6 @@ doi-kham-tomato-detail {
   inline-size: 100%;
   min-inline-size: 0;
   min-block-size: 100%;
-  padding-block: var(--tomato-detail-block-padding);
-  padding-inline: var(--tomato-detail-inline-padding);
   background: transparent;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -335,10 +329,6 @@ doi-kham-tomato-detail {
 
 /* CONTAINER QUERY: SMALL MOBILE */
 @container tomato-detail (max-width: 480px) {
-  .tomato-detail {
-    padding-inline: 20px;
-  }
-
   .tomato-detail__container {
     gap: 32px;
   }
@@ -367,10 +357,6 @@ doi-kham-tomato-detail {
 
 /* CONTAINER QUERY: VERY SMALL MOBILE */
 @container tomato-detail (max-width: 360px) {
-  .tomato-detail {
-    padding-inline: 16px;
-  }
-
   .tomato-detail__center {
     gap: 24px;
   }
