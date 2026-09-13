@@ -133,6 +133,13 @@ p {
   overflow: visible;
 }
 
+/* NEWS SECTION */
+.news-section {
+  position: relative;
+  z-index: 2;
+  inline-size: 100%;
+}
+
 /* ORGANIC SECTION */
 .organic-section {
   position: relative;
