@@ -274,11 +274,6 @@ class DoiKhamProductLine extends HTMLElement {
   handleScroll() {
     if (!this.isMobile() || this.isNormalizing) return;
     this.currentMobileIndex = this.getNearestMobileIndex();
-    const normalizedUpper = this.productCount * 2 + 0.5;
-    const normalizedLower = this.productCount - 0.5;
-    if (this.currentMobileIndex >= normalizedUpper || this.currentMobileIndex <= normalizedLower) {
-      this.normalizeMobilePosition();
-    }
 
     if (!("onscrollend" in window)) {
       clearTimeout(this.scrollEndTimer);
