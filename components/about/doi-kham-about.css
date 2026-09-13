@@ -195,6 +195,10 @@ doi-kham-about {
     font-size: 44px;
   }
 
+  .about__description {
+    text-align: left;
+  }
+
   .about__note {
     font-size: 11px;
   }
