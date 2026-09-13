@@ -68,7 +68,6 @@ p {
   --organic-container-gap: clamp(32px, 6vw, 64px);
   --organic-container-block-padding: clamp(48px, 7vw, 96px);
   --organic-child-inline-padding: clamp(20px, 5vw, 72px);
-  --organic-surface-width: min(100%, var(--section-content-width));
 
   --section-content-width: 1200px;
 }
@@ -160,7 +159,7 @@ p {
 .organic-surface {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   inline-size: 100%;
   gap: 0;
 }
@@ -168,11 +167,11 @@ p {
 .organic-surface__top-circle,
 .organic-surface__bottom-circle,
 .organic-container {
-  inline-size: var(--organic-surface-width);
+  inline-size: 100%;
 }
 
 .organic-surface__top-circle {
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 4 / 1;
   background: var(--color-bg-center);
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
 }
@@ -192,7 +191,7 @@ p {
 }
 
 .organic-surface__bottom-circle {
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 4 / 1;
   background: var(--color-bg-center);
   border-radius: 0 0 50% 50% / 0 0 100% 100%;
 }
@@ -223,6 +222,7 @@ p {
     --header-inline-padding: 14px;
     --header-block-padding: 16px;
     --logo-size: 92px;
+    --hero-stage-height: calc(100vh - var(--header-max-height));
     --organic-section-height: 200vh;
     --organic-child-inline-padding: 16px;
   }
