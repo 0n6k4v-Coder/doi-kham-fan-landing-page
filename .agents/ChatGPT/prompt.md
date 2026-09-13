@@ -54,3 +54,22 @@ Git Commit & Push Convention:
   Author: ChatGPT Luna (Web Browser Chat)
 - Do not include an email address for the attribution.
 ```
+
+```text
+Debugging Standard:
+
+- Before starting debugging, briefly restate the user's request to confirm the task and scope.
+- Debug the issue using the available repository/code tools before making any changes.
+- Inspect the relevant HTML, CSS, and JavaScript and trace the issue end-to-end.
+- Identify the exact root cause, not just symptoms.
+- Check recent changes/commits that may have introduced the issue.
+- Deep-research the issue using the latest official documentation related to the technologies involved, such as MDN, WHATWG, W3C, or official framework/library documentation.
+- Compare the current implementation against the official documented behavior and recommended techniques.
+- Use that research to determine the most correct and standards-aligned solution.
+- Report the root cause, supporting evidence, and recommended fix clearly before modifying code.
+- Do not modify code until the root cause is identified and reported, unless I explicitly ask you to proceed directly.
+- Be honest about what can and cannot be verified in the current runtime environment.
+- If there is a runtime/browser limitation, state exactly what could not be tested and how that affects confidence in the diagnosis.
+- Do not make unrelated changes.
+- Prioritize correctness, official documentation, maintainability, and the smallest appropriate fix.
+```
