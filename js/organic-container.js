@@ -31,14 +31,9 @@ if (organicSection && organicContainer) {
 
   const getProgress = () => {
     const sectionTop = getSectionTop();
-
     const scrollPosition =
       window.scrollY - sectionTop;
 
-    /*
-     * Start the cream movement immediately
-     * when the organic section enters the viewport.
-     */
     return clamp(
       scrollPosition / window.innerHeight,
       0,
@@ -90,7 +85,7 @@ if (organicSection && organicContainer) {
 
     organicContainer.style.transform =
       `translate3d(
-        -50%,
+        0,
         ${getTranslateY(currentProgress)}%,
         0
       )`;
@@ -102,7 +97,6 @@ if (organicSection && organicContainer) {
     ) {
       animationFrameId =
         window.requestAnimationFrame(render);
-
       return;
     }
 
@@ -110,14 +104,13 @@ if (organicSection && organicContainer) {
 
     organicContainer.style.transform =
       `translate3d(
-        -50%,
+        0,
         ${getTranslateY(currentProgress)}%,
         0
       )`;
 
     animationFrameId = null;
     previousTimestamp = 0;
-
     organicContainer.style.willChange = "auto";
   };
 
@@ -126,7 +119,6 @@ if (organicSection && organicContainer) {
 
     if (!animationFrameId) {
       organicContainer.style.willChange = "transform";
-
       animationFrameId =
         window.requestAnimationFrame(render);
     }
@@ -138,7 +130,7 @@ if (organicSection && organicContainer) {
 
     organicContainer.style.transform =
       `translate3d(
-        -50%,
+        0,
         ${getTranslateY(currentProgress)}%,
         0
       )`;
