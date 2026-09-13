@@ -36,7 +36,7 @@ doi-kham-product-gallery {
 .product-gallery__track {
   display: flex;
   inline-size: max-content;
-  column-gap: 25px;
+  column-gap: var(--gallery-gap);
   --gallery-gap: 25px;
   --gallery-duration: 16s;
   --product-box-width: 180px;
