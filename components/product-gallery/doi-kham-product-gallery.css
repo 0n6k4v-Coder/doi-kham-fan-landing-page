@@ -1,0 +1,107 @@
+/*
+Code Convention:
+- Must read the latest official MDN documentation first.
+- Must apply at least one current official MDN technique.
+- Keep the code clean, clear, separated by concern, modular, and reusable.
+- Keep everything in one HTML file.
+- Do not start a new line unnecessarily; keep code formatting compact and readable.
+- Preserve the existing baseline unless I explicitly ask for a change.
+- Parent containers control spacing/gaps between direct children.
+- Child containers control their own internal layout and spacing.
+- Avoid unnecessary margin, transform, position, or offset hacks for layout alignment.
+- Keep desktop behavior unchanged when a mobile-only change is requested.
+- Keep the HTML previewable inside a standard fenced HTML code block.
+*/
+
+doi-kham-product-gallery {
+  display: block;
+  inline-size: 100%;
+  min-inline-size: 0;
+  --gallery-height: 180px;
+  --gallery-loop-distance: 0px;
+  --product-rotation: -37deg;
+}
+
+.product-gallery {
+  container: product-gallery / inline-size;
+  position: relative;
+  display: flex;
+  align-items: center;
+  inline-size: 100%;
+  block-size: var(--gallery-height);
+  overflow: hidden;
+  background: transparent;
+}
+
+.product-gallery__track {
+  display: flex;
+  inline-size: max-content;
+  column-gap: 25px;
+  --gallery-gap: 25px;
+  --gallery-duration: 16s;
+  --product-box-width: 180px;
+  --product-box-height: 460px;
+  --product-image-height: 180px;
+  will-change: transform;
+  animation: product-gallery-loop var(--gallery-duration) linear infinite;
+}
+
+.product-gallery__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--product-box-width);
+  inline-size: var(--product-box-width);
+  block-size: var(--product-box-height);
+  overflow: visible;
+}
+
+.product-gallery__image {
+  display: block;
+  inline-size: auto;
+  block-size: var(--product-image-height);
+  max-inline-size: none;
+  object-fit: contain;
+  object-position: center;
+  rotate: var(--product-rotation);
+  transform-origin: center center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@keyframes product-gallery-loop {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-1 * var(--gallery-loop-distance))); }
+}
+
+.product-gallery:hover .product-gallery__track {
+  animation-play-state: paused;
+}
+
+@container product-gallery (max-width: 700px) {
+  .product-gallery__track {
+    --gallery-gap: 50px;
+    --gallery-duration: 12s;
+    --product-box-width: 140px;
+    --product-box-height: 300px;
+    --product-image-height: 120px;
+  }
+}
+
+@container product-gallery (max-width: 480px) {
+  .product-gallery__track {
+    --gallery-gap: 0px;
+    --gallery-duration: 10s;
+    --product-box-width: 140px;
+    --product-box-height: 300px;
+    --product-image-height: 120px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-gallery__track {
+    animation: none;
+    transform: none;
+  }
+}
