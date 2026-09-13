@@ -72,6 +72,8 @@ p {
   --organic-section-height: 220vh;
   --organic-container-height: clamp(120vh, 150vw, 170vh);
   --organic-container-gap: clamp(32px, 6vw, 64px);
+  --organic-container-block-padding: clamp(48px, 7vw, 96px);
+  --organic-container-inline-padding: clamp(20px, 5vw, 72px);
 
   --organic-container-start-offset: 0%;
 }
@@ -186,6 +188,9 @@ p {
 
   box-sizing: border-box;
 
+  padding-block: var(--organic-container-block-padding);
+  padding-inline: var(--organic-container-inline-padding);
+
   background: var(--color-bg-center);
 
   pointer-events: auto;
@@ -222,6 +227,9 @@ p {
     --organic-section-height: 205vh;
     --organic-container-height: 150vh;
 
+    --organic-container-block-padding: clamp(48px, 7vw, 96px);
+    --organic-container-inline-padding: 20px;
+
     --organic-container-start-offset: 0%;
   }
 }
@@ -234,6 +242,9 @@ p {
 
     --organic-section-height: 200vh;
     --organic-container-height: 150vh;
+
+    --organic-container-block-padding: clamp(48px, 7vw, 96px);
+    --organic-container-inline-padding: 16px;
 
     --organic-container-start-offset: 0%;
   }
