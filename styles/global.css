@@ -70,6 +70,7 @@ p {
   --organic-child-inline-padding: clamp(20px, 5vw, 72px);
 
   --organic-container-start-offset: 0%;
+  --section-content-width: 1200px;
 }
 
 /* PAGE SHELL */

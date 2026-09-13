@@ -10,7 +10,7 @@
   --faq-arrow-color: #262626;
   --faq-block-padding: clamp(64px, 8vw, 120px);
   --faq-inline-padding: clamp(20px, 5vw, 72px);
-  --faq-content-width: 1052px;
+  --faq-content-width: var(--section-content-width, 1200px);
   --faq-title-size: 72px;
   --faq-title-weight: 900;
   --faq-title-line-height: 1;
