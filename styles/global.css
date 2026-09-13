@@ -113,19 +113,17 @@ p {
   inline-size: 100%;
 }
 
-/* HERO SECTION */
-.hero-section {
+/* HERO + ORGANIC SCROLL REGION */
+.hero-organic-section {
   position: relative;
   inline-size: 100%;
-  block-size: var(--hero-stage-height);
   overflow: visible;
 }
 
-/* FIXED HERO */
+/* STICKY HERO */
 .hero-stage {
-  position: fixed;
+  position: sticky;
   inset-block-start: var(--header-max-height);
-  inset-inline: 0;
   z-index: 1;
   inline-size: 100%;
   block-size: var(--hero-stage-height);
