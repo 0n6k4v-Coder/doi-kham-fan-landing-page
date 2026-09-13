@@ -16,11 +16,9 @@ doi-kham-brand-story {
   display: block;
   inline-size: 100%;
   min-inline-size: 0;
-  --brand-story-bg: #FFF9E6;
   --brand-story-title-color: #FDC000;
   --brand-story-question-color: #FDC000;
   --brand-story-text-color: #33261A;
-  --brand-story-block-padding: clamp(48px, 8vw, 96px);
   --brand-story-inline-padding: clamp(20px, 5vw, 72px);
   --brand-story-content-width: 1200px;
   --brand-story-gap: clamp(24px, 4vw, 48px);
@@ -66,7 +64,7 @@ doi-kham-brand-story {
   --brand-story-mobile-stair-image-width: min(65%, 260px);
 }
 
-.brand-story { display: flex; align-items: center; justify-content: center; inline-size: 100%; min-block-size: 100svh; padding-block: var(--brand-story-block-padding); padding-inline: var(--brand-story-inline-padding); background-color: var(--brand-story-bg); }
+.brand-story { display: flex; align-items: center; justify-content: center; inline-size: 100%; min-block-size: 0; padding: 0; background-color: transparent; }
 .brand-story__container { container: brand-story / inline-size; display: flex; flex-direction: column; align-items: center; justify-content: center; inline-size: min(100%, var(--brand-story-content-width)); min-inline-size: 0; gap: var(--brand-story-gap); }
 .brand-story__intro { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; inline-size: 100%; min-inline-size: 0; gap: var(--brand-story-text-gap); text-align: left; }
 .brand-story__heading { display: block; inline-size: 100%; max-inline-size: 100%; margin: 0; color: var(--brand-story-title-color); font-size: var(--brand-story-heading-size); font-weight: var(--brand-story-heading-weight); line-height: var(--brand-story-heading-line-height); text-align: left; text-wrap: balance; }
@@ -123,7 +121,6 @@ doi-kham-brand-story {
 }
 
 @container brand-story (max-width: 480px) {
-  .brand-story { padding-inline: 20px; }
   .brand-story__image-container { max-inline-size: 100%; }
   .brand-story__image { inline-size: min(65%, 240px); max-inline-size: 100%; border-radius: 24px; }
   .brand-story__copy-block { font-size: 14px; line-height: 1.5; }
