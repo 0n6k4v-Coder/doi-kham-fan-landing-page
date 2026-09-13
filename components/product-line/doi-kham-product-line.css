@@ -18,6 +18,7 @@ doi-kham-product-line {
   inline-size: 100%;
   min-inline-size: 0;
   --line-up-title-color: #FDC000;
+  --line-up-title-size: 94px;
   --card-text-color: #FFFFFF;
   --card-low-sodium-bg: #47CDFA;
   --card-original-bg: #EEDD7F;
@@ -27,11 +28,11 @@ doi-kham-product-line {
   --button-mocktail-bg: #47CDFA;
   --line-up-gap: clamp(20px, 3vw, 32px);
   --line-up-logo-size: 72px;
-  --line-up-title-size: clamp(30px, 4vw, 48px);
   --line-up-title-weight: 900;
   --product-card-gap: clamp(16px, 3vw, 32px);
   --product-cards-max-width: 1400px;
   --product-card-ratio: 45 / 38;
+  --product-card-mocktail-ratio: 19 / 16;
   --product-card-padding: clamp(20px, 3vw, 32px);
   --product-card-radius: 24px;
   --product-card-row-gap: clamp(20px, 3vw, 32px);
@@ -95,12 +96,13 @@ doi-kham-product-line {
   .product-card__name { font-size: clamp(20px, 3cqw, 32px); line-height: 1.16; }
 }
 @media (max-width: 560px) {
-  doi-kham-product-line { --line-up-logo-size: 64px; --product-card-gap: 16px; --product-card-padding: 20px; --product-card-row-gap: 20px; --product-card-inner-gap: 16px; --product-name-size: clamp(22px, 7vw, 30px); --product-name-line-height: 1.16; --product-price-size: clamp(24px, 7vw, 34px); --product-button-size: 48px; --product-button-font-size: 28px; --mobile-card-width: min(82vw, 380px); }
-  .product-line-up__title { inline-size: 100%; max-inline-size: 100%; font-size: clamp(26px, 8vw, 34px); line-height: 1.05; white-space: normal; }
+  doi-kham-product-line { --line-up-title-size: 50px; --line-up-logo-size: 64px; --product-card-gap: 16px; --product-card-padding: 20px; --product-card-row-gap: 20px; --product-card-inner-gap: 16px; --product-name-size: clamp(22px, 7vw, 30px); --product-name-line-height: 1.16; --product-price-size: clamp(24px, 7vw, 34px); --product-button-size: 48px; --product-button-font-size: 28px; --mobile-card-width: min(82vw, 380px); }
+  .product-line-up__title { inline-size: 100%; max-inline-size: 100%; font-size: var(--line-up-title-size); line-height: 1.05; white-space: normal; }
   .product-line-up__content { display: block; inline-size: 100%; max-inline-size: none; min-inline-size: 0; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-padding-inline: calc((100% - var(--mobile-card-width)) / 2); scrollbar-width: none; -ms-overflow-style: none; }
   .product-line-up__content::-webkit-scrollbar { display: none; }
   .product-line-up__cards { display: flex; flex-wrap: nowrap; align-items: stretch; inline-size: max-content; min-inline-size: max-content; gap: var(--product-card-gap); padding: 0; }
   .product-card-shell { flex: 0 0 var(--mobile-card-width); inline-size: var(--mobile-card-width); max-inline-size: var(--mobile-card-width); aspect-ratio: var(--product-card-ratio); scroll-snap-align: center; scroll-snap-stop: always; overflow: visible; }
+  .product-card-shell.product-card--mocktail { aspect-ratio: var(--product-card-mocktail-ratio); }
   .product-card-back { display: none; }
   .product-card { inline-size: 100%; block-size: 100%; aspect-ratio: auto; overflow: hidden; transform: none; }
   .product-card__main { flex-direction: row; overflow: hidden; }
@@ -114,7 +116,7 @@ doi-kham-product-line {
   .product-line-up__control-button { display: inline-flex; align-items: center; justify-content: center; inline-size: 62px; block-size: 62px; padding: 0; border: 0; border-radius: 16px; background-color: #025627; color: #FFFFFF; cursor: pointer; appearance: none; }
   .product-line-up__control-button:focus-visible { outline: 2px solid #025627; outline-offset: 4px; }
   .product-line-up__control-button:active { transform: scale(0.97); }
-  .product-line-up__control-icon { display: block; inline-size: 20px; block-size: 20px; flex: 0 0 auto; }
+  .product-line-up__control-icon { display: block; inline-size: 24px; block-size: 24px; flex: 0 0 auto; }
 }
 @media (max-width: 320px) {
   doi-kham-product-line { --line-up-logo-size: 56px; --product-card-padding: 16px; --product-card-row-gap: 16px; --product-card-inner-gap: 12px; --product-price-size: clamp(23px, 7.5vw, 30px); --mobile-card-width: 86vw; }
