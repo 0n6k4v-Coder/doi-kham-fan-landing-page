@@ -360,9 +360,9 @@ p {
 
 .contact-bottom-surface {
   inline-size: 100%;
-  block-size: calc(3 * (100vw / 6));
+  block-size: calc(2 * (100vw / 6));
   overflow: hidden;
-  background: var(--color-bg-center);
+  background: transparent;
 }
 
 .contact-surface__bottom-circle {
@@ -563,12 +563,5 @@ p {
     --hero-stage-height: calc(100vh - var(--header-max-height));
     --organic-section-height: 200vh;
     --organic-child-inline-padding: 16px;
-  }
-}
-
-/* WIDE VIEWPORT */
-@media (min-aspect-ratio: 2/1) {
-  :root {
-    --organic-section-height: 230vh;
   }
 }
