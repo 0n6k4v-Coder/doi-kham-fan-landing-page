@@ -65,7 +65,7 @@ p {
   --hero-stage-height: calc(100vh - var(--header-max-height));
 
   --organic-section-height: 220vh;
-  --organic-container-gap: clamp(32px, 6vw, 64px);
+  --organic-container-gap: clamp(64px, 12vw, 128px);
   --organic-child-inline-padding: clamp(20px, 5vw, 72px);
 
   --section-content-width: 1200px;
