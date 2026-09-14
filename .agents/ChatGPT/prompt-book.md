@@ -122,19 +122,3 @@ Only changes required by the MAIN TASK are allowed.
 
 If you discover something unrelated that may need attention, leave it unchanged and report it separately after completing the MAIN TASK.
 ```
-
-```text
-Code Convention:
-
-- Must read the latest official MDN documentation first.
-- Must apply at least one current official MDN technique.
-- Keep the code clean, clear, separated by concern, modular, and reusable.
-- Keep everything in one HTML file.
-- Do not start a new line unnecessarily; keep code formatting compact and readable.
-- Preserve the existing baseline unless I explicitly ask for a change.
-- Parent containers control spacing/gaps between direct children.
-- Child containers control their own internal layout and spacing.
-- Avoid unnecessary margin, transform, position, or offset hacks for layout alignment.
-- Keep desktop behavior unchanged when a mobile-only change is requested.
-- Keep the HTML previewable inside a standard
-```
