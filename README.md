@@ -25,8 +25,8 @@ A responsive DOI KHAM promotional landing page built as a lightweight, component
 ├── original/               # Original/reference project material
 ├── styles/
 │   ├── global.css          # Shared layout, variables, and global styles
-│   └── footer.css          # Footer-specific styles
-├── index.html               # Main landing-page document
+│   └── footer.css           # Footer-specific styles
+├── index.html              # Main landing-page document
 └── README.md
 ```
 
@@ -48,7 +48,7 @@ The contact section and footer are defined directly in `index.html`.
 
 ## Local Development
 
-This project does not require a build step. Because the application uses JavaScript modules, serve the repository through a local HTTP server rather than opening `index.html` directly with a `file://` URL. MDN notes that module scripts should be tested through a server because local `file://` loading can trigger CORS errors. citeturn134039search0turn134039search6
+This project does not require a build step. Because the application uses JavaScript modules, serve the repository through a local HTTP server rather than opening `index.html` directly with a `file://` URL.
 
 For example, with Python installed:
 
@@ -64,7 +64,7 @@ http://localhost:8000
 
 ## Architecture
 
-The project keeps the page entry point in `index.html`, while feature behavior is separated into JavaScript modules and reusable custom elements. The application entry point is loaded with `type="module"`, which is the standard browser mechanism for JavaScript modules and supports the `import` statements used by `js/app.js`. citeturn134039search0turn134039search1
+The project keeps the page entry point in `index.html`, while feature behavior is separated into JavaScript modules and reusable custom elements. The application entry point is loaded with `type="module"`, which supports the `import` statements used by `js/app.js`.
 
 ## Styling Conventions
 
@@ -80,7 +80,7 @@ Layout spacing is controlled by parent containers, while component containers ha
 
 The site is a static HTML/CSS/JavaScript project and can be deployed to any hosting platform that serves static files, including GitHub Pages or another static web host.
 
-Make sure the deployed environment serves JavaScript files with a JavaScript MIME type and supports ES modules. citeturn134039search0turn134039search2
+Make sure the deployed environment serves JavaScript files with a JavaScript MIME type and supports ES modules.
 
 ## Repository
 
