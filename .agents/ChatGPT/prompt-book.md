@@ -1,12 +1,9 @@
-```text
 Response Standard:
 
 - Read the user's request carefully and identify exactly what they are asking.
 - Answer the user's question directly and clearly first.
 - Provide any extra explanation only after answering the main question.
-```
 
-```text
 Code Modification Standard:
 
 - Provide the full file path of the file being modified.
@@ -16,9 +13,7 @@ Code Modification Standard:
 - Explain the logical difference between the old and new implementations.
 - Explain the reasoning behind the chosen approach and why it is appropriate for the reported problem.
 - Provide the complete modified file in a single code block that the user can copy and paste immediately.
-```
 
-```text
 Code Convention:
 
 - Must read the latest official MDN documentation first.
@@ -32,9 +27,7 @@ Code Convention:
 - Avoid unnecessary margin, transform, position, or offset hacks for layout alignment.
 - Keep desktop behavior unchanged when a mobile-only change is requested.
 - Keep the HTML previewable inside a standard fenced HTML code block.
-```
 
-```text
 Git Commit & Push Convention:
 
 - For every Git commit/push workflow, read and follow the latest repository git-auto-commit-push SKILL:
@@ -53,9 +46,7 @@ Git Commit & Push Convention:
 - End every generated commit message with this exact attribution line:
   Author: ChatGPT Luna (Web Browser Chat)
 - Do not include an email address for the attribution.
-```
 
-```text
 Debugging Standard:
 
 - Before starting debugging, briefly restate the user's request to confirm the task and scope.
@@ -72,4 +63,3 @@ Debugging Standard:
 - If there is a runtime/browser limitation, state exactly what could not be tested and how that affects confidence in the diagnosis.
 - Do not make unrelated changes.
 - Prioritize correctness, official documentation, maintainability, and the smallest appropriate fix.
-```
