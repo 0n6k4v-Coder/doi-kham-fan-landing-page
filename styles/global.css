@@ -153,7 +153,6 @@ p {
   inline-size: 100%;
   block-size: auto;
   background: var(--color-bg-center);
-  padding-block: clamp(48px, 8vw, 96px);
   padding-inline: clamp(20px, 5vw, 72px);
 }
 
@@ -356,7 +355,6 @@ p {
 
 @media (max-width: 700px) {
   .contact-container {
-    padding-block: 48px;
     padding-inline: 32px;
   }
 
