@@ -135,7 +135,6 @@ p {
   display: flex;
   flex-direction: column;
   gap: clamp(48px, 6vw, 72px);
-  margin-block: clamp(48px, 6vw, 72px);
 }
 
 /* NEWS SECTION */
