@@ -290,6 +290,7 @@ p {
   appearance: auto;
   cursor: pointer;
   color: #8A8580;
+  padding-inline-end: 28px;
 }
 
 .contact__field-select:valid {
