@@ -358,6 +358,20 @@ p {
   border-color: #C62828;
 }
 
+.contact-bottom-surface {
+  inline-size: 100%;
+  block-size: calc(3 * (100vw / 6));
+  overflow: hidden;
+  background: var(--color-bg-center);
+}
+
+.contact-surface__bottom-circle {
+  inline-size: 100%;
+  aspect-ratio: 6 / 1;
+  background: var(--color-bg-center);
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+
 @media (max-width: 700px) {
   .contact-container {
     padding-block: 24px;
