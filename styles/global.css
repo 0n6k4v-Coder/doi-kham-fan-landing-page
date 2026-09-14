@@ -287,10 +287,18 @@ p {
 }
 
 .contact__field-select {
-  appearance: auto;
+  appearance: base-select;
   cursor: pointer;
   color: #8A8580;
-  padding-inline-end: 28px;
+  padding-inline-end: 14px;
+}
+
+.contact__field-select::picker-icon {
+  margin-inline-end: 8px;
+}
+
+.contact__field-select::picker(select) {
+  appearance: base-select;
 }
 
 .contact__field-select:valid {
