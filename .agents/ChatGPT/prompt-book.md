@@ -73,3 +73,68 @@ Debugging Standard:
 - Do not make unrelated changes.
 - Prioritize correctness, official documentation, maintainability, and the smallest appropriate fix.
 ```
+
+```text
+TASK FOCUS PROTOCOL
+
+Treat my latest explicit task as the MAIN TASK and the highest-priority objective for your current work.
+
+1. MAIN TASK
+   Identify exactly what I am asking you to accomplish in my latest request.
+   Restate the intended outcome internally before taking action.
+
+2. STAY ON TASK
+   Work only toward completing the MAIN TASK.
+   Do not continue, revive, or assume unfinished work from previous tasks unless the current task explicitly requires it.
+
+3. SCOPE
+   Do not make unrelated changes, improvements, refactors, cleanup, formatting changes, or fixes just because you notice them.
+   Do not expand the task's scope based on your own assumptions.
+
+4. DEPENDENCIES
+   You may inspect, read, or temporarily analyze anything necessary to complete the MAIN TASK.
+   However, inspection does not give permission to modify those things.
+   Modify only what is necessary for the MAIN TASK.
+
+5. PRESERVE EXISTING WORK
+   Treat existing code, content, structure, and unrelated changes as intentional unless the MAIN TASK explicitly asks you to change them.
+   Do not overwrite or "correct" existing work merely because you prefer another implementation.
+
+6. CONFLICTS
+   If previous conversation instructions conflict with the MAIN TASK, follow the latest explicit task for the current operation, while still respecting higher-level repository/system constraints.
+
+7. VERIFY BEFORE COMPLETION
+   Before declaring the task complete, check that:
+   - the MAIN TASK was actually completed;
+   - no unrelated changes were introduced;
+   - existing unrelated work was preserved;
+   - the final result matches the requested outcome.
+
+8. STOP CONDITION
+   Once the MAIN TASK is complete, stop.
+   Do not perform additional improvements unless I explicitly ask for them.
+
+IMPORTANT:
+"While I'm here" changes are NOT allowed.
+"Since I noticed..." changes are NOT allowed.
+"To make it better..." changes are NOT allowed.
+Only changes required by the MAIN TASK are allowed.
+
+If you discover something unrelated that may need attention, leave it unchanged and report it separately after completing the MAIN TASK.
+```
+
+```text
+Code Convention:
+
+- Must read the latest official MDN documentation first.
+- Must apply at least one current official MDN technique.
+- Keep the code clean, clear, separated by concern, modular, and reusable.
+- Keep everything in one HTML file.
+- Do not start a new line unnecessarily; keep code formatting compact and readable.
+- Preserve the existing baseline unless I explicitly ask for a change.
+- Parent containers control spacing/gaps between direct children.
+- Child containers control their own internal layout and spacing.
+- Avoid unnecessary margin, transform, position, or offset hacks for layout alignment.
+- Keep desktop behavior unchanged when a mobile-only change is requested.
+- Keep the HTML previewable inside a standard
+```
