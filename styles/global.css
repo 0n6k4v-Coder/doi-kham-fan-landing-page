@@ -293,6 +293,11 @@ p {
   padding-inline-end: 20px;
 }
 
+.contact__field-select::picker-icon {
+  margin-inline-start: auto;
+  margin-inline-end: 8px;
+}
+
 .contact__field-select::picker(select) {
   appearance: base-select;
 }
