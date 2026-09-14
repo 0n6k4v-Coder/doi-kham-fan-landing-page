@@ -144,6 +144,17 @@ p {
   inline-size: 100%;
 }
 
+/* CONTACT SECTION */
+.contact-section {
+  inline-size: 100%;
+}
+
+.contact-container {
+  inline-size: 100%;
+  block-size: auto;
+  background: var(--color-bg-center);
+}
+
 /* ORGANIC SECTION */
 .organic-section {
   position: relative;
