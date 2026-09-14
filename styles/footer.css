@@ -1,0 +1,190 @@
+:root {
+  --color-footer-bg: #FDC000;
+  --color-footer-text: #025627;
+  --footer-height: 380px;
+  --footer-inline-padding: clamp(24px, 4vw, 56px);
+  --footer-block-padding: clamp(24px, 4vh, 48px);
+  --footer-content-gap: clamp(24px, 6vw, 96px);
+  --footer-left-gap: 48px;
+  --footer-brand-gap: 24px;
+  --footer-link-gap: 16px;
+  --footer-title-size: 64px;
+  --footer-description-size: 18px;
+  --footer-copyright-size: 16px;
+  --footer-link-size: 16px;
+  --doi-kham-scale-x: 1;
+}
+
+.footer {
+  display: grid;
+  align-items: center;
+  inline-size: 100%;
+  block-size: var(--footer-height);
+  padding: var(--footer-block-padding) var(--footer-inline-padding);
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+}
+
+.footer__content-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  inline-size: 100%;
+  min-inline-size: 0;
+  gap: var(--footer-content-gap);
+}
+
+.footer__brand,
+.footer__description,
+.footer__copyright,
+.footer__link {
+  text-box: trim-both cap alphabetic;
+}
+
+.footer__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 1 auto;
+  min-inline-size: 0;
+  gap: var(--footer-left-gap);
+}
+
+.footer__brand-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  gap: var(--footer-brand-gap);
+}
+
+.footer__brand {
+  display: block;
+  inline-size: max-content;
+  max-inline-size: none;
+  color: var(--color-footer-text);
+  font-size: var(--footer-title-size);
+  line-height: 1;
+  font-weight: 900;
+  white-space: nowrap;
+  transform: scaleX(var(--doi-kham-scale-x));
+  transform-origin: left center;
+}
+
+.footer__description {
+  display: block;
+  inline-size: max-content;
+  max-inline-size: 100%;
+  color: var(--color-footer-text);
+  font-size: var(--footer-description-size);
+  line-height: 1.2;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.footer__copyright {
+  display: block;
+  color: var(--color-footer-text);
+  font-size: var(--footer-copyright-size);
+  line-height: 1.2;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.footer__right {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex: 0 1 auto;
+  min-inline-size: 0;
+  gap: var(--footer-content-gap);
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-inline-size: 0;
+  gap: var(--footer-link-gap);
+}
+
+.footer__link {
+  display: block;
+  color: var(--color-footer-text);
+  font-size: var(--footer-link-size);
+  line-height: 1.2;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  :root {
+    --footer-height: auto;
+    --footer-inline-padding: 24px;
+    --footer-block-padding: 32px;
+    --footer-left-gap: 36px;
+    --footer-brand-gap: 24px;
+    --footer-link-gap: 16px;
+    --footer-title-size: 48px;
+    --footer-description-size: 16px;
+    --footer-copyright-size: 14px;
+    --footer-link-size: 14px;
+  }
+
+  .footer {
+    block-size: auto;
+    min-block-size: 380px;
+  }
+
+  .footer__right {
+    display: none;
+  }
+
+  .footer__content-row {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer__left {
+    align-items: center;
+    inline-size: 100%;
+    max-inline-size: 100%;
+    text-align: center;
+  }
+
+  .footer__brand-group {
+    align-items: center;
+    inline-size: 100%;
+    max-inline-size: 100%;
+  }
+
+  .footer__brand {
+    transform-origin: center center;
+  }
+
+  .footer__description {
+    inline-size: auto;
+    max-inline-size: 100%;
+    white-space: normal;
+  }
+
+  .footer__copyright {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --footer-inline-padding: 20px;
+    --footer-block-padding: 28px;
+    --footer-title-size: 42px;
+    --footer-description-size: 15px;
+    --footer-copyright-size: 13px;
+    --footer-link-size: 14px;
+    --footer-left-gap: 32px;
+    --footer-brand-gap: 24px;
+    --footer-link-gap: 16px;
+  }
+}
