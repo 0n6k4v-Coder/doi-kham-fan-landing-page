@@ -290,11 +290,7 @@ p {
   appearance: base-select;
   cursor: pointer;
   color: #8A8580;
-  padding-inline-end: 14px;
-}
-
-.contact__field-select::picker-icon {
-  margin-inline-end: 8px;
+  padding-inline-end: 20px;
 }
 
 .contact__field-select::picker(select) {
