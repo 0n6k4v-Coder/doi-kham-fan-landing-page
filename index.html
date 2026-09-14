@@ -7,7 +7,7 @@ Code Convention:
 - Do not start a new line unnecessarily; keep code formatting compact and readable.
 - Preserve the existing baseline unless I explicitly ask for a change.
 - Parent containers control spacing/gaps between direct children.
-- Child containers control their own internal layout and spacing.
+- Child containers control their own internal spacing and layout.
 - Avoid unnecessary margin, transform, position, or offset hacks for layout alignment.
 - Keep desktop behavior unchanged when a mobile-only change is requested.
 - Keep the HTML previewable inside a standard fenced HTML code block.
@@ -64,8 +64,54 @@ Code Convention:
         </section>
         <div class="organic-surface__top-circle" aria-hidden="true"></div>
       </div>
-      <section class="contact-section" aria-label="Contact">
-        <div class="contact-container"></div>
+      <section class="contact-section" aria-labelledby="contact-title">
+        <div class="contact-container">
+          <div class="contact__container">
+            <div class="contact__intro">
+              <h1 class="contact__title" id="contact-title">CONTACT</h1>
+              <p class="contact__description">If you have any questions, feedback, or business inquiries regarding Doi Kham products, please feel free to contact us using the form below. We will review your message and get back to you as soon as possible.</p>
+              <p class="contact__required"><span class="contact__required-mark">*</span>Required fields</p>
+            </div>
+            <div class="contact__form">
+              <form class="contact__form-panel" action="#" method="post">
+                <div class="contact__field">
+                  <label class="contact__field-label" for="inquiry-type">Inquiry Type <span class="contact__field-required">*</span></label>
+                  <select class="contact__field-control contact__field-select" id="inquiry-type" name="inquiry-type" required>
+                    <option value="" selected disabled>Please select</option>
+                    <option value="products-services">Products and Services</option>
+                    <option value="media-press">Media / Press Inquiries</option>
+                    <option value="recruitment">Recruitment</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="contact__field">
+                  <label class="contact__field-label" for="name">Name <span class="contact__field-required">*</span></label>
+                  <input class="contact__field-control" id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+                </div>
+                <div class="contact__field">
+                  <label class="contact__field-label" for="company-name">Company Name</label>
+                  <input class="contact__field-control" id="company-name" name="company-name" type="text" autocomplete="organization" placeholder="Company name">
+                </div>
+                <div class="contact__field">
+                  <label class="contact__field-label" for="email">Email Address <span class="contact__field-required">*</span></label>
+                  <input class="contact__field-control" id="email" name="email" type="email" autocomplete="email" placeholder="example@doi-kham.co.th" required>
+                </div>
+                <div class="contact__field">
+                  <label class="contact__field-label" for="phone">Phone Number</label>
+                  <input class="contact__field-control" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="080-0000-0000">
+                </div>
+                <div class="contact__field">
+                  <label class="contact__field-label" for="message">Message <span class="contact__field-required">*</span></label>
+                  <textarea class="contact__field-control contact__field-message" id="message" name="message" rows="6" placeholder="Please enter your message" required></textarea>
+                </div>
+                <div class="contact__form-element">
+                  <button class="contact__submit" type="submit">Submit</button>
+                  <p class="contact__form-note">By submitting this form, you agree to the information provided being used to respond to your inquiry.</p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   </div>
