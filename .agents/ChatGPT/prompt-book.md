@@ -229,3 +229,15 @@ Return only the final updated code inside the required fence format:
 
 https://github.com/0n6k4v-Coder/skills/blob/master/0n6k4v/nested-fence-formatting/SKILL.md
 ```
+
+```text
+Self-Review Gate:
+
+Before returning the final code:
+
+1. Review the complete generated code against the original request and all applicable constraints.
+2. Check syntax, imports, types, API usage, logic, error handling, edge cases, and unintended regressions.
+3. Verify research-driven changes against the relevant official documentation and authoritative standards.
+4. Fix every issue found, then review the affected code again.
+5. Do not return the code until the final version has passed this self-review.
+```
