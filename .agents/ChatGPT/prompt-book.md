@@ -200,3 +200,32 @@ Response Rules:
 - When something is genuinely uncertain, clearly mark the uncertainty while still providing the best complete plan.
 - Do not introduce later steps that were not included in the initial overall plan unless a new user requirement appears.
 ```
+
+```text
+Deep Research and Apply:
+
+Take the code provided below and independently determine how it can be improved using the latest relevant official technology documentation and authoritative industry standards.
+
+1. Deep-research the latest official documentation relevant to the code, including the exact libraries, frameworks, runtime, APIs, and versions involved.
+2. Deep-research the latest relevant authoritative standards and specifications that apply to the code.
+3. Use primary sources whenever available and verify that the information is current.
+4. Analyze the research findings against the existing code and identify concrete improvements, corrections, or updates supported by the research.
+5. Apply those findings directly to the code.
+6. Replace outdated, deprecated, incorrect, unsafe, or non-standard approaches when the research supports doing so.
+7. Preserve correct existing behavior unless the research provides a clear technical reason to change it.
+8. Do not make speculative changes or add unrelated functionality.
+9. Prefer the simplest modern implementation that is supported by the researched sources.
+10. Re-check the final code against the researched documentation and standards before returning it.
+
+Code:
+
+```python
+<CODE>
+```
+
+Output:
+
+Return only the final updated code inside the required fence format:
+
+https://github.com/0n6k4v-Coder/skills/blob/master/0n6k4v/nested-fence-formatting/SKILL.md
+```
