@@ -141,3 +141,62 @@ Anti-Circular Reasoning Standard:
 - Every paragraph must add new information, clarify a distinction, justify a decision, or resolve an uncertainty.
 - If no new information is being added, do not continue explaining.
 ```
+
+```text
+Step-by-Step Recommendation Standard:
+
+Task:
+
+Provide a complete, structured, step-by-step recommendation for the requested work in a single response.
+
+Instructions:
+
+1. Analyze the entire request and determine the complete solution before answering.
+2. Do NOT provide the solution incrementally, partially, or one file at a time.
+3. Do NOT stop after describing the first step or first few files.
+4. First determine the full scope of work, then present the complete sequence in the correct order.
+5. Make the dependency between steps explicit so it is clear what must be done first, what follows, and why.
+6. Give the complete recommendation in one response, from start to finish.
+
+For software/code tasks, include all of the following where applicable:
+
+1. **Overall Plan**
+   - What needs to be built or changed.
+   - The total number of files involved.
+
+2. **File Plan**
+   For every file:
+   - Exact file path
+   - Purpose
+   - What it should contain
+   - Key classes, functions, or types
+   - Important responsibilities
+   - Dependencies on other files
+
+3. **Implementation Order**
+   - Step 1
+   - Step 2
+   - Step 3
+   - Continue until the entire task is complete.
+   - Explain dependencies between steps where relevant.
+
+4. **Final Structure**
+   Show the complete expected file/tree structure after the work is finished.
+
+5. **Important Decisions**
+   Identify important design or implementation decisions that must be made before coding.
+
+6. **Completeness Check**
+   Confirm that the response covers the entire requested scope and that no required file, step, dependency, or decision has been omitted.
+
+Response Rules:
+
+- Give the complete answer in ONE response.
+- Be sequential and structured.
+- Start with the big picture, then move to files, then implementation order, then details.
+- Do not reveal information gradually across multiple turns.
+- Do not wait for confirmation before presenting the complete plan.
+- Do not ask unnecessary clarification questions when a reasonable best-effort recommendation can be made.
+- When something is genuinely uncertain, clearly mark the uncertainty while still providing the best complete plan.
+- Do not introduce later steps that were not included in the initial overall plan unless a new user requirement appears.
+```
