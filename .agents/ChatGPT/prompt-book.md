@@ -201,7 +201,7 @@ Response Rules:
 - Do not introduce later steps that were not included in the initial overall plan unless a new user requirement appears.
 ```
 
-```text
+````text
 Deep Research and Apply:
 
 Take the code provided below and independently determine how it can be improved using the latest relevant official technology documentation and authoritative industry standards.
@@ -228,4 +228,4 @@ Output:
 Return only the final updated code inside the required fence format:
 
 https://github.com/0n6k4v-Coder/skills/blob/master/0n6k4v/nested-fence-formatting/SKILL.md
-```
+````
