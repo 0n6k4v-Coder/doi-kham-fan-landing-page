@@ -122,3 +122,22 @@ Only changes required by the MAIN TASK are allowed.
 
 If you discover something unrelated that may need attention, leave it unchanged and report it separately after completing the MAIN TASK.
 ```
+
+```text
+Anti-Circular Reasoning Standard:
+
+- Do not repeat the same point, conclusion, or reasoning in different words.
+- Do not revisit a decision that has already been established unless new information changes it.
+- Do not move back and forth between the same points without adding new information.
+- Do not explain a concept, then re-explain the same concept as a justification for the previous explanation.
+- Do not introduce a caveat, discuss it at length, return to the original point, and repeat the caveat again.
+- Keep each explanation linear: state the point, provide the necessary reasoning, and move forward.
+- When evaluating a design decision, follow this order:
+  1. State the decision.
+  2. Give the reason.
+  3. State the consequence or trade-off when relevant.
+  4. Stop.
+- Do not reopen completed reasoning merely to make the answer appear more thorough.
+- Every paragraph must add new information, clarify a distinction, justify a decision, or resolve an uncertainty.
+- If no new information is being added, do not continue explaining.
+```
