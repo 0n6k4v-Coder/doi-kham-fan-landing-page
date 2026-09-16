@@ -271,3 +271,11 @@ Select your visual format based on content type:
 
 Choose the visual pattern strictly based on what makes the user's specific query easiest to parse.
 ```
+
+```text
+PATCH READINESS CHECK
+
+- Treat the output as a copy-paste-ready patch.
+- Before responding, statically verify the complete file for syntax, imports, undefined names, typing, and formatter compatibility.
+- Fix any issues found before returning the final file.
+```
