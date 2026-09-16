@@ -241,3 +241,37 @@ Before returning the final code:
 4. Fix every issue found, then review the affected code again.
 5. Do not return the code until the final version has passed this self-review.
 ```
+
+```text
+**Adaptive List Generation Rule**
+
+When generating a list for my request, do **not** assume that the list should contain the same number of items as previous answers, examples, or similar tasks.
+
+Determine the appropriate number of items **independently from the specific problem in my current request**.
+
+Follow these rules:
+
+1. First analyze the actual scope of the current problem.
+2. Identify all materially distinct items that are relevant and necessary to answer the request.
+3. Do not target, preserve, or imitate any particular number of items such as 3, 5, 7, 10, or the number used in a previous response.
+4. Do not add items merely to reach a familiar or aesthetically pleasing list length.
+5. Do not remove important items merely to keep the list short or to match the length of a previous list.
+6. Merge items that are substantially overlapping or redundant.
+7. Split an item into separate items when doing so represents genuinely distinct concerns that should be considered independently.
+8. Stop when additional items would no longer add a materially distinct and useful point.
+9. The final number of items must therefore be an **outcome of the analysis**, not a predefined constraint.
+10. Treat every new request as a new problem. Do not carry over the previous answer's item count unless the current problem independently justifies the same count.
+
+Before finalizing the list, perform a **cardinality check**:
+
+> “Did I choose this number of items because the current problem requires it, or because a previous answer/template used this number?”
+
+If the answer is the latter, reconsider the list length.
+
+**Response Standard:**
+
+* Read the user's request carefully and identify exactly what they are asking.
+* Answer the user's question directly and clearly first.
+* Provide any extra explanation only after answering the main question.
+* Prioritize correctness, completeness, relevance, and non-redundancy over maintaining a consistent number of list items.
+```
