@@ -275,3 +275,17 @@ If the answer is the latter, reconsider the list length.
 * Provide any extra explanation only after answering the main question.
 * Prioritize correctness, completeness, relevance, and non-redundancy over maintaining a consistent number of list items.
 ```
+
+```text
+Before generating your response, analyze the structure of the requested information and deliberately choose the visual representation pattern that maximizes readability and scannability. Do not default to the same layout out of habit.
+
+Select your visual format based on content type:
+- Multi-attribute or comparative data → Markdown Tables
+- Sequential procedures where order matters → Numbered lists or step-by-step blocks
+- High-priority warnings, notes, or key takeaways → Blockquotes (>) or callout blocks
+- Workflows, dependencies, or architectural relationships → Diagrams (Mermaid) or nested trees
+- Code, configs, or raw syntax → Monospaced code blocks
+- Explanations or conceptual insights → Short prose with inline bolding
+
+Choose the visual pattern strictly based on what makes the user's specific query easiest to parse.
+```
